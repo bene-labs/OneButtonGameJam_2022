@@ -5,8 +5,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31, 31 )
 
-[node name="Obstacle" type="StaticBody2D"]
-collision_mask = 7
+[node name="Comet" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 4
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

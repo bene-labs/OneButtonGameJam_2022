@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Obstacle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Comet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://InvisibleWall.tscn" type="PackedScene" id=3]
 
 [node name="GameTest" type="Node2D"]
@@ -11,42 +11,42 @@ position = Vector2( 53, 446 )
 hookshot_range_multiplier = 5
 move_speed = 2.0
 
-[node name="Obstacles" type="Node2D" parent="."]
+[node name="Comets" type="Node2D" parent="."]
 
-[node name="Obstacle" parent="Obstacles" instance=ExtResource( 2 )]
+[node name="Obstacle" parent="Comets" instance=ExtResource( 2 )]
 position = Vector2( 185, 407 )
 
-[node name="Obstacle2" parent="Obstacles" instance=ExtResource( 2 )]
+[node name="Obstacle2" parent="Comets" instance=ExtResource( 2 )]
 position = Vector2( 465, 209 )
 
-[node name="Obstacle3" parent="Obstacles" instance=ExtResource( 2 )]
+[node name="Obstacle3" parent="Comets" instance=ExtResource( 2 )]
 position = Vector2( 106, 557 )
 
-[node name="Obstacle4" parent="Obstacles" instance=ExtResource( 2 )]
+[node name="Obstacle4" parent="Comets" instance=ExtResource( 2 )]
 position = Vector2( 717, 544 )
 
-[node name="Obstacle5" parent="Obstacles" instance=ExtResource( 2 )]
+[node name="Obstacle5" parent="Comets" instance=ExtResource( 2 )]
 position = Vector2( 677, 45 )
 
-[node name="Obstacle6" parent="Obstacles" instance=ExtResource( 2 )]
+[node name="Obstacle6" parent="Comets" instance=ExtResource( 2 )]
 position = Vector2( 780, 237 )
 
-[node name="Obstacle7" parent="Obstacles" instance=ExtResource( 2 )]
+[node name="Obstacle7" parent="Comets" instance=ExtResource( 2 )]
 position = Vector2( 57, 189 )
 
-[node name="Obstacle8" parent="Obstacles" instance=ExtResource( 2 )]
+[node name="Obstacle8" parent="Comets" instance=ExtResource( 2 )]
 position = Vector2( 971, 36 )
 
-[node name="Obstacle9" parent="Obstacles" instance=ExtResource( 2 )]
+[node name="Obstacle9" parent="Comets" instance=ExtResource( 2 )]
 position = Vector2( 242, 36 )
 
-[node name="Obstacle10" parent="Obstacles" instance=ExtResource( 2 )]
+[node name="Obstacle10" parent="Comets" instance=ExtResource( 2 )]
 position = Vector2( 864, 508 )
 
-[node name="Obstacle11" parent="Obstacles" instance=ExtResource( 2 )]
+[node name="Obstacle11" parent="Comets" instance=ExtResource( 2 )]
 position = Vector2( 990, 358 )
 
-[node name="Obstacle12" parent="Obstacles" instance=ExtResource( 2 )]
+[node name="Obstacle12" parent="Comets" instance=ExtResource( 2 )]
 position = Vector2( 348, 488 )
 
 [node name="Walls" type="Node2D" parent="."]
