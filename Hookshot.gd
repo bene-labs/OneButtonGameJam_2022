@@ -49,7 +49,8 @@ func _on_AttachArea_body_entered(body):
 		return
 	var player = get_parent()
 	
-	print("Hook touched!")
+	if debug:
+		print("Hook touched!")
 	connected_obstacle = body
 	if (connected_obstacle != null):
 		connection_point = body.position
