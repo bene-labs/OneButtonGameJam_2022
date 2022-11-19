@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Obstacle.tscn" type="PackedScene" id=2]
+
+[node name="GameTest" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 43, 285 )
+hookshot_range_multiplier = 5
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Obstacle" parent="Obstacles" instance=ExtResource( 2 )]
+position = Vector2( 165, 446 )
+
+[node name="Obstacle2" parent="Obstacles" instance=ExtResource( 2 )]
+position = Vector2( 465, 209 )
+
+[node name="Obstacle3" parent="Obstacles" instance=ExtResource( 2 )]
+position = Vector2( 60, 558 )
+
+[node name="Obstacle4" parent="Obstacles" instance=ExtResource( 2 )]
+position = Vector2( 717, 544 )
+
+[node name="Obstacle5" parent="Obstacles" instance=ExtResource( 2 )]
+position = Vector2( 677, 45 )
+
+[node name="Obstacle6" parent="Obstacles" instance=ExtResource( 2 )]
+position = Vector2( 780, 237 )
+
+[node name="Obstacle7" parent="Obstacles" instance=ExtResource( 2 )]
+position = Vector2( 57, 174 )
+
+[node name="Obstacle8" parent="Obstacles" instance=ExtResource( 2 )]
+position = Vector2( 902, 71 )
+
+[node name="Obstacle9" parent="Obstacles" instance=ExtResource( 2 )]
+position = Vector2( 193, 60 )
+
+[node name="Obstacle10" parent="Obstacles" instance=ExtResource( 2 )]
+position = Vector2( 902, 543 )
+
+[node name="Obstacle11" parent="Obstacles" instance=ExtResource( 2 )]
+position = Vector2( 990, 358 )
+
+[node name="Obstacle12" parent="Obstacles" instance=ExtResource( 2 )]
+position = Vector2( 348, 488 )
