@@ -35,13 +35,13 @@ position = Vector2( 780, 237 )
 position = Vector2( 57, 174 )
 
 [node name="Obstacle8" parent="Obstacles" instance=ExtResource( 2 )]
-position = Vector2( 902, 71 )
+position = Vector2( 971, 36 )
 
 [node name="Obstacle9" parent="Obstacles" instance=ExtResource( 2 )]
-position = Vector2( 193, 60 )
+position = Vector2( 242, 36 )
 
 [node name="Obstacle10" parent="Obstacles" instance=ExtResource( 2 )]
-position = Vector2( 902, 543 )
+position = Vector2( 864, 508 )
 
 [node name="Obstacle11" parent="Obstacles" instance=ExtResource( 2 )]
 position = Vector2( 990, 358 )
@@ -52,17 +52,17 @@ position = Vector2( 348, 488 )
 [node name="Walls" type="Node2D" parent="."]
 
 [node name="InvisibleWall" parent="Walls" instance=ExtResource( 3 )]
-position = Vector2( 516, -13 )
+position = Vector2( 516, -19 )
 
 [node name="InvisibleWall2" parent="Walls" instance=ExtResource( 3 )]
-position = Vector2( 516, 614 )
+position = Vector2( 516, 621 )
 
 [node name="InvisibleWall3" parent="Walls" instance=ExtResource( 3 )]
-position = Vector2( -6, 302 )
+position = Vector2( -17, 302 )
 rotation = 1.57236
 scale = Vector2( 0.640127, 1 )
 
 [node name="InvisibleWall4" parent="Walls" instance=ExtResource( 3 )]
-position = Vector2( 1039, 300 )
+position = Vector2( 1043, 300 )
 rotation = 1.57236
 scale = Vector2( 0.640127, 1 )

@@ -19,6 +19,6 @@ func _ready():
 func _process(delta):
 	match aim_method:
 		AimMethods.CONSTANT_ROTATION:
-			var rotation_point = get_parent().position
+			var rotation_point = get_parent().global_position
 			global_position = rotation_point + (global_position - rotation_point).rotated(rotation_speed * delta)
 			look_at(rotation_point)
