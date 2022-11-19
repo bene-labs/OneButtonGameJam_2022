@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://AutoAimer.gd" type="Script" id=1]
+[ext_resource path="res://sprites/Arrow.png" type="Texture" id=2]
+
+[node name="AutoAimer" type="Sprite"]
+position = Vector2( 54, 0 )
+scale = Vector2( 0.034, 0.034 )
+texture = ExtResource( 2 )
+script = ExtResource( 1 )

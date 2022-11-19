@@ -1,13 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Obstacle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://InvisibleWall.tscn" type="PackedScene" id=3]
 
 [node name="GameTest" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 43, 285 )
+position = Vector2( 53, 446 )
 hookshot_range_multiplier = 5
+move_speed = 2.0
 
 [node name="Obstacles" type="Node2D" parent="."]
 
@@ -46,3 +48,21 @@ position = Vector2( 990, 358 )
 
 [node name="Obstacle12" parent="Obstacles" instance=ExtResource( 2 )]
 position = Vector2( 348, 488 )
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="InvisibleWall" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 516, -13 )
+
+[node name="InvisibleWall2" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 516, 614 )
+
+[node name="InvisibleWall3" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( -6, 302 )
+rotation = 1.57236
+scale = Vector2( 0.640127, 1 )
+
+[node name="InvisibleWall4" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 1039, 300 )
+rotation = 1.57236
+scale = Vector2( 0.640127, 1 )

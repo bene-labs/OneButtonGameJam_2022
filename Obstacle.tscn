@@ -6,6 +6,7 @@
 extents = Vector2( 31, 31 )
 
 [node name="Obstacle" type="StaticBody2D"]
+collision_mask = 3
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
