@@ -18,13 +18,20 @@ func throw_hook_shoot():
 	hookshot_goal = ($AutoAimer.global_position - global_position) * hookshot_range_multiplier
 	# print("Hookshot cast to: ", hookshot_goal)
 	# print("line is from", global_position, " to ", hookshot_goal)
-	$HookshotLine.points = [Vector2(0, 0), hookshot_goal]
+	$HookshotLine.points = [Vector2.ZERO, hookshot_goal]
 	
 	$RayCast2D.cast_to = hookshot_goal
 	$RayCast2D.force_raycast_update()
 	connected_obstacle = $RayCast2D.get_collider()
 	if (connected_obstacle != null):
 		connection_point = $RayCast2D.get_collision_point()
+#		if position.y > connection_point.y and position.x < connected_obstacle.position.x or \
+#			position.y < connected_obstacle.position.y and position.x > connected_obstacle.position.x:
+#			reverse_movement = !reverse_movement
+		if $AutoAimer.position.x > 0:
+			reverse_movement = false
+		else:
+			reverse_movement = true
 		print("Hookshot hit: ", connected_obstacle.name)
 	else:
 		print("Hookshot missed!")
