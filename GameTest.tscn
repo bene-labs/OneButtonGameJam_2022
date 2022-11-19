@@ -14,13 +14,13 @@ move_speed = 2.0
 [node name="Obstacles" type="Node2D" parent="."]
 
 [node name="Obstacle" parent="Obstacles" instance=ExtResource( 2 )]
-position = Vector2( 165, 446 )
+position = Vector2( 185, 407 )
 
 [node name="Obstacle2" parent="Obstacles" instance=ExtResource( 2 )]
 position = Vector2( 465, 209 )
 
 [node name="Obstacle3" parent="Obstacles" instance=ExtResource( 2 )]
-position = Vector2( 60, 558 )
+position = Vector2( 106, 557 )
 
 [node name="Obstacle4" parent="Obstacles" instance=ExtResource( 2 )]
 position = Vector2( 717, 544 )
@@ -32,7 +32,7 @@ position = Vector2( 677, 45 )
 position = Vector2( 780, 237 )
 
 [node name="Obstacle7" parent="Obstacles" instance=ExtResource( 2 )]
-position = Vector2( 57, 174 )
+position = Vector2( 57, 189 )
 
 [node name="Obstacle8" parent="Obstacles" instance=ExtResource( 2 )]
 position = Vector2( 971, 36 )

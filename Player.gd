@@ -42,6 +42,7 @@ func _process(delta):
 		$Hookshot.throw()
 	elif Input.is_action_just_released("action"):
 		$Hookshot/Rope.points = []
+		$Hookshot/Rope/AttachArea/CollisionPolygon2D.polygon = []
 		$Hookshot.connected_obstacle = null
 		
 	# DEBUG
