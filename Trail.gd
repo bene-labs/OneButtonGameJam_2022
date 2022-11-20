@@ -1,7 +1,7 @@
 extends Node2D
 
 export (NodePath) var to_follow
-#export (float) var minmum_point_distance = 1.0
+export (float) var minmum_point_distance = 1.0
 export (bool) var create_shapes = true
 export (bool) var WIP_prevent_invalid_shapes = false
 export var fade_time = 5.0 # time in seconds afer a point of the line is removed (set negative for a permanent line)
@@ -12,10 +12,13 @@ onready var CapturedArea = preload("res://CapturedArea.tscn")
 
 func _on_Trail_Timer_timeout():
 	var new_point = get_node(to_follow).global_position
-#	if $Line.points.size() > 0 and \
-#		abs(new_point.x - $Line.points[$Line.points.size()-1].x) < minmum_point_distance and \
-#		abs(new_point.y - $Line.points[$Line.points.size()-1].y) < minmum_point_distance:
-#		return
+	if $Line.points.has(new_point):
+		return
+	
+	if minmum_point_distance > 0 and $Line.points.size() > 0 and \
+		abs(new_point.x - $Line.points[$Line.points.size()-1].x) < minmum_point_distance and \
+		abs(new_point.y - $Line.points[$Line.points.size()-1].y) < minmum_point_distance:
+		return
 	
 	var points_copy = $Line.points
 	points_copy.append(new_point)
