@@ -32,6 +32,7 @@ func _physics_process(delta):
 
 func set_reverse_movement(new_reverse_movement):
 	reverse_movement = new_reverse_movement
+
 func revert_movement():
 	reverse_movement = !reverse_movement
 

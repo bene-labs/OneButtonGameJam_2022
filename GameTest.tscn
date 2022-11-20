@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Comet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://InvisibleWall.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Trail.tscn" type="PackedScene" id=4]
+[ext_resource path="res://FpsCounter.tscn" type="PackedScene" id=5]
 
 [node name="GameTest" type="Node2D"]
 
@@ -47,7 +48,9 @@ position = Vector2( 348, 488 )
 
 [node name="Trail" parent="." instance=ExtResource( 4 )]
 to_follow = NodePath("../Player")
-fade_time = 20.0
+WIP_prevent_invalid_shapes = true
+fade_time = -1.0
+debug = true
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 53, 446 )
@@ -71,3 +74,9 @@ scale = Vector2( 0.640127, 1 )
 position = Vector2( 1062, 300 )
 rotation = 1.57236
 scale = Vector2( 0.640127, 1 )
+
+[node name="FpsCounter" parent="." instance=ExtResource( 5 )]
+margin_left = 970.0
+margin_top = 4.0
+margin_right = 1017.0
+margin_bottom = 18.0
