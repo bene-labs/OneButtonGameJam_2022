@@ -29,8 +29,9 @@ func create_captured_area_from_intersections(intersections, points):
 				new_area.create_shape(polygon)
 				add_child(new_area)
 				var newLine = $Line.points
-				for j in range(points.size()):
-					newLine.remove(newLine.size() -(j+1))
+				newLine = []
+#				for j in range(points.size()):
+#					newLine.remove(newLine.size -(j+1))
 				$Line.points = newLine
 				break
 			polygon.push_back(points[i])
