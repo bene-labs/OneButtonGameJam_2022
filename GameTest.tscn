@@ -1,15 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Comet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://InvisibleWall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Trail.tscn" type="PackedScene" id=4]
 
 [node name="GameTest" type="Node2D"]
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 53, 446 )
-hookshot_range_multiplier = 5
-move_speed = 2.0
 
 [node name="Comets" type="Node2D" parent="."]
 
@@ -48,6 +44,14 @@ position = Vector2( 990, 358 )
 
 [node name="Obstacle12" parent="Comets" instance=ExtResource( 2 )]
 position = Vector2( 348, 488 )
+
+[node name="Trail" parent="." instance=ExtResource( 4 )]
+to_follow = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 53, 446 )
+hookshot_range_multiplier = 5
+move_speed = 2.0
 
 [node name="Walls" type="Node2D" parent="."]
 
