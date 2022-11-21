@@ -14,6 +14,8 @@ func _on_Trail_Timer_timeout():
 	var new_point = get_node(to_follow).global_position
 	if $Line.points.has(new_point):
 		return
+	if $Line.points.size() != 0 and is_point_on_line(new_point, $Line.points):
+		return
 	
 	if minmum_point_distance > 0 and $Line.points.size() > 0 and \
 		abs(new_point.x - $Line.points[$Line.points.size()-1].x) < minmum_point_distance and \
@@ -30,6 +32,42 @@ func _on_Trail_Timer_timeout():
 		if intersections != []:
 			create_captured_area_from_intersections(intersections, $Line.points)
 			
+func is_point_on_line(point, line : PoolVector2Array):
+	var result = false
+	
+#	for i in range(line.size() - 1, 1, -1):
+#		var line_start = line[i]
+#		var line_end = line[i-1]
+#		result = abs(line_start.distance_to(point) + point.distance_to(line_end)) == abs(line_start.distance_to(line_end))
+#		if result == true:
+#			break
+#
+	for i in range(0, line.size()-1, 1):
+		var line_start = line[i]
+		var line_end = line[i+1]
+		result = (line_start.distance_to(point) + point.distance_to(line_end) == line_start.distance_to(line_end)) \
+		 or (line_end.distance_to(point) + point.distance_to(line_start) == line_end.distance_to(line_start))
+#		var dxc = point.x - line_start.x
+#		var dyc = point.y - line_start.y
+#
+#		var dxl = line_end.x - line_start.x
+#		var dyl = line_end.y - line_start.y
+#
+#		var cross = dxc * dyl - dyc * dxl
+#		if cross == 0:
+#			if (abs(dxl) >= abs(dyl)):
+#			  result = dxl > 0 if \
+#				line_start.x <= point.x && point.x <= line_end.x else \
+#				line_end.x <= point.x && point.x <= line_start.x
+#			else:
+#			  result = dyl > 0 if \
+#				line_start.y <= point.y && point.y <= line_end.y else \
+#				line_end.y <= point.y && point.y <= line_start.y
+		if result == true:
+			break
+	print("-") if result == true else print("+")
+	return result
+	
 func is_polygon_valid(polygon) -> bool: # returns false if the area has a height or width of 0
 #	var is_height_varied = false
 #	var is_width_varied = false

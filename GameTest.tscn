@@ -48,12 +48,11 @@ position = Vector2( 348, 488 )
 
 [node name="Trail" parent="." instance=ExtResource( 4 )]
 to_follow = NodePath("../Player")
-WIP_prevent_invalid_shapes = true
 fade_time = -1.0
 debug = true
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 53, 446 )
+position = Vector2( 690, 133 )
 hookshot_range_multiplier = 5
 move_speed = 2.0
 
