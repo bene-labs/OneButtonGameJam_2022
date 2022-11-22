@@ -3,11 +3,17 @@ extends KinematicBody2D
 export var hookshot_range_multiplier = 3
 export var move_speed = 200
 export (bool) var bounce_of_obstacles = true
+export var minimum_bounce_angle = -30
+export var maximum_bounce_angle = 30
+
 
 var reverse_movement = false # false = right, true = left
 var swing_start_point = null
 
 var velocity = Vector2.ZERO
+
+func _ready():
+	randomize()
 
 func _process(delta):
 	if Input.is_action_just_pressed("action"):
@@ -46,4 +52,5 @@ func revert_movement():
 
 func _on_BounceArea_body_entered(body):
 	if bounce_of_obstacles:
+		$Sprite.rotation += deg2rad(rand_range(minimum_bounce_angle, maximum_bounce_angle))
 		revert_movement()
