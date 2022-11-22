@@ -53,9 +53,9 @@ fade_time = -1.0
 debug = true
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 53, 446 )
+position = Vector2( 190, 245 )
 hookshot_range_multiplier = 5
-move_speed = 2.0
+move_speed = 200.0
 
 [node name="Walls" type="Node2D" parent="."]
 

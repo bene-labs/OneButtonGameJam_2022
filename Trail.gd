@@ -12,6 +12,8 @@ onready var CapturedArea = preload("res://CapturedArea.tscn")
 
 func _on_Trail_Timer_timeout():
 	var new_point = get_node(to_follow).global_position
+	new_point.x = int(new_point.x)
+	new_point.y = int(new_point.y)
 	if $Line.points.has(new_point):
 		return
 	
@@ -43,12 +45,12 @@ func is_polygon_valid(polygon) -> bool: # returns false if the area has a height
 #		if polygon[i].y != polygon[i+1].y:
 #			is_height_varied = true
 #
-	var line_vector = polygon[2] - polygon[1]
+	var line_vector = Vector2(polygon[2] - polygon[1]).normalized()
 	if debug:
 		print("Line Vector: ", line_vector, "\n#########")
 	for i in range(2, polygon.size() - 1, 1):
-		if abs(Vector2(polygon[i + 1] - polygon[i]).x) - abs(line_vector.x) >= 1 or \
-			abs(Vector2(polygon[i + 1] - polygon[i]).y) - abs(line_vector.y) >= 1:
+		var new_vector = Vector2(polygon[i + 1] - polygon[i]).normalized()
+		if line_vector.dot(new_vector) >= 0.99:
 			is_straight_line = false
 			if debug:
 				print("NOT LINE VECTOR: ",  Vector2(polygon[i + 1] - polygon[i]), "!")
@@ -74,6 +76,7 @@ func create_captured_area_from_intersections(intersections, points):
 				var new_area = CapturedArea.instance()
 				new_area.create_shape(polygon)
 				add_child(new_area)
+				
 				var newLine = $Line.points
 				newLine = []
 #				for j in range(points.size()):
@@ -127,3 +130,6 @@ static func get_segment_intersection(a, b, c, d):
 
 	# Segments are parallel!
 	return null
+
+func set_color(color):
+	$Line.default_color = color
