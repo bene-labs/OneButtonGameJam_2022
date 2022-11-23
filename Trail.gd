@@ -13,6 +13,9 @@ onready var CapturedArea = preload("res://CapturedArea.tscn")
 func _ready():
 	get_node(to_follow).assign_trail(self)
 
+func set_color(color):
+	$Line.default_color = color
+
 func _on_Trail_Timer_timeout():
 	var new_point = get_node(to_follow).global_position
 #	if $Line.points.has(new_point):
@@ -50,7 +53,7 @@ func create_captured_area_from_intersections(intersections, points):
 				var new_area = CapturedArea.instance()
 				new_area.owner_id = get_node(to_follow).id
 				get_tree().root.get_child(0).add_child(new_area)
-				new_area.create_shape(polygon)
+				new_area.create_shape(polygon, $Line.default_color)
 				var newLine = $Line.points
 				newLine = []
 #				for j in range(points.size()):
@@ -103,7 +106,7 @@ static func get_segment_intersection(a, b, c, d):
 	# Segments are parallel!
 	return null
 
-func set_color(color):
+func set_line_color(color):
 	$Line.default_color = color
 
 func is_polygon_valid(polygon) -> bool: # returns false if the area has a height or width of 0

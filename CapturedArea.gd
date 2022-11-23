@@ -9,7 +9,7 @@ var owner_id = 1
 func _ready():
 	$Polygon2D.color = color
 	
-func create_shape(polygons):
+func create_shape(polygons, new_color):
 	$Polygon2D.position = polygons[0]
 	$CollisionPolygon2D.position = polygons[0]
 		
@@ -17,6 +17,7 @@ func create_shape(polygons):
 	for pos in polygons:
 		local_polygons.append($Polygon2D.to_local(pos))
 	$Polygon2D.polygon = local_polygons
+	$Polygon2D.color = new_color
 	$CollisionPolygon2D.polygon = local_polygons
 	$AnimationPlayer.play("Implode")
 

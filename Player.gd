@@ -14,6 +14,7 @@ export (bool) var bounce_of_obstacles = true
 export (bool) var detach_hookshot_on_bounce = true
 export var minimum_bounce_angle = -30
 export var maximum_bounce_angle = 30
+export (Color) var color = Color.red
 
 onready var health = max_health
 export var is_invincible = false
@@ -94,6 +95,7 @@ func _exit_tree():
 
 func assign_trail(trail):
 	attached_trail = trail
+	attached_trail.set_line_color(color)
 
 func delete_trail():
 	attached_trail.queue_free()
