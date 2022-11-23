@@ -20,3 +20,6 @@ func stop_rotation():
 
 func set_x_direction(is_right: bool):
 	x_direction = 1 if is_right else -1
+
+func set_simulate_player_position(position):
+	$SimulatedPlayerPosition.global_position = position

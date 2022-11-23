@@ -9,7 +9,7 @@ var connected_obstacle = null
 var connection_point
 var rope_direction = 0
 
-var player = get_parent()
+onready var player = get_parent()
 onready var CollisionLine = preload("res://CollisionLine.gd")
 var rotation_point = null # setget , get_rotation_point
 	
@@ -29,22 +29,7 @@ func throw() -> bool:
 	$RayCast2D.force_raycast_update()
 	connected_obstacle = $RayCast2D.get_collider()
 	if (connected_obstacle != null):
-		rotation_point.global_position = connected_obstacle.global_position
-		rotation_point.get_node("SimulatedPlayerPosition").global_position = player.global_position
-		rotation_point.calc_and_set_rotation_per_seconds(player.move_speed, player.global_position.distance_to(connected_obstacle.global_position))
-		rotation_point.start_rotation()
-		connection_point = $RayCast2D.get_collision_point()
-#		if position.y > connection_point.y and position.x < connected_obstacle.position.x or \
-#			position.y < connected_obstacle.position.y and position.x > connected_obstacle.position.x:
-#			reverse_movement = !reverse_movement
-		rope_direction = $AutoAimer.position.x
-		if player.has_method("set_reverse_movement"):
-			if rope_direction > 0:
-				player.set_reverse_movement(false)
-			else:
-				player.set_reverse_movement(true)
-		if debug:
-			print("Hookshot hit: ", connected_obstacle.name)
+		attach($RayCast2D.get_collision_point())
 		return true
 	else:
 		if attach_after_miss: # add collision to rope to allow later collision
@@ -53,6 +38,24 @@ func throw() -> bool:
 			print("Hookshot missed!")
 		return false
 
+func attach(point):
+	rotation_point.global_position = connected_obstacle.global_position
+	rotation_point.set_simulate_player_position(player.global_position)
+	rotation_point.start_rotation()
+	rotation_point.calc_and_set_rotation_per_seconds(player.move_speed, player.global_position.distance_to(connected_obstacle.global_position))
+	connection_point = point
+#		if position.y > connection_point.y and position.x < connected_obstacle.position.x or \
+#			position.y < connected_obstacle.position.y and position.x > connected_obstacle.position.x:
+#			reverse_movement = !reverse_movement
+	rope_direction = $AutoAimer.position.x
+	if player.has_method("set_reverse_movement"):
+		if rope_direction > 0:
+			player.set_reverse_movement(false)
+		else:
+			player.set_reverse_movement(true)
+	if debug:
+		print("Hookshot hit: ", connected_obstacle.name)
+			
 func detach():
 		$Rope.points = []
 		$Rope/AttachArea/CollisionPolygon2D.polygon = []
@@ -62,24 +65,8 @@ func detach():
 func _on_AttachArea_body_entered(body):
 	if connected_obstacle != null:
 		return
-	var player = get_parent()
-	
 	if debug:
-		print("Hook touched!")
+		print("Hook touched obstacle after miss!")
 	connected_obstacle = body
 	if (connected_obstacle != null):
-		rotation_point.global_position = connected_obstacle.global_position
-		rotation_point.get_node("SimulatedPlayerPosition").global_position = player.global_position
-		rotation_point.start_rotation()
-		rotation_point.calc_and_set_rotation_per_seconds(player.move_speed, player.global_position.distance_to(connected_obstacle.global_position))
-		connection_point = body.position
-#		if position.y > connection_point.y and position.x < connected_obstacle.position.x or \
-#			position.y < connected_obstacle.position.y and position.x > connected_obstacle.position.x:
-#			reverse_movement = !reverse_movement
-		if player.has_method("set_reverse_movement"):
-			if rope_direction > 0:
-				player.set_reverse_movement(false)
-			else:
-				player.set_reverse_movement(true)
-		if debug:
-			print("Hookshot hit after miss: ", connected_obstacle.name)
+		attach(body.position)
