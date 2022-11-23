@@ -86,6 +86,9 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 			if health <= 0:
 				die()
 
+func hide_indicator():
+	$Hookshot/AutoAimer.hide()
+
 func _exit_tree():
 	get_tree().root.get_child(0).get_node("RestartDelay").start()
 

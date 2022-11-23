@@ -155,6 +155,20 @@ tracks/5/keys = {
 "update": 0,
 "values": [ 0.0, 1800.0 ]
 }
+tracks/6/type = "method"
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "hide_indicator"
+} ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "take_damage"

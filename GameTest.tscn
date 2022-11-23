@@ -27,10 +27,11 @@ position = Vector2( 190, 245 )
 hookshot_range_multiplier = 5
 
 [node name="Player2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 888, 499 )
+position = Vector2( 412, 264 )
 collision_layer = 1024
 move_direction = 1
 id = 2
+move_speed = 0
 
 [node name="Comets" type="Node2D" parent="."]
 
@@ -95,5 +96,6 @@ margin_right = 1017.0
 margin_bottom = 18.0
 
 [node name="RestartDelay" type="Timer" parent="."]
+wait_time = 2.0
 
 [connection signal="timeout" from="RestartDelay" to="." method="_on_RestartDelay_timeout"]
