@@ -3,6 +3,7 @@ extends KinematicBody2D
 export var hookshot_range_multiplier = 3
 export var move_speed = 200
 export (bool) var bounce_of_obstacles = true
+export (bool) var detach_hookshot_on_bounce = true
 export var minimum_bounce_angle = -30
 export var maximum_bounce_angle = 30
 
@@ -19,10 +20,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("action"):
 		$Hookshot.throw()
 	elif Input.is_action_just_released("action"):
-		$Hookshot/Rope.points = []
-		$Hookshot/Rope/AttachArea/CollisionPolygon2D.polygon = []
-		$Hookshot.connected_obstacle = null
-		$Hookshot.rotation_point.stop_rotation()
+		$Hookshot.detach()
 		
 	# DEBUG
 	if Input.is_action_just_pressed("debug_increase_move_speed"):
@@ -52,5 +50,6 @@ func revert_movement():
 
 func _on_BounceArea_body_entered(body):
 	if bounce_of_obstacles:
+		$Hookshot.detach()
 		$Sprite.rotation += deg2rad(rand_range(minimum_bounce_angle, maximum_bounce_angle))
 		revert_movement()
