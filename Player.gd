@@ -91,7 +91,7 @@ func hide_indicator():
 	$Hookshot/AutoAimer.hide()
 
 func _exit_tree():
-	get_tree().root.get_child(0).get_node("RestartDelay").start()
+	get_tree().root.get_child(0).restart_after_delay()
 
 func assign_trail(trail):
 	attached_trail = trail
