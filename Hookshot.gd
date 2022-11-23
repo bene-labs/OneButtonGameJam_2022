@@ -53,6 +53,12 @@ func throw() -> bool:
 			print("Hookshot missed!")
 		return false
 
+func detach():
+		$Rope.points = []
+		$Rope/AttachArea/CollisionPolygon2D.polygon = []
+		connected_obstacle = null
+		rotation_point.stop_rotation()
+
 func _on_AttachArea_body_entered(body):
 	if connected_obstacle != null:
 		return
