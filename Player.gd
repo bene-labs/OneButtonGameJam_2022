@@ -1,25 +1,40 @@
 extends KinematicBody2D
 
+enum MovementDirections{
+	RIGHT,
+	LEFT
+}
+
+export (MovementDirections) var move_direction = MovementDirections.RIGHT
+export var id = 1 # 1 for player one, two for player 2... etc
 export var hookshot_range_multiplier = 3
 export var move_speed = 200
+export var max_health = 3
 export (bool) var bounce_of_obstacles = true
 export (bool) var detach_hookshot_on_bounce = true
 export var minimum_bounce_angle = -30
 export var maximum_bounce_angle = 30
 
+onready var health = max_health
+export var is_invincible = false
 
-var reverse_movement = false # false = right, true = left
+onready var reverse_movement = false if move_direction == MovementDirections.RIGHT else true
 var swing_start_point = null
 
 var velocity = Vector2.ZERO
 
+var attached_trail = null
+
 func _ready():
 	randomize()
+	$HealthBar.max_value = max_health
+	$HealthBar.value = health
+	#collision_layer = 10 + id - 1
 
 func _process(delta):
-	if Input.is_action_just_pressed("action"):
+	if Input.is_action_just_pressed("player%d_action" % id):
 		$Hookshot.throw()
-	elif Input.is_action_just_released("action"):
+	elif Input.is_action_just_released("player%d_action" % id):
 		$Hookshot.detach()
 		
 	# DEBUG
@@ -53,3 +68,29 @@ func _on_BounceArea_body_entered(body):
 		$Hookshot.detach()
 		$Sprite.rotation += deg2rad(rand_range(minimum_bounce_angle, maximum_bounce_angle))
 		revert_movement()
+
+func take_damage(damage = 1):
+	if is_invincible or health <= 0:
+		return
+	health -= damage
+	$HealthBar.value = health
+	$AnimationPlayer.play("take_damage")
+		
+func die():
+	$AnimationPlayer.play("die")
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	match anim_name:
+		"take_damage":
+			if health <= 0:
+				die()
+
+func _exit_tree():
+	get_tree().root.get_child(0).get_node("RestartDelay").start()
+
+func assign_trail(trail):
+	attached_trail = trail
+
+func delete_trail():
+	attached_trail.queue_free()

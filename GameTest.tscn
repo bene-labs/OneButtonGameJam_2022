@@ -1,12 +1,36 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Comet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://InvisibleWall.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Trail.tscn" type="PackedScene" id=4]
 [ext_resource path="res://FpsCounter.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Game.gd" type="Script" id=6]
 
 [node name="GameTest" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="Player1Trail" parent="." instance=ExtResource( 4 )]
+to_follow = NodePath("../Player1")
+WIP_prevent_invalid_shapes = true
+fade_time = -1.0
+debug = true
+
+[node name="Player2Trail" parent="." instance=ExtResource( 4 )]
+to_follow = NodePath("../Player2")
+WIP_prevent_invalid_shapes = true
+fade_time = -1.0
+debug = true
+
+[node name="Player1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 190, 245 )
+hookshot_range_multiplier = 5
+
+[node name="Player2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 888, 499 )
+collision_layer = 1024
+move_direction = 1
+id = 2
 
 [node name="Comets" type="Node2D" parent="."]
 
@@ -20,7 +44,7 @@ position = Vector2( 465, 209 )
 position = Vector2( 106, 557 )
 
 [node name="Obstacle4" parent="Comets" instance=ExtResource( 2 )]
-position = Vector2( 717, 544 )
+position = Vector2( 504, 413 )
 
 [node name="Obstacle5" parent="Comets" instance=ExtResource( 2 )]
 position = Vector2( 677, 45 )
@@ -38,23 +62,13 @@ position = Vector2( 971, 36 )
 position = Vector2( 242, 36 )
 
 [node name="Obstacle10" parent="Comets" instance=ExtResource( 2 )]
-position = Vector2( 864, 508 )
+position = Vector2( 725, 380 )
 
 [node name="Obstacle11" parent="Comets" instance=ExtResource( 2 )]
 position = Vector2( 990, 358 )
 
 [node name="Obstacle12" parent="Comets" instance=ExtResource( 2 )]
 position = Vector2( 348, 488 )
-
-[node name="Trail" parent="." instance=ExtResource( 4 )]
-to_follow = NodePath("../Player")
-WIP_prevent_invalid_shapes = true
-fade_time = -1.0
-debug = true
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 190, 245 )
-hookshot_range_multiplier = 5
 
 [node name="Walls" type="Node2D" parent="."]
 
@@ -79,3 +93,7 @@ margin_left = 970.0
 margin_top = 4.0
 margin_right = 1017.0
 margin_bottom = 18.0
+
+[node name="RestartDelay" type="Timer" parent="."]
+
+[connection signal="timeout" from="RestartDelay" to="." method="_on_RestartDelay_timeout"]

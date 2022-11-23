@@ -10,6 +10,9 @@ export var debug : bool = false
 var intersection_blacklist = []
 onready var CapturedArea = preload("res://CapturedArea.tscn")
 
+func _ready():
+	get_node(to_follow).assign_trail(self)
+
 func _on_Trail_Timer_timeout():
 	var new_point = get_node(to_follow).global_position
 #	if $Line.points.has(new_point):
@@ -45,8 +48,9 @@ func create_captured_area_from_intersections(intersections, points):
 #				$Line.points = line_copy
 #				break
 				var new_area = CapturedArea.instance()
+				new_area.owner_id = get_node(to_follow).id
+				get_tree().root.get_child(0).add_child(new_area)
 				new_area.create_shape(polygon)
-				add_child(new_area)
 				var newLine = $Line.points
 				newLine = []
 #				for j in range(points.size()):
@@ -65,7 +69,6 @@ func find_intersections(points):
 		# Note: the +1 makes sure we don't get two results per segment pairs
 		# (intersection of A into B and intersection of B into A, which are the same anyways)
 		for j in range(1 + i, len(points)):
-
 			if abs(j - i) < 2:
 				# Ignore self and neighbors
 				continue
