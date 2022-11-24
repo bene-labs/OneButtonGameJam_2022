@@ -4,10 +4,14 @@ export var rotation_per_seconds = 1
 export var is_rotating = false
 export var x_direction = 1 # 1 or -1
 export var move_speed_multiplier = 1.5
+export var outward_motion = 0
 
 func _process(delta):
 	if is_rotating:
 		rotate((TAU * rotation_per_seconds) * delta * x_direction)
+		$SimulatedPlayerPosition.position.x += outward_motion * delta
+		if $SimulatedPlayerPosition.position.x < 0:
+			$SimulatedPlayerPosition.position.x = 0
 	
 func calc_and_set_rotation_per_seconds(speed, radius):
 	speed = speed * move_speed_multiplier

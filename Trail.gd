@@ -11,7 +11,8 @@ var intersection_blacklist = []
 onready var CapturedArea = preload("res://CapturedArea.tscn")
 
 func _ready():
-	get_node(to_follow).assign_trail(self)
+	if get_node(to_follow).has_method("assign_trail"):
+		get_node(to_follow).assign_trail(self)
 
 func set_color(color):
 	$Line.default_color = color
