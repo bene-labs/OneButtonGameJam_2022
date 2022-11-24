@@ -1,9 +1,9 @@
 extends Node2D
 
 export (PackedScene) var PowerUp
-export var concurrent_powerups = 3
-#export var min_respawn_delay = 2.5
-#export var max_respawn_delay = 10
+#export var concurrent_powerups = 1
+export var min_respawn_delay = 5.0
+export var max_respawn_delay = 25.0
 
 var spawns_queued = 0
 
@@ -15,10 +15,10 @@ func get_spawn_position():
 
 func _ready():
 	randomize()
-#	$PowerUpRespawnDelay.wait_time = rand_range(min_respawn_delay, max_respawn_delay)
+	$PowerUpRespawnDelay.wait_time = rand_range(min_respawn_delay, max_respawn_delay)
 	
-	for i in range(concurrent_powerups):
-		spawn_powerup()
+#	for i in range(concurrent_powerups):
+#		spawn_powerup()
 
 func spawn_powerup():
 	var new_power_up = PowerUp.instance()
@@ -28,15 +28,16 @@ func spawn_powerup():
 	call_deferred("add_child", new_power_up)
 
 func queue_spawn():
-	spawn_powerup()
+	$PowerUpRespawnDelay.start()
+	#spawn_powerup()
 #	print("Spawn!")
 #	spawns_queued += 1
-#	if $PowerUpRespawnDelay.time_left == $PowerUpRespawnDelay.wait_time:
-#		$PowerUpRespawnDelay.start()
+	if $PowerUpRespawnDelay.time_left == $PowerUpRespawnDelay.wait_time:
+		$PowerUpRespawnDelay.start()
 
-#func _on_PowerUpRespawnDelay_timeout():
-#	spawn_powerup()
-#	$PowerUpRespawnDelay.wait_time = rand_range(min_respawn_delay, max_respawn_delay)
+func _on_PowerUpRespawnDelay_timeout():
+	spawn_powerup()
+	$PowerUpRespawnDelay.wait_time = rand_range(min_respawn_delay, max_respawn_delay)
 #	spawns_queued -= 1
 #	if spawns_queued >= 1:
 #		$PowerUpRespawnDelay.start()

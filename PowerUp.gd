@@ -7,7 +7,7 @@ enum Types{
 	BOMBE
 }
 
-export var rarities = {Types.POWERBOOST: 38.0, Types.HARPUNENUPDATE: 35.0, Types.HEILUNG: 2.5, Types.BOMBE:15.5}
+export var rarities = {"PowerBoost": 45.0, "HARPUNENUPDATE": 33.0, "HEILUNG": 4, "BOMBE": 17}
 
 export var move_speed_upgrade = 50
 export var hookshot_length_multipler_upgrade = 1
@@ -32,8 +32,7 @@ var type_name = "undefined"
 
 			
 func get_name():
-	print(type)
-	match int(type):
+	match type:
 		Types.POWERBOOST:
 			return "Power Boost"
 		Types.HARPUNENUPDATE:
@@ -84,6 +83,6 @@ func get_random_type():
 	for i in range(thresholds.size() - 1):
 		if random_number <= thresholds[i]:
 			print("Selected ", i, " == ", Types.keys()[i])
-			return Types.keys()[i]
+			return i
 	print("Selected ", Types.keys()[-1])
-	return Types.keys()[-1]
+	return Types.keys().size() - 1

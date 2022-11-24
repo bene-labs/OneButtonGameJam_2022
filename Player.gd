@@ -103,6 +103,7 @@ func delete_trail():
 # powerup api
 func heal(amount = 1):
 	health += amount
+	$HealthBar.value = health
 	if health > max_health:
 		health = max_health
 
