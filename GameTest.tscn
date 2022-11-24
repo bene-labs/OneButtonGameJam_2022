@@ -105,10 +105,10 @@ position = Vector2( 1, 2 )
 rotation = 1.54926
 
 [node name="FpsCounter" parent="." instance=ExtResource( 5 )]
-margin_left = 970.0
-margin_top = 4.0
-margin_right = 1017.0
-margin_bottom = 18.0
+margin_left = 477.0
+margin_top = 11.0
+margin_right = 524.0
+margin_bottom = 25.0
 
 [node name="RestartDelay" type="Timer" parent="."]
 wait_time = 2.0
