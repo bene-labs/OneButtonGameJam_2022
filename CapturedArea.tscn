@@ -92,7 +92,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 1 ]
+"values": [ 5 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:collision_layer")
@@ -104,7 +104,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 1 ]
+"values": [ 5 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath(".:scale")
@@ -193,10 +193,11 @@ tracks/8/keys = {
 
 [node name="CapturedArea" type="Area2D"]
 z_index = -1
+collision_layer = 5
+collision_mask = 5
 script = ExtResource( 1 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-polygon = PoolVector2Array( -25, -47, -76, 12, -69, 51, 92, 112, 220, 65, 224, -10, 205, -79, 120, -115, 1, -146, -76, -136 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 

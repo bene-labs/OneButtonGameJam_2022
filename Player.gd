@@ -66,7 +66,8 @@ func revert_movement():
 
 func _on_BounceArea_body_entered(body):
 	if bounce_of_obstacles:
-		$Hookshot.detach()
+		if $Hookshot.connected_obstacle != null:
+			$Hookshot.detach()
 		$Sprite.rotation += deg2rad(rand_range(minimum_bounce_angle, maximum_bounce_angle))
 		revert_movement()
 

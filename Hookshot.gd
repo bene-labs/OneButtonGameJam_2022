@@ -25,6 +25,7 @@ func throw() -> bool:
 	hookshot_goal = ($AutoAimer.global_position - global_position) * hookshot_range_multiplier
 	$Rope.points = [Vector2.ZERO, hookshot_goal]
 	
+	$RayCast2D.collision_mask = 4
 	$RayCast2D.cast_to = hookshot_goal
 	$RayCast2D.force_raycast_update()
 	connected_obstacle = $RayCast2D.get_collider()
@@ -44,10 +45,8 @@ func attach(point):
 	rotation_point.start_rotation()
 	rotation_point.calc_and_set_rotation_per_seconds(player.move_speed, player.global_position.distance_to(connected_obstacle.global_position))
 	connection_point = point
-#		if position.y > connection_point.y and position.x < connected_obstacle.position.x or \
-#			position.y < connected_obstacle.position.y and position.x > connected_obstacle.position.x:
-#			reverse_movement = !reverse_movement
 	rope_direction = $AutoAimer.position.x
+	connected_obstacle.connect_player(player)
 	if player.has_method("set_reverse_movement"):
 		if rope_direction > 0:
 			player.set_reverse_movement(false)
@@ -59,14 +58,16 @@ func attach(point):
 func detach():
 		$Rope.points = []
 		$Rope/AttachArea/CollisionPolygon2D.polygon = []
-		connected_obstacle = null
-		rotation_point.stop_rotation()
+		if connected_obstacle != null:
+			connected_obstacle.disconnect_player()
+			connected_obstacle = null
+			rotation_point.stop_rotation()
 
 func _on_AttachArea_body_entered(body):
 	if connected_obstacle != null:
 		return
 	if debug:
-		print("Hook touched obstacle after miss!")
-	connected_obstacle = body
+		print("Hook touched %s after miss!" % body.name) 
+	connected_obstacle = body           
 	if (connected_obstacle != null):
 		attach(body.position)

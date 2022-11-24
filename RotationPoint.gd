@@ -17,6 +17,8 @@ func _process(delta):
 func calc_and_set_rotation_per_seconds(speed, radius):
 	speed = speed * move_speed_multiplier
 	var circumference = 2 * radius* PI
+	if circumference == 0:
+		return
 	rotation_per_seconds = speed / circumference
 
 func start_rotation():
@@ -29,4 +31,5 @@ func set_x_direction(is_right: bool):
 	x_direction = 1 if is_right else -1
 
 func set_simulate_player_position(position):
+	$SimulatedPlayerPosition.position = Vector2.ZERO
 	$SimulatedPlayerPosition.global_position = position

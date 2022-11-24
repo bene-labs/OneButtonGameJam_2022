@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Comet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Anchor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://InvisibleWall.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Trail.tscn" type="PackedScene" id=4]
 [ext_resource path="res://FpsCounter.tscn" type="PackedScene" id=5]
@@ -32,42 +32,42 @@ move_direction = 1
 id = 2
 color = Color( 0.270588, 0.121569, 0.941176, 1 )
 
-[node name="Comets" type="Node2D" parent="."]
+[node name="Anchors" type="Node2D" parent="."]
 
-[node name="Obstacle" parent="Comets" instance=ExtResource( 2 )]
+[node name="Obstacle" parent="Anchors" instance=ExtResource( 2 )]
 position = Vector2( 185, 407 )
 
-[node name="Obstacle2" parent="Comets" instance=ExtResource( 2 )]
+[node name="Obstacle2" parent="Anchors" instance=ExtResource( 2 )]
 position = Vector2( 465, 209 )
 
-[node name="Obstacle3" parent="Comets" instance=ExtResource( 2 )]
+[node name="Obstacle3" parent="Anchors" instance=ExtResource( 2 )]
 position = Vector2( 106, 557 )
 
-[node name="Obstacle4" parent="Comets" instance=ExtResource( 2 )]
+[node name="Obstacle4" parent="Anchors" instance=ExtResource( 2 )]
 position = Vector2( 504, 413 )
 
-[node name="Obstacle5" parent="Comets" instance=ExtResource( 2 )]
+[node name="Obstacle5" parent="Anchors" instance=ExtResource( 2 )]
 position = Vector2( 677, 45 )
 
-[node name="Obstacle6" parent="Comets" instance=ExtResource( 2 )]
+[node name="Obstacle6" parent="Anchors" instance=ExtResource( 2 )]
 position = Vector2( 780, 237 )
 
-[node name="Obstacle7" parent="Comets" instance=ExtResource( 2 )]
+[node name="Obstacle7" parent="Anchors" instance=ExtResource( 2 )]
 position = Vector2( 57, 189 )
 
-[node name="Obstacle8" parent="Comets" instance=ExtResource( 2 )]
+[node name="Obstacle8" parent="Anchors" instance=ExtResource( 2 )]
 position = Vector2( 971, 36 )
 
-[node name="Obstacle9" parent="Comets" instance=ExtResource( 2 )]
+[node name="Obstacle9" parent="Anchors" instance=ExtResource( 2 )]
 position = Vector2( 242, 36 )
 
-[node name="Obstacle10" parent="Comets" instance=ExtResource( 2 )]
+[node name="Obstacle10" parent="Anchors" instance=ExtResource( 2 )]
 position = Vector2( 725, 380 )
 
-[node name="Obstacle11" parent="Comets" instance=ExtResource( 2 )]
+[node name="Obstacle11" parent="Anchors" instance=ExtResource( 2 )]
 position = Vector2( 990, 358 )
 
-[node name="Obstacle12" parent="Comets" instance=ExtResource( 2 )]
+[node name="Obstacle12" parent="Anchors" instance=ExtResource( 2 )]
 position = Vector2( 348, 488 )
 
 [node name="Walls" type="Node2D" parent="."]
@@ -111,6 +111,5 @@ margin_right = 524.0
 margin_bottom = 25.0
 
 [node name="RestartDelay" type="Timer" parent="."]
-wait_time = 2.0
 
 [connection signal="timeout" from="RestartDelay" to="." method="_on_RestartDelay_timeout"]
