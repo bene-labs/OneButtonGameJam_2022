@@ -52,9 +52,8 @@ func create_captured_area_from_intersections(intersections, points):
 #				$Line.points = line_copy
 #				break
 				var new_area = CapturedArea.instance()
-				new_area.owner_id = get_node(to_follow).id
 				get_tree().root.get_child(0).add_child(new_area)
-				new_area.create_shape(polygon, $Line.default_color)
+				new_area.create_shape(polygon, $Line.default_color, get_node(to_follow))
 				var newLine = $Line.points
 				newLine = []
 #				for j in range(points.size()):

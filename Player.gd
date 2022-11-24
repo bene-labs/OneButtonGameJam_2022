@@ -100,3 +100,15 @@ func assign_trail(trail):
 
 func delete_trail():
 	attached_trail.queue_free()
+
+# powerup api
+func heal(amount = 1):
+	health += amount
+	if health > max_health:
+		health = max_health
+
+func increase_speed(amount):
+	move_speed += amount
+
+func increase_hookshot_range(amount):
+	$Hookshot.hookshot_range_multiplier += amount

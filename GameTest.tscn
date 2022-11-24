@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Anchor.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://FpsCounter.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Game.gd" type="Script" id=6]
 [ext_resource path="res://CornerWall.tscn" type="PackedScene" id=7]
+[ext_resource path="res://PowerUp.tscn" type="PackedScene" id=8]
 
 [node name="GameTest" type="Node2D"]
 script = ExtResource( 6 )
@@ -36,6 +37,28 @@ color = Color( 0.270588, 0.121569, 0.941176, 1 )
 
 [node name="Obstacle" parent="Anchors" instance=ExtResource( 2 )]
 position = Vector2( 185, 407 )
+
+[node name="PowerUp" parent="Anchors/Obstacle" instance=ExtResource( 8 )]
+position = Vector2( 244, -53.3333 )
+type = 1
+
+[node name="PowerUp2" parent="Anchors/Obstacle" instance=ExtResource( 8 )]
+position = Vector2( 485.333, -234.667 )
+type = 2
+
+[node name="PowerUp3" parent="Anchors/Obstacle" instance=ExtResource( 8 )]
+position = Vector2( 217.333, -436 )
+
+[node name="PowerUp4" parent="Anchors/Obstacle" instance=ExtResource( 8 )]
+position = Vector2( 816, 82.6667 )
+
+[node name="PowerUp5" parent="Anchors/Obstacle" instance=ExtResource( 8 )]
+position = Vector2( -30.6667, -333.333 )
+type = 2
+
+[node name="PowerUp6" parent="Anchors/Obstacle" instance=ExtResource( 8 )]
+position = Vector2( 929.333, -301.333 )
+type = 3
 
 [node name="Obstacle2" parent="Anchors" instance=ExtResource( 2 )]
 position = Vector2( 465, 209 )

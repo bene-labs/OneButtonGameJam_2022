@@ -4,14 +4,15 @@ export (Color) var color = Color.red
 export (int) var damage = 1
 export (bool) var debug = false
 
-var owner_id = 1
+var owned_by = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Polygon2D.color = color
 	collision_layer
 	
-func create_shape(polygons, new_color):
+func create_shape(polygons, new_color, player):
+	owned_by = player
 	$Polygon2D.position = polygons[0]
 	$CollisionPolygon2D.position = polygons[0]
 		
@@ -27,7 +28,9 @@ func _on_CapturedArea_body_entered(body):
 	if debug:
 		print("Object zoned: ", body.name)
 	if body.has_method("take_damage"):
-		if body.id != owner_id:
+		if body.id != owned_by.id:
 			body.take_damage()
 	if body.has_method("deactivate"):
 		body.deactivate()
+	if body.has_method("use"):
+		body.use(owned_by)
