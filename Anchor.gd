@@ -13,9 +13,9 @@ func deactivate():
 	collision_layer = 0
 	if connected_player != null:
 		connected_player.get_node("Hookshot").detach()
+	$Sprite.modulate.a = 0.2
 	$DeactivationTimer.start()
-	$Sprite.hide()
 
 func _on_DeactivationTimer_timeout():
 	collision_layer = def_layer
-	$Sprite.show()
+	$Sprite.modulate.a = 1

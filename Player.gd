@@ -27,7 +27,6 @@ var velocity = Vector2.ZERO
 var attached_trail = null
 
 func _ready():
-	randomize()
 	$HealthBar.max_value = max_health
 	$HealthBar.value = health
 	#collision_layer = 10 + id - 1
