@@ -16,6 +16,8 @@ export var minimum_bounce_angle = -30
 export var maximum_bounce_angle = 30
 export (Color) var color = Color.red
 
+export var player_textures = []
+
 onready var health = max_health
 export var is_invincible = false
 
@@ -27,8 +29,10 @@ var velocity = Vector2.ZERO
 var attached_trail = null
 
 func _ready():
+	$Sprite.texture = player_textures[id - 1]
 	$HealthBar.max_value = max_health
 	$HealthBar.value = health
+	$Sprite.flip_h = reverse_movement
 	#collision_layer = 10 + id - 1
 
 func _process(delta):
@@ -61,6 +65,7 @@ func set_reverse_movement(new_reverse_movement):
 
 func revert_movement():
 	reverse_movement = !reverse_movement
+	$Sprite.flip_h = !$Sprite.flip_h
 	$Hookshot.rotation_point.set_x_direction(reverse_movement)
 
 func _on_BounceArea_body_entered(body):
