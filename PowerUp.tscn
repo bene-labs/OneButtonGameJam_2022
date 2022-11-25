@@ -1,24 +1,20 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://PowerUp.gd" type="Script" id=1]
+[ext_resource path="res://sprites/Icons/Speed Monitor.png" type="Texture" id=2]
+[ext_resource path="res://sprites/Icons/Bomb Monitor.png" type="Texture" id=3]
+[ext_resource path="res://sprites/Icons/Heal Monitor.png" type="Texture" id=4]
+[ext_resource path="res://sprites/Icons/Length2 better.png" type="Texture" id=5]
 
 [node name="PowerUp" type="StaticBody2D"]
 collision_layer = 8
 collision_mask = 8
 script = ExtResource( 1 )
+textures = [ ExtResource( 2 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ) ]
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color( 0.745098, 0.654902, 0.0627451, 1 )
-polygon = PoolVector2Array( -25, -25, -25, 25, 25, 25, 25, -25 )
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -25, -25, -25, 25, 25, 25, 25, -25 )
-
-[node name="Label" type="Label" parent="."]
-margin_left = -20.0
-margin_top = -22.0
-margin_right = 20.0
-margin_bottom = 9.0
-text = "Power UP "
-align = 1
-autowrap = true

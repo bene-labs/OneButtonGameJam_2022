@@ -7,12 +7,14 @@ enum Types{
 	BOMBE
 }
 
-export var rarities = {"PowerBoost": 45.0, "HARPUNENUPDATE": 33.0, "HEILUNG": 4, "BOMBE": 17}
+export var textures = []
+export var rarities = {"POWERBOOST": 45.0, "HARPUNENUPDATE": 33.0, "HEILUNG": 4, "BOMBE": 17}
 
 export var move_speed_upgrade = 50
 export var hookshot_length_multipler_upgrade = 1
 
 export (Types) var type = Types.POWERBOOST # setget set_type
+
 
 var spawned_by = null
 var type_name = "undefined"
@@ -45,7 +47,7 @@ func get_name():
 			return "Undefined"
 
 func _ready():
-	$Label.text = get_name()
+	$Sprite.texture = textures[type]
 
 func use(user):
 	print(user.name, " used: ", Types.keys()[type])
@@ -66,7 +68,6 @@ func _exit_tree():
 	
 func randomize_type():
 	type = get_random_type()
-	$Label.text = get_name()
 
 func get_random_type():
 	var thresholds = []
