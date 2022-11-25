@@ -11,10 +11,12 @@ export var hookshot_range_multiplier = 3
 export var move_speed = 200
 export var max_health = 3
 export (bool) var bounce_of_obstacles = true
+export (bool) var clear_line_on_bounce = false
 export (bool) var detach_hookshot_on_bounce = true
 export var minimum_bounce_angle = -30
 export var maximum_bounce_angle = 30
 export (Color) var color = Color.red
+
 
 export var player_textures = []
 
@@ -61,12 +63,17 @@ func _physics_process(delta):
 
 func set_reverse_movement(new_reverse_movement):
 	reverse_movement = new_reverse_movement
+	$Sprite.flip_h = reverse_movement
 	$Hookshot.rotation_point.set_x_direction(reverse_movement)
+	if clear_line_on_bounce:
+		attached_trail.clear_line()
 
 func revert_movement():
 	reverse_movement = !reverse_movement
-	$Sprite.flip_h = !$Sprite.flip_h
+	$Sprite.flip_h = reverse_movement
 	$Hookshot.rotation_point.set_x_direction(reverse_movement)
+	if clear_line_on_bounce:
+		attached_trail.clear_line()
 
 func _on_BounceArea_body_entered(body):
 	if bounce_of_obstacles:

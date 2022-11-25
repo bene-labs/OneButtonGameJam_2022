@@ -17,6 +17,9 @@ func _ready():
 func set_color(color):
 	$Line.default_color = color
 
+func clear_line():
+	$Line.points = []
+
 func _on_Trail_Timer_timeout():
 	var new_point = get_node(to_follow).global_position
 #	if $Line.points.has(new_point):
