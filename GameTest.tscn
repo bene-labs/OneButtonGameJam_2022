@@ -10,7 +10,7 @@
 [ext_resource path="res://PowerUpSpawner.tscn" type="PackedScene" id=8]
 [ext_resource path="res://PowerUp.tscn" type="PackedScene" id=9]
 
-[node name="GameTest" type="Node2D"]
+[node name="Game" type="Node2D"]
 script = ExtResource( 6 )
 
 [node name="PowerUpSpawner" parent="." instance=ExtResource( 8 )]
