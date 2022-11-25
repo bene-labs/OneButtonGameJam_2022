@@ -65,15 +65,11 @@ func set_reverse_movement(new_reverse_movement):
 	reverse_movement = new_reverse_movement
 	$Sprite.flip_h = reverse_movement
 	$Hookshot.rotation_point.set_x_direction(reverse_movement)
-	if clear_line_on_bounce:
-		attached_trail.clear_line()
 
 func revert_movement():
 	reverse_movement = !reverse_movement
 	$Sprite.flip_h = reverse_movement
 	$Hookshot.rotation_point.set_x_direction(reverse_movement)
-	if clear_line_on_bounce:
-		attached_trail.clear_line()
 
 func _on_BounceArea_body_entered(body):
 	if bounce_of_obstacles:
@@ -81,6 +77,8 @@ func _on_BounceArea_body_entered(body):
 			$Hookshot.detach()
 		$Sprite.rotation += deg2rad(rand_range(minimum_bounce_angle, maximum_bounce_angle))
 		revert_movement()
+		if clear_line_on_bounce:
+			attached_trail.clear_line()
 
 func take_damage(damage = 1):
 	if is_invincible or health <= 0:
