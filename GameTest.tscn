@@ -81,36 +81,39 @@ position = Vector2( 312, 439 )
 
 [node name="Walls" type="Node2D" parent="."]
 
-[node name="InvisibleWall" parent="Walls" instance=ExtResource( 3 )]
+[node name="TopWall" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 516, -39 )
 
-[node name="InvisibleWall2" parent="Walls" instance=ExtResource( 3 )]
+[node name="BottomWall" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 516, 643 )
+side = 2
 
-[node name="InvisibleWall3" parent="Walls" instance=ExtResource( 3 )]
+[node name="LeftWall" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( -38, 302 )
 rotation = 1.57236
 scale = Vector2( 0.640127, 1 )
+side = 1
 
-[node name="InvisibleWall4" parent="Walls" instance=ExtResource( 3 )]
+[node name="RightWall" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 1062, 300 )
 rotation = 1.57236
 scale = Vector2( 0.640127, 1 )
+side = 3
 
 [node name="CornerWall" parent="Walls" instance=ExtResource( 7 )]
-position = Vector2( 1, 601 )
+position = Vector2( -228, 676 )
 rotation = -0.017611
 
 [node name="CornerWall2" parent="Walls" instance=ExtResource( 7 )]
-position = Vector2( 1025, 599 )
+position = Vector2( 1340, 615 )
 rotation = -1.59177
 
 [node name="CornerWall3" parent="Walls" instance=ExtResource( 7 )]
-position = Vector2( 1023, -1 )
+position = Vector2( 1413, 32 )
 rotation = 3.12853
 
 [node name="CornerWall4" parent="Walls" instance=ExtResource( 7 )]
-position = Vector2( 1, 2 )
+position = Vector2( -222, 20 )
 rotation = 1.54926
 
 [node name="FpsCounter" parent="." instance=ExtResource( 5 )]

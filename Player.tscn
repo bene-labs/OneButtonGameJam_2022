@@ -202,7 +202,6 @@ tracks/1/keys = {
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 512
 script = ExtResource( 3 )
-clear_line_on_bounce = true
 minimum_bounce_angle = 0
 maximum_bounce_angle = 0
 player_textures = [ ExtResource( 1 ), ExtResource( 5 ) ]

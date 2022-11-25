@@ -72,11 +72,12 @@ func revert_movement():
 	$Hookshot.rotation_point.set_x_direction(reverse_movement)
 
 func _on_BounceArea_body_entered(body):
-	if bounce_of_obstacles:
+	if bounce_of_obstacles and body.has_method("get_bounce_angle"):
 		if $Hookshot.connected_obstacle != null:
 			$Hookshot.detach()
 		$Sprite.rotation += deg2rad(rand_range(minimum_bounce_angle, maximum_bounce_angle))
-		revert_movement()
+		$Sprite.rotation = body.get_bounce_angle()
+		set_reverse_movement(false)
 		if clear_line_on_bounce:
 			attached_trail.clear_line()
 
