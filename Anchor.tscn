@@ -22,4 +22,13 @@ shape = SubResource( 1 )
 wait_time = 1.5
 one_shot = true
 
+[node name="EffectSpritePlacholder" type="Label" parent="."]
+margin_left = -31.0
+margin_top = -31.0
+margin_right = 31.0
+margin_bottom = -17.0
+rect_rotation = -0.400601
+text = "Effect"
+align = 1
+
 [connection signal="timeout" from="DeactivationTimer" to="." method="_on_DeactivationTimer_timeout"]

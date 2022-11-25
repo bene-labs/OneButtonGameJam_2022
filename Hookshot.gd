@@ -41,6 +41,7 @@ func throw() -> bool:
 
 func attach(point):
 	rotation_point.global_position = connected_obstacle.global_position
+	rotation_point.trigger_effect(connected_obstacle.effect)
 	rotation_point.set_simulate_player_position(player.global_position)
 	rotation_point.start_rotation()
 	rotation_point.calc_and_set_rotation_per_seconds(player.move_speed, player.global_position.distance_to(connected_obstacle.global_position))
@@ -58,6 +59,7 @@ func attach(point):
 func detach():
 		$Rope.points = []
 		$Rope/AttachArea/CollisionPolygon2D.polygon = []
+		rotation_point.reset()
 		if connected_obstacle != null:
 			connected_obstacle.disconnect_player()
 			connected_obstacle = null

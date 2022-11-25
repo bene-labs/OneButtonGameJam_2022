@@ -48,7 +48,7 @@ func _ready():
 	$Label.text = get_name()
 
 func use(user):
-	print(user.name, " used: ", type)
+	print(user.name, " used: ", Types.keys()[type])
 	match type:
 		Types.POWERBOOST:
 			user.increase_speed(move_speed_upgrade)
@@ -77,12 +77,7 @@ func get_random_type():
 		thresholds.append(total_chance)
 	
 	var random_number = rand_range(0, total_chance)
-	print(random_number)
-	print(thresholds)
-	print(Types.keys())
 	for i in range(thresholds.size() - 1):
 		if random_number <= thresholds[i]:
-			print("Selected ", i, " == ", Types.keys()[i])
 			return i
-	print("Selected ", Types.keys()[-1])
 	return Types.keys().size() - 1
