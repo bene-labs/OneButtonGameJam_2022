@@ -85,7 +85,12 @@ position = Vector2( 446, 450 )
 [node name="Anchor17" parent="Anchors" index="16" instance=ExtResource( 3 )]
 position = Vector2( 449, 300 )
 
+[node name="Anchor18" parent="Anchors" index="17" instance=ExtResource( 3 )]
+position = Vector2( 1000, 300 )
+scale = Vector2( 1, 1 )
+
 [node name="PowerUps" type="Node2D" parent="." index="8"]
+position = Vector2( 0, -50 )
 
 [node name="PowerUpHealth" parent="PowerUps" index="0" instance=ExtResource( 2 )]
 position = Vector2( 1200, 700 )
