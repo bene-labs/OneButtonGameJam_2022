@@ -6,5 +6,5 @@
 margin_right = 47.0
 margin_bottom = 14.0
 text = "0 fps"
-align = 2
+align = 1
 script = ExtResource( 1 )

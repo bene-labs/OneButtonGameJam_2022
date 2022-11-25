@@ -78,6 +78,7 @@ func _on_BounceArea_body_entered(body):
 		$Sprite.rotation += deg2rad(rand_range(minimum_bounce_angle, maximum_bounce_angle))
 		$Sprite.rotation = body.get_bounce_angle()
 		set_reverse_movement(false)
+		position += Vector2(move_speed / 30, 0).rotated($Sprite.rotation)
 		if clear_line_on_bounce:
 			attached_trail.clear_line()
 

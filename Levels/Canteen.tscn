@@ -10,11 +10,15 @@
 position = Vector2( 703, 435 )
 scale = Vector2( 1.2, 1.84 )
 
+[node name="Player1" parent="." index="3"]
+move_speed = 500
+
 [node name="Player2" parent="." index="4"]
 position = Vector2( 175, 691 )
 move_direction = 0
+move_speed = 500
 
-[node name="OuterWalls" parent="." index="6"]
+[node name="OuterWalls" parent="." index="5"]
 scale = Vector2( 1.32, 1.48 )
 
 [node name="Anchors" type="Node2D" parent="." index="7"]
