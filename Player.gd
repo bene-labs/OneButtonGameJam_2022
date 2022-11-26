@@ -13,10 +13,10 @@ export var max_health = 3
 export (bool) var bounce_of_obstacles = true
 export (bool) var clear_line_on_bounce = false
 export (bool) var detach_hookshot_on_bounce = true
+export (bool) var use_reflection_angle = false
 export var minimum_bounce_angle = -30
 export var maximum_bounce_angle = 30
 export (Color) var color = Color.red
-
 
 export var player_textures = []
 
@@ -75,15 +75,20 @@ func _on_BounceArea_body_entered(body):
 	if bounce_of_obstacles and body.has_method("get_bounce_angle"):
 		if $Hookshot.connected_obstacle != null:
 			$Hookshot.detach()
-		$Sprite.rotation += deg2rad(rand_range(minimum_bounce_angle, maximum_bounce_angle))
-		$Sprite.rotation = body.get_bounce_angle()
-		set_reverse_movement(false)
-		position += Vector2(move_speed / 30, 0).rotated($Sprite.rotation)
+		if use_reflection_angle:
+			var refclection_angle = body.get_reflection_velocity(Vector2(move_speed / 30, 0).rotated($Sprite.rotation))
+			$Sprite.look_at(position + refclection_angle)
+			position += refclection_angle
+		else:
+			$Sprite.rotation = body.get_bounce_angle()
+			$Sprite.rotation += deg2rad(rand_range(minimum_bounce_angle, maximum_bounce_angle))
+			set_reverse_movement(false)
+			position += Vector2(move_speed / 30, 0).rotated($Sprite.rotation)
 		if clear_line_on_bounce:
 			attached_trail.clear_line()
 
 func take_damage(damage = 1):
-	print("%s took %d damage! Health left: %d", [name, damage, health])
+	print("%s took %d damage! Health left: %d" % [name, damage, health])
 	
 	if is_invincible or health <= 0:
 		return

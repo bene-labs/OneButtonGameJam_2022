@@ -173,7 +173,7 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id=5]
 resource_name = "take_damage"
-length = 0.25
+length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:self_modulate")
 tracks/0/interp = 1
@@ -181,8 +181,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.13, 0.25 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.5 ),
+"transitions": PoolRealArray( 0.366022, 1, 2.73208 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
@@ -193,7 +193,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( -0.1, 0.25 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -229,6 +229,7 @@ collision_mask = 2
 shape = SubResource( 3 )
 
 [node name="Hookshot" parent="." instance=ExtResource( 2 )]
+rotate_with_indicator = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 4 )

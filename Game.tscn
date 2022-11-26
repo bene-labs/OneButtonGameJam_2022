@@ -11,10 +11,6 @@
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="PowerUpSpawner" parent="." instance=ExtResource( 4 )]
-position = Vector2( 507, 296 )
-PowerUp = ExtResource( 6 )
-
 [node name="Player1Trail" parent="." instance=ExtResource( 7 )]
 to_follow = NodePath("../Player1")
 WIP_prevent_invalid_shapes = true
@@ -62,3 +58,7 @@ margin_left = 496.0
 margin_top = 8.0
 margin_right = 543.0
 margin_bottom = 22.0
+
+[node name="PowerUpSpawner" parent="." instance=ExtResource( 4 )]
+position = Vector2( 507, 296 )
+PowerUp = ExtResource( 6 )
