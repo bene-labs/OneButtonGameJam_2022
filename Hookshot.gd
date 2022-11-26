@@ -13,6 +13,10 @@ onready var player = get_parent()
 onready var CollisionLine = preload("res://CollisionLine.gd")
 var rotation_point = null # setget , get_rotation_point
 	
+export (bool) var rotate_with_indicator = true
+
+var is_thrown = false
+
 #func get_rotation_point():
 #	 return get_tree().root.get_child(0).get_node("RotationPoint-" + get_parent().name)
 
@@ -22,8 +26,12 @@ func _ready():
 	get_tree().root.get_child(0).call_deferred("add_child", rotation_point)
 
 func throw() -> bool:
+	is_thrown = true
 	hookshot_goal = ($AutoAimer.global_position - global_position) * hookshot_range_multiplier
-	$Rope.points = [Vector2.ZERO, hookshot_goal]
+	if rotate_with_indicator:
+		$Rope.points = [$AutoAimer.position, hookshot_goal]
+	else:
+		$Rope.points = [Vector2.ZERO, hookshot_goal]
 	
 	$RayCast2D.collision_mask = 4
 	$RayCast2D.cast_to = hookshot_goal
@@ -39,7 +47,12 @@ func throw() -> bool:
 			print("Hookshot missed!")
 		return false
 
+func _process(delta):
+	if rotate_with_indicator and is_thrown and not $Rope.points.empty():
+		$Rope.points = [$AutoAimer.position, ($AutoAimer.global_position - global_position) * hookshot_range_multiplier]
+	
 func attach(point):
+	is_thrown = false
 	rotation_point.global_position = connected_obstacle.global_position
 	rotation_point.trigger_effect(connected_obstacle.effect)
 	rotation_point.set_simulate_player_position(player.global_position)
