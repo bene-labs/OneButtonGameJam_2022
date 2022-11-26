@@ -12,8 +12,13 @@ extents = Vector2( 404.5, 223 )
 [node name="BackroundCrashedShip" type="Sprite" parent="." index="0"]
 position = Vector2( 514.802, 301.476 )
 scale = Vector2( 0.516198, 0.520873 )
-z_index = -1
+z_index = -2
 texture = ExtResource( 3 )
+
+[node name="PowerUpSpawner" parent="." index="6"]
+position = Vector2( 519, 300 )
+scale = Vector2( 2.66713, 0.786719 )
+spawn_area_path = NodePath("../SpawnCollision")
 
 [node name="Anchors" type="Node2D" parent="." index="7"]
 
@@ -56,12 +61,7 @@ position = Vector2( 633, 179 )
 [node name="Obstacle12" parent="Anchors" index="12" instance=ExtResource( 2 )]
 position = Vector2( 312, 439 )
 
-[node name="PowerUpSpawner" parent="." index="8"]
-position = Vector2( 519, 300 )
-scale = Vector2( 2.66713, 0.786719 )
-spawn_area_path = NodePath("../SpawnCollision")
-
-[node name="SpawnCollision" type="Area2D" parent="." index="10"]
+[node name="SpawnCollision" type="Area2D" parent="." index="8"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnCollision" index="0"]
 position = Vector2( 513.5, 304 )

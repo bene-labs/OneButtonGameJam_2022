@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
-[ext_resource path="res://FpsCounter.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://PowerUpSpawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://InvisibleWall.tscn" type="PackedScene" id=5]
@@ -53,11 +52,5 @@ position = Vector2( 1062, 300 )
 rotation = 1.57236
 scale = Vector2( 0.640127, 1 )
 side = 3
-
-[node name="FpsCounter" parent="." instance=ExtResource( 2 )]
-margin_left = 496.0
-margin_top = 8.0
-margin_right = 543.0
-margin_bottom = 22.0
 
 [node name="PowerUpSpawner" parent="." instance=ExtResource( 4 )]
