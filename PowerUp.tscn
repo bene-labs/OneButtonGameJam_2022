@@ -1,21 +1,37 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://PowerUp.gd" type="Script" id=1]
-[ext_resource path="res://sprites/Icons/Speed Monitor.png" type="Texture" id=2]
-[ext_resource path="res://sprites/Icons/Bomb Monitor.png" type="Texture" id=3]
-[ext_resource path="res://sprites/Icons/Heal Monitor.png" type="Texture" id=4]
-[ext_resource path="res://sprites/Icons/Length2 better.png" type="Texture" id=5]
+[ext_resource path="res://sprites/Icons/new/Rolli_Wars_Icons_Power_Boost.png" type="Texture" id=2]
+[ext_resource path="res://sprites/Icons/new/Rolli_Wars_Icons_Bombe.png" type="Texture" id=3]
+[ext_resource path="res://sprites/Icons/new/Rolli_Wars_Icons_Heilung.png" type="Texture" id=4]
+[ext_resource path="res://sprites/Icons/new/Rolli_Wars_Icons_Harpunen_Updare.png" type="Texture" id=5]
+[ext_resource path="res://sprites/Icons/Monitor.png" type="Texture" id=6]
 
 [node name="PowerUp" type="StaticBody2D"]
+scale = Vector2( 0.75, 0.75 )
 collision_layer = 8
 collision_mask = 8
 script = ExtResource( 1 )
 textures = [ ExtResource( 2 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ) ]
+rarities = {
+"BOMBE": 17,
+"HARPUNENUPDATE": 33.0,
+"HEILUNG": 5,
+"POWERBOOST": 44.0
+}
+move_speed_upgrade = 30
+hookshot_length_multipler_upgrade = 0.8
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.4, 0.4 )
 z_index = 1
 texture = ExtResource( 2 )
 
+[node name="Background" type="Sprite" parent="."]
+scale = Vector2( 0.679998, 0.662148 )
+texture = ExtResource( 6 )
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+scale = Vector2( 1.70478, 1.65831 )
 polygon = PoolVector2Array( -25, -25, -25, 25, 25, 25, 25, -25 )

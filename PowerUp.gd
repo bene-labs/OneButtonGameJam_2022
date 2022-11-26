@@ -11,7 +11,7 @@ export var textures = []
 export var rarities = {"POWERBOOST": 45.0, "HARPUNENUPDATE": 33.0, "HEILUNG": 4, "BOMBE": 17}
 
 export var move_speed_upgrade = 50
-export var hookshot_length_multipler_upgrade = 1
+export var hookshot_length_multipler_upgrade = 1.0
 
 export (Types) var type = Types.POWERBOOST # setget set_type
 

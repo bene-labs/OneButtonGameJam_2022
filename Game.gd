@@ -1,6 +1,9 @@
 extends Node2D
 
 export var restart_delay = 2.0
+export (bool) var switch_level_on_restart = false
+export var levels = []
+
 
 func _ready():
 	var new_timer = Timer.new()
@@ -15,4 +18,7 @@ func restart_after_delay():
 	$RestartTimer.start()
 
 func _on_RestartDelay_timeout():
-	get_tree().reload_current_scene()
+	if switch_level_on_restart:
+		get_tree().change_scene(levels[randi() % levels.size()])
+	else:
+		get_tree().reload_current_scene()

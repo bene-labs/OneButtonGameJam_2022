@@ -113,3 +113,4 @@ type = 1
 position = Vector2( 535, 395 )
 current = true
 zoom = Vector2( 0.9, 1.2 )
+

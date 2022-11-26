@@ -13,6 +13,7 @@ onready var player = get_parent()
 onready var CollisionLine = preload("res://CollisionLine.gd")
 var rotation_point = null # setget , get_rotation_point
 	
+export (bool) var swing_towards_indicator = true
 export (bool) var rotate_with_indicator = true
 
 var is_thrown = false
@@ -59,13 +60,10 @@ func attach(point):
 	rotation_point.start_rotation()
 	rotation_point.calc_and_set_rotation_per_seconds(player.move_speed, player.global_position.distance_to(connected_obstacle.global_position))
 	connection_point = point
-	rope_direction = $AutoAimer.position.x
+	rope_direction = $AutoAimer.position.x > 0 if swing_towards_indicator else player.reverse_movement
 	connected_obstacle.connect_player(player)
 	if player.has_method("set_reverse_movement"):
-		if rope_direction > 0:
-			player.set_reverse_movement(false)
-		else:
-			player.set_reverse_movement(true)
+		player.set_reverse_movement(rope_direction)
 	if debug:
 		print("Hookshot hit: ", connected_obstacle.name)
 			
