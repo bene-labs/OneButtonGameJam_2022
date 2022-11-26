@@ -83,8 +83,11 @@ func _on_BounceArea_body_entered(body):
 			attached_trail.clear_line()
 
 func take_damage(damage = 1):
+	print("%s took %d damage! Health left: %d", [name, damage, health])
+	
 	if is_invincible or health <= 0:
 		return
+	is_invincible = true
 	health -= damage
 	$HealthBar.value = health
 	$AnimationPlayer.play("take_damage")
