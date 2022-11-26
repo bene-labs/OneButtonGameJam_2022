@@ -11,7 +11,7 @@
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
 switch_level_on_restart = true
-levels = [ "res://Levels/Canteen.tscn", "res://Levels/CrashedShip.tscn", "res://Levels/Warehouse.tscn" ]
+levels = [ "res://Levels/Canteen.tscn", "res://Levels/CrashedShip.tscn", "res://Levels/Warehouse.tscn", "res://Levels/SpaceLevel.tscn" ]
 
 [node name="Player1Trail" parent="." instance=ExtResource( 7 )]
 to_follow = NodePath("../Player1")
@@ -62,5 +62,5 @@ margin_right = 543.0
 margin_bottom = 22.0
 
 [node name="PowerUpSpawner" parent="." instance=ExtResource( 4 )]
-position = Vector2( 507, 296 )
+position = Vector2( 525, 289 )
 PowerUp = ExtResource( 6 )
