@@ -13,8 +13,8 @@ var spawns_queued = 0
 
 func get_spawn_position():
 	var spawn_position = Vector2.ZERO
-	spawn_position.x = rand_range($SpawnArea.position.x, $SpawnArea.position.x + $SpawnArea/CollisionShape2D.shape.extents.x)
-	spawn_position.y = rand_range($SpawnArea.position.y, $SpawnArea.position.y + $SpawnArea/CollisionShape2D.shape.extents.y)
+	spawn_position.x = rand_range($SpawnArea.global_position.x, $SpawnArea.global_position.x + $SpawnArea/CollisionShape2D.shape.extents.x)
+	spawn_position.y = rand_range($SpawnArea.global_position.y, $SpawnArea.global_position.y + $SpawnArea/CollisionShape2D.shape.extents.y)
 	return spawn_position
 
 func _ready():
