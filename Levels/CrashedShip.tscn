@@ -6,6 +6,7 @@
 [ext_resource path="res://sprites/BackroundCrashedShip.jpg" type="Texture" id=4]
 
 [node name="CrashedShip" instance=ExtResource( 1 )]
+restart_delay = 2.0
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 position = Vector2( 1070, 637 )
