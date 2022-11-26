@@ -106,6 +106,5 @@ margin_bottom = 25.0
 [node name="PowerUpSpawner" parent="." instance=ExtResource( 8 )]
 position = Vector2( 507, 296 )
 PowerUp = ExtResource( 9 )
-respawn_type = 1
 
 [connection signal="timeout" from="RestartDelay" to="." method="_on_RestartDelay_timeout"]
