@@ -6,6 +6,7 @@
 [ext_resource path="res://sprites/BackroundCrashedShip.jpg" type="Texture" id=4]
 
 [node name="CrashedShip" instance=ExtResource( 1 )]
+restart_delay = 2.0
 
 [node name="Background" type="Sprite" parent="." index="0"]
 position = Vector2( 1070, 637 )
@@ -25,13 +26,8 @@ move_speed = 300
 scale = Vector2( 2, 2 )
 
 [node name="PowerUpSpawner" parent="." index="7"]
-position = Vector2( 849, 705 )
-
-[node name="SpawnArea" parent="PowerUpSpawner" index="0"]
-scale = Vector2( 1.7, 1.7 )
-
-[node name="CollisionShape2D" parent="PowerUpSpawner/SpawnArea" index="0"]
-position = Vector2( 0, 0 )
+position = Vector2( 862, 684 )
+scale = Vector2( 1.84709, 1.79249 )
 
 [node name="Anchors" type="Node2D" parent="." index="8"]
 
@@ -124,5 +120,3 @@ type = 3
 [node name="PowerUp5" parent="PowerUps" index="4" instance=ExtResource( 3 )]
 position = Vector2( 252, 871 )
 type = 3
-
-[editable path="PowerUpSpawner"]
