@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Anchor.tscn" type="PackedScene" id=2]
@@ -6,16 +6,11 @@
 [ext_resource path="res://Trail.tscn" type="PackedScene" id=4]
 [ext_resource path="res://FpsCounter.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Game.gd" type="Script" id=6]
-[ext_resource path="res://CornerWall.tscn" type="PackedScene" id=7]
 [ext_resource path="res://PowerUpSpawner.tscn" type="PackedScene" id=8]
 [ext_resource path="res://PowerUp.tscn" type="PackedScene" id=9]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 6 )
-
-[node name="PowerUpSpawner" parent="." instance=ExtResource( 8 )]
-position = Vector2( 507, 296 )
-PowerUp = ExtResource( 9 )
 
 [node name="Player1Trail" parent="." instance=ExtResource( 4 )]
 to_follow = NodePath("../Player1")
@@ -28,7 +23,7 @@ WIP_prevent_invalid_shapes = true
 debug = true
 
 [node name="Player1" parent="." instance=ExtResource( 1 )]
-position = Vector2( 190, 245 )
+position = Vector2( 173, 227 )
 hookshot_range_multiplier = 5
 
 [node name="Player2" parent="." instance=ExtResource( 1 )]
@@ -100,22 +95,6 @@ rotation = 1.57236
 scale = Vector2( 0.640127, 1 )
 side = 3
 
-[node name="CornerWall" parent="Walls" instance=ExtResource( 7 )]
-position = Vector2( -228, 676 )
-rotation = -0.017611
-
-[node name="CornerWall2" parent="Walls" instance=ExtResource( 7 )]
-position = Vector2( 1340, 615 )
-rotation = -1.59177
-
-[node name="CornerWall3" parent="Walls" instance=ExtResource( 7 )]
-position = Vector2( 1413, 32 )
-rotation = 3.12853
-
-[node name="CornerWall4" parent="Walls" instance=ExtResource( 7 )]
-position = Vector2( -222, 20 )
-rotation = 1.54926
-
 [node name="FpsCounter" parent="." instance=ExtResource( 5 )]
 margin_left = 477.0
 margin_top = 11.0
@@ -123,5 +102,10 @@ margin_right = 524.0
 margin_bottom = 25.0
 
 [node name="RestartDelay" type="Timer" parent="."]
+
+[node name="PowerUpSpawner" parent="." instance=ExtResource( 8 )]
+position = Vector2( 507, 296 )
+PowerUp = ExtResource( 9 )
+respawn_type = 1
 
 [connection signal="timeout" from="RestartDelay" to="." method="_on_RestartDelay_timeout"]
