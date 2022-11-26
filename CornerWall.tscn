@@ -1,11 +1,15 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://CornerWall.gd" type="Script" id=1]
 
 [node name="CornerWall" type="StaticBody2D"]
 collision_layer = 3
 collision_mask = 0
+script = ExtResource( 1 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-polygon = PoolVector2Array( -1, -1, 55, 0, 0, -55 )
+color = Color( 0.313726, 0.313726, 0.313726, 1 )
+polygon = PoolVector2Array( 0, 0, 50, 0, 0, -50 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -1, -1, 55, 0, 0, -55 )
+polygon = PoolVector2Array( 0, 0, 50, 0, 0, -50 )

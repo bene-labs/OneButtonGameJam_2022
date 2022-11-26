@@ -101,20 +101,19 @@ scale = Vector2( 0.640127, 1 )
 side = 3
 
 [node name="CornerWall" parent="Walls" instance=ExtResource( 7 )]
-position = Vector2( -228, 676 )
-rotation = -0.017611
+position = Vector2( 0, 600 )
 
 [node name="CornerWall2" parent="Walls" instance=ExtResource( 7 )]
-position = Vector2( 1340, 615 )
-rotation = -1.59177
+position = Vector2( 1024, 600 )
+rotation = -1.5708
 
 [node name="CornerWall3" parent="Walls" instance=ExtResource( 7 )]
-position = Vector2( 1413, 32 )
-rotation = 3.12853
+position = Vector2( 1024, 0 )
+rotation = 3.14159
 
 [node name="CornerWall4" parent="Walls" instance=ExtResource( 7 )]
-position = Vector2( -222, 20 )
-rotation = 1.54926
+position = Vector2( 1, 0 )
+rotation = 1.5708
 
 [node name="FpsCounter" parent="." instance=ExtResource( 5 )]
 margin_left = 477.0

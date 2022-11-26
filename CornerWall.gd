@@ -23,12 +23,12 @@ func get_bounce_angle():
 func get_reflection_vector(angle_of_incidence:Vector2) -> Vector2:
 	match side:
 		Side.TOP:
-			return angle_of_incidence.reflect(Vector2(0, 1))
+			return angle_of_incidence.reflect(Vector2(1, -1))
 		Side.BOTTOM:
-			return angle_of_incidence.reflect(Vector2(0, 1))
+			return angle_of_incidence.reflect(Vector2(1, 1))
 		Side.RIGHT:
-			return angle_of_incidence.reflect(Vector2(1, 0))
+			return angle_of_incidence.reflect(Vector2(-1, 1))
 		Side.LEFT:
-			return angle_of_incidence.reflect(Vector2(1, 0))
+			return angle_of_incidence.reflect(Vector2(1, 1))
 		_:
 			return Vector2.ZERO

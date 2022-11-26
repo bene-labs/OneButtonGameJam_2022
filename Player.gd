@@ -13,6 +13,7 @@ export var max_health = 3
 export (bool) var bounce_of_obstacles = true
 export (bool) var clear_line_on_bounce = false
 export (bool) var detach_hookshot_on_bounce = true
+export (bool) var randomize_bounce_angle = false
 export var minimum_bounce_angle = -30
 export var maximum_bounce_angle = 30
 export (Color) var color = Color.red
@@ -75,10 +76,18 @@ func _on_BounceArea_body_entered(body):
 	if bounce_of_obstacles and body.has_method("get_bounce_angle"):
 		if $Hookshot.connected_obstacle != null:
 			$Hookshot.detach()
-		$Sprite.rotation += deg2rad(rand_range(minimum_bounce_angle, maximum_bounce_angle))
-		$Sprite.rotation = body.get_bounce_angle()
-		set_reverse_movement(false)
-		position += Vector2(move_speed / 30, 0).rotated($Sprite.rotation)
+		if randomize_bounce_angle:
+			$Sprite.rotation = body.get_bounce_angle()
+			$Sprite.rotation += deg2rad(rand_range(minimum_bounce_angle, maximum_bounce_angle))
+			set_reverse_movement(false)				
+			position += Vector2(move_speed / 30, 0).rotated($Sprite.rotation)
+		else:
+			#print("> ", Vector2(move_speed / 60, 0).rotated($Sprite.rotation))
+			var reflection_vector = body.get_reflection_vector(Vector2(move_speed / 60, 0).rotated($Sprite.rotation))
+			$Sprite.look_at(position + reflection_vector)
+			#print("< ", reflection_vector)
+			position += reflection_vector
+			revert_movement()
 		if clear_line_on_bounce:
 			attached_trail.clear_line()
 
