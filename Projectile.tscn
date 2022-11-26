@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Projectile.gd" type="Script" id=1]
+[ext_resource path="res://sprites/Icons/new/Rolli_Wars_Icons_Kaboom_Sprite.png" type="Texture" id=2]
+
+[node name="Projectile" type="Area2D"]
+rotation = 0.808464
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+rotation = -0.821193
+polygon = PoolVector2Array( -68, -2, -42, 24, 1, 32, 36, 27, 60, -4, 42, -36, 2, -41, -39, -29 )
+
+[connection signal="body_entered" from="." to="." method="_on_Projectile_body_entered"]

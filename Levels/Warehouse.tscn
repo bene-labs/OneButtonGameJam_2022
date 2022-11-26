@@ -146,13 +146,13 @@ position = Vector2( 652, 396 )
 scale = Vector2( 2.6, 1 )
 spawn_area_path = NodePath("../SpawnCollision")
 
-[node name="SpawnCollision" type="Area2D" parent="." index="11"]
+[node name="SpawnCollision" type="Area2D" parent="." index="10"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnCollision" index="0"]
 position = Vector2( 662, 393 )
 shape = SubResource( 1 )
 
-[node name="Node2D" type="Node2D" parent="." index="12"]
+[node name="Node2D" type="Node2D" parent="." index="11"]
 
 [node name="PowerUp" parent="Node2D" index="0" instance=ExtResource( 4 )]
 position = Vector2( 352, 390 )

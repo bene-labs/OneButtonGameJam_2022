@@ -1,6 +1,6 @@
 extends Node2D
 
-enum RespawnTypes{AFTER_COLLECTED, AFTER_ZONE_CREATED}
+enum RespawnTypes{AFTER_COLLECTED, AFTER_ZONE_CREATED, NEVER}
 
 export (PackedScene) var PowerUp
 export (NodePath) var spawn_area_path
@@ -22,6 +22,8 @@ func get_spawn_position():
 func _ready():
 	randomize()
 	SpawnArea = get_node(spawn_area_path)
+	if SpawnArea == null:
+		respawn_type = RespawnTypes.NEVER
 	if respawn_type == RespawnTypes.AFTER_COLLECTED:
 		$PowerUpRespawnDelay.wait_time = rand_range(min_respawn_delay, max_respawn_delay)
 		$PowerUpRespawnDelay.start()
@@ -45,9 +47,6 @@ func queue_spawn():
 	if respawn_type != RespawnTypes.AFTER_COLLECTED:
 		return
 	$PowerUpRespawnDelay.start()
-	#spawn_powerup()
-#	print("Spawn!")
-#	spawns_queued += 1
 	if $PowerUpRespawnDelay.time_left == $PowerUpRespawnDelay.wait_time:
 		$PowerUpRespawnDelay.start()
 
@@ -56,6 +55,3 @@ func _on_PowerUpRespawnDelay_timeout():
 		return
 	spawn_powerup()
 	$PowerUpRespawnDelay.wait_time = rand_range(min_respawn_delay, max_respawn_delay)
-#	spawns_queued -= 1
-#	if spawns_queued >= 1:
-#		$PowerUpRespawnDelay.start()

@@ -30,6 +30,8 @@ var velocity = Vector2.ZERO
 
 var attached_trail = null
 
+var Projectile = preload("res://Projectile.tscn")
+
 func _ready():
 	$Sprite.texture = player_textures[id - 1]
 	$HealthBar.max_value = max_health
@@ -131,3 +133,16 @@ func increase_speed(amount):
 
 func increase_hookshot_range(amount):
 	$Hookshot.hookshot_range_multiplier += amount
+
+func shoot_projectiles(ammount, speed):
+	var angle = 0
+	for i in range(ammount):
+		angle += 270 / ammount
+		var projectile = Projectile.instance()
+		projectile.global_position = global_position
+		projectile.get_node("Sprite").rotation_degrees = rotation_degrees
+		projectile.get_node("Sprite").rotation_degrees = angle
+		projectile.move_speed = speed
+		projectile.creator = self
+		get_tree().root.get_child(0).call_deferred("add_child", projectile)
+		
