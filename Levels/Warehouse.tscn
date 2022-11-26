@@ -7,7 +7,7 @@
 
 [node name="Warehouse" instance=ExtResource( 2 )]
 
-[node name="Sprite" type="Sprite" parent="." index="0"]
+[node name="Background" type="Sprite" parent="." index="0"]
 position = Vector2( 665, 388 )
 z_index = -2
 texture = ExtResource( 3 )

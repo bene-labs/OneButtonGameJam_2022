@@ -8,7 +8,7 @@
 [node name="CrashedShip" instance=ExtResource( 1 )]
 restart_delay = 2.0
 
-[node name="Sprite" type="Sprite" parent="." index="0"]
+[node name="Background" type="Sprite" parent="." index="0"]
 position = Vector2( 1070, 637 )
 scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 4 )
