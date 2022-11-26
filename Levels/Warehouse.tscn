@@ -23,7 +23,12 @@ scale = Vector2( 1.293, 1.28 )
 
 [node name="PowerUpSpawner" parent="." index="7"]
 position = Vector2( 665, 387 )
-scale = Vector2( 1.2, 1.32 )
+
+[node name="SpawnArea" parent="PowerUpSpawner" index="0"]
+scale = Vector2( 1, 1.3 )
+
+[node name="CollisionShape2D" parent="PowerUpSpawner/SpawnArea" index="0"]
+position = Vector2( 0, 0 )
 
 [node name="Camera2D" type="Camera2D" parent="." index="8"]
 position = Vector2( 665, 385 )
@@ -161,3 +166,5 @@ type = 3
 [node name="PowerUp5" parent="." index="14" instance=ExtResource( 4 )]
 position = Vector2( 662, 218 )
 type = 3
+
+[editable path="PowerUpSpawner"]
