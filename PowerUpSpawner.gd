@@ -1,11 +1,11 @@
 extends Node2D
 
-enum RespawnTypes{AFTER_COLLECTED, AFTER_ZONED_ANCHOR}
+enum RespawnTypes{AFTER_COLLECTED, AFTER_ZONE_CREATED}
 
 export (PackedScene) var PowerUp
 #export var concurrent_powerups = 1
 export (RespawnTypes) var respawn_type = RespawnTypes.AFTER_COLLECTED
-export var spawn_chance_after_zoned_anchor = 25
+export var spawn_chance_AFTER_ZONE_CREATED = 25
 export var min_respawn_delay = 5.0
 export var max_respawn_delay = 25.0
 
@@ -25,10 +25,10 @@ func _ready():
 #	for i in range(concurrent_powerups):
 #		spawn_powerup()
 
-func spawn_if_lucky():
-	if respawn_type != RespawnTypes.AFTER_ZONED_ANCHOR:
+func spawn_on_zoned():
+	if respawn_type != RespawnTypes.AFTER_ZONE_CREATED:
 		return
-	if (randi() % 100) + 1 <= spawn_chance_after_zoned_anchor:
+	if (randi() % 100) + 1 <= spawn_chance_AFTER_ZONE_CREATED:
 		spawn_powerup()
 	
 func spawn_powerup():

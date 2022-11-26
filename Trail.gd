@@ -22,14 +22,7 @@ func clear_line():
 
 func _on_Trail_Timer_timeout():
 	var new_point = get_node(to_follow).global_position
-#	if $Line.points.has(new_point):
-#		return
-#
-#	if minmum_point_distance > 0 and $Line.points.size() > 0 and \
-#		abs(new_point.x - $Line.points[$Line.points.size()-1].x) < minmum_point_distance and \
-#		abs(new_point.y - $Line.points[$Line.points.size()-1].y) < minmum_point_distance:
-#		return
-	
+
 	var points_copy = $Line.points
 	points_copy.append(new_point)
 	if fade_time > 0 and $Line.points.size() > fade_time / $Timer.wait_time:
@@ -45,22 +38,14 @@ func create_captured_area_from_intersections(intersections, points):
 		var new_line = [points[-1], points[-2]]
 		var polygon : PoolVector2Array = []
 		polygon.push_back(interscetion)
-#		if (interscetion - points[-2] != Vector2.ZERO):
-#			polygon.push_back(points[-2])
 		for i in range(points.size() -3, 0, -1):
 			if get_segment_intersection(new_line[0], new_line[1], points[i], points[i-1]) != null:
-#				var line_copy = $Line.points
-#				intersection_blacklist.append(interscetion)
-##					line_copy.remove(line_copy.size() - 2)
-#				$Line.points = line_copy
-#				break
 				var new_area = CapturedArea.instance()
 				get_tree().root.get_child(0).add_child(new_area)
 				new_area.create_shape(polygon, $Line.default_color, get_node(to_follow))
+				get_tree().root.get_child(0).get_node("PowerUpSpawner").spawn_on_zoned()
 				var newLine = $Line.points
 				newLine = []
-#				for j in range(points.size()):
-#					newLine.remove(newLine.size -(j+1))
 				$Line.points = newLine
 				break
 			polygon.push_back(points[i])
@@ -93,7 +78,6 @@ func find_intersections(points):
 	return intersections
 
 static func get_segment_intersection(a, b, c, d):
-	# http://paulbourke.net/geometry/pointlineplane/ <-- Good stuff
 	var cd = d - c
 	var ab = b - a
 	var div = cd.y * ab.x - cd.x * ab.y
@@ -113,18 +97,11 @@ func set_line_color(color):
 	$Line.default_color = color
 
 func is_polygon_valid(polygon) -> bool: # returns false if the area has a height or width of 0
-#	var is_height_varied = false
-#	var is_width_varied = false
 	var is_straight_line = true
 	
 	if polygon.size() < 3:
 		return false
-#	for i in range(polygon.size() - 1):
-#		if polygon[i].x != polygon[i+1].x:
-#			is_width_varied = true
-#		if polygon[i].y != polygon[i+1].y:
-#			is_height_varied = true
-#
+
 	var line_vector = polygon[2] - polygon[1]
 	if debug:
 		print("Line Vector: ", line_vector, "\n#########")
