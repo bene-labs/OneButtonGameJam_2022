@@ -5,18 +5,19 @@
 
 [node name="Warehouse" instance=ExtResource( 2 )]
 
-[node name="PowerUpSpawner" parent="." index="0"]
-position = Vector2( 666, 387 )
-scale = Vector2( 1.2, 1.32 )
-
-[node name="Player1" parent="." index="3"]
+[node name="Player1" parent="." index="2"]
 position = Vector2( 386, 569 )
 
-[node name="Player2" parent="." index="4"]
+[node name="Player2" parent="." index="3"]
 position = Vector2( 900, 215 )
 
-[node name="OuterWalls" parent="." index="5"]
+[node name="OuterWalls" parent="." index="4"]
 scale = Vector2( 1.293, 1.28 )
+
+[node name="PowerUpSpawner" parent="." index="6"]
+visible = false
+position = Vector2( 666, 387 )
+scale = Vector2( 1.2, 1.32 )
 
 [node name="Camera2D" type="Camera2D" parent="." index="7"]
 position = Vector2( 665, 385 )
@@ -24,75 +25,93 @@ current = true
 zoom = Vector2( 1.3, 1.3 )
 
 [node name="Anchors" type="Node2D" parent="." index="8"]
-scale = Vector2( 1.3, 1.3 )
 
 [node name="Anchor" parent="Anchors" index="0" instance=ExtResource( 1 )]
-position = Vector2( 930, 100 )
+position = Vector2( 1209, 130 )
+scale = Vector2( 0.975, 0.975 )
 randomize_effect = false
 
 [node name="Anchor2" parent="Anchors" index="1" instance=ExtResource( 1 )]
-position = Vector2( 300, 360 )
+position = Vector2( 390, 468 )
+scale = Vector2( 0.975, 0.975 )
 effect = 2
 randomize_effect = false
 
 [node name="Anchor3" parent="Anchors" index="2" instance=ExtResource( 1 )]
-position = Vector2( 300, 240 )
+position = Vector2( 390, 312 )
+scale = Vector2( 0.975, 0.975 )
 effect = 3
 randomize_effect = false
 
 [node name="Anchor4" parent="Anchors" index="3" instance=ExtResource( 1 )]
-position = Vector2( 200, 430 )
+position = Vector2( 260, 559 )
+scale = Vector2( 0.975, 0.975 )
 
 [node name="Anchor5" parent="Anchors" index="4" instance=ExtResource( 1 )]
-position = Vector2( 200, 300 )
+position = Vector2( 260, 390 )
+scale = Vector2( 0.975, 0.975 )
 
 [node name="Anchor6" parent="Anchors" index="5" instance=ExtResource( 1 )]
-position = Vector2( 200, 170 )
+position = Vector2( 260, 221 )
+scale = Vector2( 0.975, 0.975 )
 
 [node name="Anchor7" parent="Anchors" index="6" instance=ExtResource( 1 )]
-position = Vector2( 100, 500 )
+position = Vector2( 130, 650 )
+scale = Vector2( 0.975, 0.975 )
 randomize_effect = false
 
 [node name="Anchor8" parent="Anchors" index="7" instance=ExtResource( 1 )]
-position = Vector2( 100, 360 )
+position = Vector2( 130, 468 )
+scale = Vector2( 0.975, 0.975 )
 
 [node name="Anchor9" parent="Anchors" index="8" instance=ExtResource( 1 )]
-position = Vector2( 100, 240 )
+position = Vector2( 130, 312 )
+scale = Vector2( 0.975, 0.975 )
 
 [node name="Anchor10" parent="Anchors" index="9" instance=ExtResource( 1 )]
-position = Vector2( 100, 100 )
+position = Vector2( 130, 130 )
+scale = Vector2( 0.975, 0.975 )
 randomize_effect = false
 
 [node name="Anchor11" parent="Anchors" index="10" instance=ExtResource( 1 )]
-position = Vector2( 700, 360 )
+position = Vector2( 910, 468 )
+scale = Vector2( 0.975, 0.975 )
 effect = 3
 randomize_effect = false
 
 [node name="Anchor12" parent="Anchors" index="11" instance=ExtResource( 1 )]
-position = Vector2( 700, 240 )
+position = Vector2( 910, 312 )
+scale = Vector2( 0.975, 0.975 )
 effect = 2
 randomize_effect = false
 
 [node name="Anchor13" parent="Anchors" index="12" instance=ExtResource( 1 )]
-position = Vector2( 800, 430 )
+position = Vector2( 1040, 559 )
+scale = Vector2( 0.975, 0.975 )
 
 [node name="Anchor14" parent="Anchors" index="13" instance=ExtResource( 1 )]
-position = Vector2( 800, 300 )
+position = Vector2( 1040, 390 )
+scale = Vector2( 0.975, 0.975 )
 
 [node name="Anchor15" parent="Anchors" index="14" instance=ExtResource( 1 )]
-position = Vector2( 800, 170 )
+position = Vector2( 1040, 221 )
+scale = Vector2( 0.975, 0.975 )
 
 [node name="Anchor16" parent="Anchors" index="15" instance=ExtResource( 1 )]
-position = Vector2( 930, 500 )
+position = Vector2( 1209, 650 )
+scale = Vector2( 0.975, 0.975 )
 randomize_effect = false
 
 [node name="Anchor17" parent="Anchors" index="16" instance=ExtResource( 1 )]
-position = Vector2( 930, 360 )
+position = Vector2( 1209, 468 )
+scale = Vector2( 0.975, 0.975 )
 
 [node name="Anchor18" parent="Anchors" index="17" instance=ExtResource( 1 )]
-position = Vector2( 930, 240 )
+position = Vector2( 1209, 312 )
+scale = Vector2( 0.975, 0.975 )
 
 [node name="Anchor19" parent="Anchors" index="18" instance=ExtResource( 1 )]
-position = Vector2( 500, 300 )
+position = Vector2( 650, 390 )
+scale = Vector2( 0.975, 0.975 )
 effect = 1
 randomize_effect = false
