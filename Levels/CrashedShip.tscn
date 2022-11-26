@@ -6,19 +6,19 @@
 
 [node name="CrashedShip" instance=ExtResource( 1 )]
 
-[node name="PowerUpSpawner" parent="." index="0"]
-position = Vector2( 862, 684 )
-scale = Vector2( 1.84709, 1.79249 )
-
-[node name="Player1" parent="." index="3"]
+[node name="Player1" parent="." index="2"]
 position = Vector2( 1145, 163 )
 move_direction = 1
 
-[node name="Player2" parent="." index="4"]
+[node name="Player2" parent="." index="3"]
 position = Vector2( 1705, 970 )
 
-[node name="OuterWalls" parent="." index="5"]
+[node name="OuterWalls" parent="." index="4"]
 scale = Vector2( 2, 2 )
+
+[node name="PowerUpSpawner" parent="." index="6"]
+position = Vector2( 862, 684 )
+scale = Vector2( 1.84709, 1.79249 )
 
 [node name="Anchors" type="Node2D" parent="." index="7"]
 

@@ -31,9 +31,11 @@ func disconnect_player():
 func deactivate():
 	collision_layer = 0
 	if connected_player != null:
+		get_tree().root.get_child(0).get_node("PowerUpSpawner").spawn_if_lucky()
 		connected_player.get_node("Hookshot").detach()
 	$Sprite.modulate.a = 0.2
 	$DeactivationTimer.start()
+	
 
 func _on_DeactivationTimer_timeout():
 	if randomize_effect:
