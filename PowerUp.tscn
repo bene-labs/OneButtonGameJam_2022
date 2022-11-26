@@ -22,14 +22,15 @@ rarities = {
 move_speed_upgrade = 30
 hookshot_length_multipler_upgrade = 0.8
 
+[node name="Background" type="Sprite" parent="."]
+scale = Vector2( 0.679998, 0.662148 )
+z_index = 1
+texture = ExtResource( 6 )
+
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.4, 0.4 )
 z_index = 1
 texture = ExtResource( 2 )
-
-[node name="Background" type="Sprite" parent="."]
-scale = Vector2( 0.679998, 0.662148 )
-texture = ExtResource( 6 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false

@@ -3,7 +3,7 @@
 [ext_resource path="res://PowerUpSpawner.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 406, 227 )
+extents = Vector2( 162.5, 296.538 )
 
 [node name="PowerUpSpawner" type="Node2D"]
 script = ExtResource( 1 )
