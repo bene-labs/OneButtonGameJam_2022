@@ -8,20 +8,21 @@
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 position = Vector2( 665, 388 )
+z_index = -2
 texture = ExtResource( 3 )
 
-[node name="PowerUpSpawner" parent="." index="1"]
-position = Vector2( 666, 387 )
-scale = Vector2( 1.2, 1.32 )
-
-[node name="Player1" parent="." index="4"]
+[node name="Player1" parent="." index="3"]
 position = Vector2( 386, 569 )
 
-[node name="Player2" parent="." index="5"]
+[node name="Player2" parent="." index="4"]
 position = Vector2( 900, 215 )
 
-[node name="OuterWalls" parent="." index="6"]
+[node name="OuterWalls" parent="." index="5"]
 scale = Vector2( 1.293, 1.28 )
+
+[node name="PowerUpSpawner" parent="." index="7"]
+position = Vector2( 666, 387 )
+scale = Vector2( 1.2, 1.32 )
 
 [node name="Camera2D" type="Camera2D" parent="." index="8"]
 position = Vector2( 665, 385 )
