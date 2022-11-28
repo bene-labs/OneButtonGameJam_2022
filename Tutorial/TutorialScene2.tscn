@@ -22,6 +22,7 @@ to_follow = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 836, 176 )
+move_direction = 1
 
 [node name="OuterWalls" type="Node2D" parent="."]
 
@@ -45,7 +46,7 @@ side = 3
 [node name="PowerUps" type="Node2D" parent="."]
 
 [node name="PowerUp" parent="PowerUps" instance=ExtResource( 1 )]
-position = Vector2( 200, 400 )
+position = Vector2( 250, 400 )
 type = 2
 
 [node name="PowerUp2" parent="PowerUps" instance=ExtResource( 1 )]
@@ -53,13 +54,13 @@ position = Vector2( 500, 450 )
 type = 2
 
 [node name="PowerUp3" parent="PowerUps" instance=ExtResource( 1 )]
-position = Vector2( 800, 400 )
+position = Vector2( 750, 400 )
 type = 2
 
 [node name="Anchors" type="Node2D" parent="."]
 
 [node name="Anchor" parent="Anchors" instance=ExtResource( 5 )]
-position = Vector2( 200, 300 )
+position = Vector2( 250, 300 )
 randomize_effect = false
 
 [node name="Anchor2" parent="Anchors" instance=ExtResource( 5 )]
@@ -67,5 +68,5 @@ position = Vector2( 500, 300 )
 randomize_effect = false
 
 [node name="Anchor3" parent="Anchors" instance=ExtResource( 5 )]
-position = Vector2( 800, 300 )
+position = Vector2( 750, 300 )
 randomize_effect = false

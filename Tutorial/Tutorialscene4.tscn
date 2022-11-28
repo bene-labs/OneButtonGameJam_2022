@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Anchor.tscn" type="PackedScene" id=1]
+[ext_resource path="res://PowerUp.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Trail.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://InvisibleWall.tscn" type="PackedScene" id=5]
+
+[node name="Tutorialscene4" type="Node2D"]
+
+[node name="Trail" parent="." instance=ExtResource( 3 )]
+to_follow = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 107, 224 )
+
+[node name="OuterWalls" type="Node2D" parent="."]
+
+[node name="TopWall" parent="OuterWalls" instance=ExtResource( 5 )]
+position = Vector2( 510, -35 )
+
+[node name="BottomWall" parent="OuterWalls" instance=ExtResource( 5 )]
+position = Vector2( 510, 640 )
+side = 2
+
+[node name="LeftWall" parent="OuterWalls" instance=ExtResource( 5 )]
+position = Vector2( -40, 200 )
+rotation = 1.5708
+side = 1
+
+[node name="RightWall" parent="OuterWalls" instance=ExtResource( 5 )]
+position = Vector2( 1060, 200 )
+rotation = 1.5708
+side = 3
+
+[node name="PowerUps" type="Node2D" parent="."]
+
+[node name="PowerUp" parent="PowerUps" instance=ExtResource( 2 )]
+position = Vector2( 250, 300 )
+type = 3
+
+[node name="PowerUp2" parent="PowerUps" instance=ExtResource( 2 )]
+position = Vector2( 500, 300 )
+type = 2
+
+[node name="PowerUp3" parent="PowerUps" instance=ExtResource( 2 )]
+position = Vector2( 750, 300 )
+type = 3
+
+[node name="Anchors" type="Node2D" parent="."]
+
+[node name="Anchor" parent="Anchors" instance=ExtResource( 1 )]
+position = Vector2( 250, 175 )
+randomize_effect = false
+
+[node name="Anchor2" parent="Anchors" instance=ExtResource( 1 )]
+position = Vector2( 250, 425 )
+randomize_effect = false
+
+[node name="Anchor3" parent="Anchors" instance=ExtResource( 1 )]
+position = Vector2( 500, 175 )
+randomize_effect = false
+
+[node name="Anchor4" parent="Anchors" instance=ExtResource( 1 )]
+position = Vector2( 500, 425 )
+randomize_effect = false
+
+[node name="Anchor5" parent="Anchors" instance=ExtResource( 1 )]
+position = Vector2( 750, 175 )
+randomize_effect = false
+
+[node name="Anchor6" parent="Anchors" instance=ExtResource( 1 )]
+position = Vector2( 750, 425 )
+randomize_effect = false
