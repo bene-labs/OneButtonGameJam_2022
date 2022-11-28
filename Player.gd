@@ -33,11 +33,13 @@ var attached_trail = null
 var Projectile = preload("res://Projectile.tscn")
 
 func _ready():
+	$Hookshot.hookshot_range_multiplier = hookshot_range_multiplier
 	$Sprite.texture = player_textures[id - 1]
 	$HealthBar.max_value = max_health
 	$HealthBar.value = health
 	$Sprite.flip_h = reverse_movement
 	$Hookshot/AutoAimer.self_modulate = color
+	$Hookshot/Rope.color = color.lightened(0.5)
 	#collision_layer = 10 + id - 1
 
 func _process(delta):
@@ -46,17 +48,17 @@ func _process(delta):
 	elif Input.is_action_just_released("player%d_action" % id):
 		$Hookshot.detach()
 		
-	# DEBUG
-	if Input.is_action_just_pressed("debug_increase_move_speed"):
-		move_speed += 1
-	if Input.is_action_just_pressed("debug_reduce_move_speed"):
-		if move_speed > 0:
-			move_speed -= 1
+#	# DEBUG
+#	if Input.is_action_just_pressed("debug_increase_move_speed"):
+#		move_speed += 1
+#	if Input.is_action_just_pressed("debug_reduce_move_speed"):
+#		if move_speed > 0:
+#			move_speed -= 1
 
 func _physics_process(delta):
 	if $Hookshot.connected_obstacle != null:
 		$Sprite.rotation = get_angle_to($Hookshot.connected_obstacle.position) + TAU * 0.25
-		$Hookshot/Rope.points = [Vector2(0, 0), to_local($Hookshot.connected_obstacle.position)]
+#		$Hookshot/Rope.points = [Vector2(0, 0), to_local($Hookshot.connected_obstacle.position)]
 		$CollisionShape2D.rotation = $Sprite.rotation
 #		global_position =  $Hookshot.rotation_point.get_node("SimulatedPlayerPosition").global_position
 		velocity = $Hookshot.rotation_point.get_node("SimulatedPlayerPosition").global_position - global_position
@@ -112,7 +114,8 @@ func hide_indicator():
 	$Hookshot/AutoAimer.hide()
 
 func _exit_tree():
-	get_tree().root.get_child(0).restart_after_delay()
+	if get_tree().root.get_child(0).has_method("restart_after_delay"):
+		get_tree().root.get_child(0).restart_after_delay()
 
 func assign_trail(trail):
 	attached_trail = trail

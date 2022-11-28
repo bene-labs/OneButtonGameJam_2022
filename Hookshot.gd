@@ -1,6 +1,6 @@
 extends Node2D
 
-export var hookshot_range_multiplier = 3
+var hookshot_range_multiplier = 3
 export (bool) var attach_after_miss = true
 export (bool) var debug = false
 
@@ -16,6 +16,7 @@ var rotation_point = null # setget , get_rotation_point
 	
 export (bool) var swing_towards_indicator = true
 export (bool) var rotate_with_indicator = true
+export (bool) var disable_indicator_while_rope_attached = false
 
 var is_thrown = false
 
@@ -23,17 +24,23 @@ var is_thrown = false
 #	 return get_tree().root.get_child(0).get_node("RotationPoint-" + get_parent().name)
 
 func _ready():
+	$Rope.hide()
+	$Rope/AttachArea/CollisionPolygon2D.disabled = true
 	rotation_point = RotationPoint.instance()
 	rotation_point.name = "RotationPoint-" + get_parent().name
 	get_tree().root.get_child(0).call_deferred("add_child", rotation_point)
+	set_process(false)
 
 func throw() -> bool:
+	$Rope.show()
+	set_process(true)
 	is_thrown = true
 	hookshot_goal = ($AutoAimer.global_position - global_position) * hookshot_range_multiplier
-	if rotate_with_indicator:
-		$Rope.points = [$AutoAimer.position, hookshot_goal]
-	else:
-		$Rope.points = [Vector2.ZERO, hookshot_goal]
+#	if rotate_with_indicator:
+#		$Rope.points = [$AutoAimer.position, hookshot_goal]
+#	else:
+#	$Rope.points = [Vector2.ZERO, hookshot_goal]
+	
 	
 	$RayCast2D.collision_mask = 4
 	$RayCast2D.cast_to = hookshot_goal
@@ -43,17 +50,39 @@ func throw() -> bool:
 		attach($RayCast2D.get_collision_point())
 		return true
 	else:
-		if attach_after_miss: # add collision to rope to allow later collision
-			$Rope/AttachArea/CollisionPolygon2D.polygon = CollisionLine.get_collision_polygons($Rope)
+		if attach_after_miss:
+			$Rope/AttachArea/CollisionPolygon2D.disabled = false
+			var rope_poly = $Rope.polygon
+			var distance =  abs(position.distance_to(hookshot_goal))
+			rope_poly[2].x = distance
+			rope_poly[3].x = distance
+			$Rope.polygon = rope_poly
+			$Rope/AttachArea/CollisionPolygon2D.polygon = $Rope.polygon
+			$Rope.rotation = $AutoAimer.rotation + TAU * 0.5
+			
+#			$Rope/AttachArea/CollisionPolygon2D.polygon = CollisionLine.get_collision_polygons($Rope)
 		if debug:
 			print("Hookshot missed!")
 		return false
 
 func _process(delta):
-	if rotate_with_indicator and is_thrown and not $Rope.points.empty():
-		$Rope.points = [$AutoAimer.position, ($AutoAimer.global_position - global_position) * hookshot_range_multiplier]
+#	if is_thrown and rotate_with_indicator:
+#		$Rope.points = [$AutoAimer.position, ($AutoAimer.global_position - global_position) * hookshot_range_multiplier]
+	if connected_obstacle != null:
+		$Rope.look_at(connected_obstacle.position)
+	elif rotate_with_indicator:
+		$Rope.rotation = $AutoAimer.rotation + TAU * 0.5
 	
 func attach(point):
+	var rope_poly = $Rope.polygon
+	var distance = abs(global_position.distance_to(connected_obstacle.global_position))
+	rope_poly[2].x = distance
+	rope_poly[3].x = distance
+	$Rope.polygon = rope_poly
+	$Rope/AttachArea/CollisionPolygon2D.polygon = $Rope.polygon
+	if disable_indicator_while_rope_attached:
+		$AutoAimer.stop_spin()
+		$AutoAimer.hide()
 	is_thrown = false
 	rotation_point.global_position = connected_obstacle.global_position
 	rotation_point.trigger_effect(connected_obstacle.effect)
@@ -69,19 +98,23 @@ func attach(point):
 		print("Hookshot hit: ", connected_obstacle.name)
 			
 func detach():
-		$Rope.points = []
-		$Rope/AttachArea/CollisionPolygon2D.polygon = []
-		rotation_point.reset()
-		if connected_obstacle != null:
-			connected_obstacle.disconnect_player()
-			connected_obstacle = null
-			rotation_point.stop_rotation()
+	$AutoAimer.start_constant_spin()
+	$AutoAimer.show()
+	$Rope.rotation = 0
+	$Rope.hide()
+	$Rope/AttachArea/CollisionPolygon2D.disabled = true
+#	$Rope/AttachArea/CollisionPolygon2D.polygon = []
+	rotation_point.reset()
+	if connected_obstacle != null:
+		connected_obstacle.disconnect_player()
+		connected_obstacle = null
+		rotation_point.stop_rotation()
 
 func _on_AttachArea_body_entered(body):
 	if connected_obstacle != null:
 		return
 	if debug:
 		print("Hook touched %s after miss!" % body.name) 
-	connected_obstacle = body           
+	connected_obstacle = body
 	if (connected_obstacle != null):
 		attach(body.position)
