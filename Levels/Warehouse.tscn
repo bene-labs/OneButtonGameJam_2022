@@ -20,6 +20,7 @@ position = Vector2( 386, 569 )
 
 [node name="Player2" parent="." index="4"]
 position = Vector2( 900, 215 )
+color = Color( 0.270588, 0.121569, 0.941176, 1 )
 
 [node name="OuterWalls" parent="." index="5"]
 scale = Vector2( 1.293, 1.28 )
