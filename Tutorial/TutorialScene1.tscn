@@ -24,6 +24,10 @@ debug = true
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 864, 280 )
 move_direction = 1
+hookshot_range_multiplier = 4
+clear_line_on_bounce = true
+minimum_bounce_angle = 0
+maximum_bounce_angle = 0
 
 [node name="OuterWalls" type="Node2D" parent="."]
 

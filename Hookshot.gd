@@ -101,13 +101,16 @@ func detach():
 	$AutoAimer.show()
 	$Rope.rotation = 0
 	$Rope.hide()
-	set_deferred("$Rope/AttachArea/CollisionPolygon2D.disabled",  true)
+	call_deferred("set_collision_enabled", true)
 #	$Rope/AttachArea/CollisionPolygon2D.polygon = []
 	rotation_point.reset()
 	if connected_obstacle != null:
 		connected_obstacle.disconnect_player()
 		connected_obstacle = null
 		rotation_point.stop_rotation()
+
+func set_collision_enabled(state):
+	$Rope/AttachArea/CollisionPolygon2D.disabled = state
 
 func _on_AttachArea_body_entered(body):
 	if connected_obstacle != null:
