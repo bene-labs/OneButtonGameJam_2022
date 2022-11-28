@@ -13,7 +13,7 @@ extents = Vector2( 279.5, 293 )
 [node name="Background" type="Sprite" parent="." index="0"]
 position = Vector2( 532.5, 396.5 )
 scale = Vector2( 0.939, 0.956579 )
-z_index = -1
+z_index = -2
 texture = ExtResource( 4 )
 
 [node name="Player1" parent="." index="3"]

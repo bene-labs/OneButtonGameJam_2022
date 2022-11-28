@@ -32,14 +32,17 @@ position = Vector2( 510, -35 )
 
 [node name="BottomWall" parent="OuterWalls" instance=ExtResource( 4 )]
 position = Vector2( 510, 640 )
+side = 2
 
 [node name="LeftWall" parent="OuterWalls" instance=ExtResource( 4 )]
 position = Vector2( -40, 200 )
 rotation = 1.5708
+side = 1
 
 [node name="RightWall" parent="OuterWalls" instance=ExtResource( 4 )]
 position = Vector2( 1060, 200 )
 rotation = 1.5708
+side = 3
 
 [node name="Anchor" parent="." instance=ExtResource( 5 )]
 position = Vector2( 500, 400 )

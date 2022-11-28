@@ -43,7 +43,8 @@ func create_captured_area_from_intersections(intersections, points):
 				var new_area = CapturedArea.instance()
 				get_tree().root.get_child(0).add_child(new_area)
 				new_area.create_shape(polygon, $Line.default_color, get_node(to_follow))
-				get_tree().root.get_child(0).get_node("PowerUpSpawner").spawn_on_zoned()
+				if get_tree().root.get_child(0).get_node("PowerUpSpawner") != null:
+					get_tree().root.get_child(0).get_node("PowerUpSpawner").spawn_on_zoned()
 				var newLine = $Line.points
 				newLine = []
 				$Line.points = newLine
