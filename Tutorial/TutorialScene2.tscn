@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://PowerUp.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://InvisibleWall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Trail.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Anchor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Game.gd" type="Script" id=6]
+
+[node name="TutorialScene2" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="Tutorial2Text" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Zone alle drei grünen Kreuze
+(Der Text ändert sich zum nächsten im Tutorial.pdf beschrieben Punkt, wenn die Aufgabe erfüllt wurde)
+(Außerdem sollte der Text oben in der mitte des Screens erscheinen und ein wenig gößer sein aber daran arbeite ich noch)"
+
+[node name="Trail" parent="." instance=ExtResource( 4 )]
+to_follow = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 836, 176 )
+
+[node name="OuterWalls" type="Node2D" parent="."]
+
+[node name="TopWall" parent="OuterWalls" instance=ExtResource( 3 )]
+position = Vector2( 510, -35 )
+
+[node name="BottomWall" parent="OuterWalls" instance=ExtResource( 3 )]
+position = Vector2( 510, 640 )
+
+[node name="LeftWall" parent="OuterWalls" instance=ExtResource( 3 )]
+position = Vector2( -40, 200 )
+rotation = 1.5708
+
+[node name="RightWall" parent="OuterWalls" instance=ExtResource( 3 )]
+position = Vector2( 1060, 200 )
+rotation = 1.5708
+
+[node name="PowerUps" type="Node2D" parent="."]
+
+[node name="PowerUp" parent="PowerUps" instance=ExtResource( 1 )]
+position = Vector2( 200, 400 )
+type = 2
+
+[node name="PowerUp2" parent="PowerUps" instance=ExtResource( 1 )]
+position = Vector2( 500, 450 )
+type = 2
+
+[node name="PowerUp3" parent="PowerUps" instance=ExtResource( 1 )]
+position = Vector2( 800, 400 )
+type = 2
+
+[node name="Anchors" type="Node2D" parent="."]
+
+[node name="Anchor" parent="Anchors" instance=ExtResource( 5 )]
+position = Vector2( 200, 300 )
+randomize_effect = false
+
+[node name="Anchor2" parent="Anchors" instance=ExtResource( 5 )]
+position = Vector2( 500, 300 )
+randomize_effect = false
+
+[node name="Anchor3" parent="Anchors" instance=ExtResource( 5 )]
+position = Vector2( 800, 300 )
+randomize_effect = false

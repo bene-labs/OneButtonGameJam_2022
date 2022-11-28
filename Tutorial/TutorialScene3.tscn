@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://InvisibleWall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Trail.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Game.gd" type="Script" id=4]
+[ext_resource path="res://Anchor.tscn" type="PackedScene" id=5]
+
+[node name="TutorialScene3" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Tutorial3Text" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Zone einen gegner, um ihn zu besiegen
+(der \"Enemy\" soll sich nicht von der stelle bewegen)
+(der \"Enemy\" soll  mit so wenig Health spawnen, dass er in nur einem Hit besiegt wird)
+(Der Text ändert sich zum nächsten im Tutorial.pdf beschrieben Punkt, wenn die Aufgabe erfüllt wurde)
+(Außerdem sollte der Text oben in der mitte des Screens erscheinen und ein wenig gößer sein aber daran arbeite ich noch)"
+
+[node name="Trail" parent="." instance=ExtResource( 3 )]
+to_follow = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 779, 208 )
+move_direction = 1
+
+[node name="Enemy" parent="." instance=ExtResource( 1 )]
+position = Vector2( 500, 400 )
+id = 2
+color = Color( 0.270588, 0.121569, 0.941176, 1 )
+
+[node name="OuterWalls" type="Node2D" parent="."]
+
+[node name="TopWall" parent="OuterWalls" instance=ExtResource( 2 )]
+position = Vector2( 510, -35 )
+
+[node name="BottomWall" parent="OuterWalls" instance=ExtResource( 2 )]
+position = Vector2( 510, 640 )
+
+[node name="LeftWall" parent="OuterWalls" instance=ExtResource( 2 )]
+position = Vector2( -40, 200 )
+rotation = 1.5708
+
+[node name="RightWall" parent="OuterWalls" instance=ExtResource( 2 )]
+position = Vector2( 1060, 200 )
+rotation = 1.5708
+
+[node name="Anchor" parent="." instance=ExtResource( 5 )]
+position = Vector2( 500, 300 )
+randomize_effect = false

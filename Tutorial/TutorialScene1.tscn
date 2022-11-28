@@ -1,20 +1,29 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Trail.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Game.gd" type="Script" id=3]
 [ext_resource path="res://InvisibleWall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Anchor.tscn" type="PackedScene" id=5]
 
 [node name="TutorialScene1" type="Node2D"]
 script = ExtResource( 3 )
 
-[node name="PlayerTrail" parent="." instance=ExtResource( 2 )]
+[node name="TutorialText" type="Label" parent="."]
+margin_right = 657.0
+margin_bottom = 31.0
+text = "Drücke die Leertaste 
+(Der Text ändert sich zum nächsten im Tutorial.pdf beschrieben Punkt, wenn die Aufgabe erfüllt wurde)
+(Außerdem sollte der Text oben in der mitte des Screens erscheinen und ein wenig gößer sein aber daran arbeite ich noch)"
+
+[node name="Trail" parent="." instance=ExtResource( 2 )]
 to_follow = NodePath("../Player")
 WIP_prevent_invalid_shapes = true
 debug = true
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 858, 476 )
+position = Vector2( 864, 280 )
+move_direction = 1
 
 [node name="OuterWalls" type="Node2D" parent="."]
 
@@ -31,3 +40,7 @@ rotation = 1.5708
 [node name="RightWall" parent="OuterWalls" instance=ExtResource( 4 )]
 position = Vector2( 1060, 200 )
 rotation = 1.5708
+
+[node name="Anchor" parent="." instance=ExtResource( 5 )]
+position = Vector2( 500, 400 )
+randomize_effect = false
