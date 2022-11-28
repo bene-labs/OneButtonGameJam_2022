@@ -79,7 +79,6 @@ func attach(point):
 	rope_poly[2].x = distance
 	rope_poly[3].x = distance
 	$Rope.polygon = rope_poly
-	$Rope/AttachArea/CollisionPolygon2D.polygon = $Rope.polygon
 	if disable_indicator_while_rope_attached:
 		$AutoAimer.stop_spin()
 		$AutoAimer.hide()
@@ -102,7 +101,7 @@ func detach():
 	$AutoAimer.show()
 	$Rope.rotation = 0
 	$Rope.hide()
-	$Rope/AttachArea/CollisionPolygon2D.disabled = true
+	set_deferred("$Rope/AttachArea/CollisionPolygon2D.disabled",  true)
 #	$Rope/AttachArea/CollisionPolygon2D.polygon = []
 	rotation_point.reset()
 	if connected_obstacle != null:
