@@ -5,6 +5,8 @@
 [node name="FpsCounter" type="Label"]
 margin_right = 47.0
 margin_bottom = 14.0
+rect_scale = Vector2( 2.35953, 2.21881 )
 text = "0 fps"
 align = 1
+uppercase = true
 script = ExtResource( 1 )
