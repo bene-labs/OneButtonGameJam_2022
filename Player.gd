@@ -37,6 +37,7 @@ func _ready():
 	$HealthBar.max_value = max_health
 	$HealthBar.value = health
 	$Sprite.flip_h = reverse_movement
+	$Hookshot/AutoAimer.self_modulate = color
 	#collision_layer = 10 + id - 1
 
 func _process(delta):
