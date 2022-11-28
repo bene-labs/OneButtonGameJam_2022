@@ -95,7 +95,6 @@ func take_damage(damage = 1):
 	is_invincible = true
 	health -= damage
 	$HealthBar.value = health
-	print("%s took %d damage! Health left: %d" % [name, damage, health])
 	$AnimationPlayer.play("take_damage")
 		
 func die():

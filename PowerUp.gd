@@ -54,7 +54,6 @@ func _ready():
 	$Sprite.texture = textures[type]
 
 func use(user):
-	print(user.name, " used: ", Types.keys()[type])
 	match type:
 		Types.POWERBOOST:
 			user.increase_speed(move_speed_upgrade)

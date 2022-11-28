@@ -19,9 +19,11 @@ func _process(delta):
 	if is_rotating:
 		rotate((TAU * rotation_per_seconds) * delta * x_direction)
 		if abs(outward_motion) >= 0.01:
-			$SimulatedPlayerPosition.position.x += outward_motion * delta
-			if $SimulatedPlayerPosition.position.x < 0:
-				$SimulatedPlayerPosition.position.x = 0
+			$SimulatedPlayerPosition.look_at(position)
+			var velocity = Vector2(outward_motion * delta, 0).rotated($SimulatedPlayerPosition.rotation)
+			$SimulatedPlayerPosition.position += velocity
+#			if $SimulatedPlayerPosition.position.x < 0:
+#				$SimulatedPlayerPosition.position.x = 0
 	
 func calc_and_set_rotation_per_seconds(speed, radius):
 	speed = speed * move_speed_multiplier
@@ -49,6 +51,10 @@ func reset():
 	x_direction = default_values["x_direction"]
 	move_speed_multiplier = default_values["move_speed_multiplier"]
 	outward_motion = default_values["outward_motion"]
+	rotation_degrees = 0
+	position = Vector2.ZERO
+	$SimulatedPlayerPosition.position = Vector2.ZERO
+	$SimulatedPlayerPosition.rotation_degrees = 0
 
 func trigger_effect(effect):
 	match effect:
@@ -57,8 +63,8 @@ func trigger_effect(effect):
 		Effects.SLOW:
 			move_speed_multiplier /= 2
 		Effects.PULL:
-			outward_motion = -40
+			outward_motion = 10
 		Effects.PUSH:
-			outward_motion = 20
+			outward_motion = -10
 		_:
 			pass

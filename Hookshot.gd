@@ -11,6 +11,7 @@ var rope_direction = 0
 
 onready var player = get_parent()
 onready var CollisionLine = preload("res://CollisionLine.gd")
+onready var RotationPoint = preload("res://RotationPoint.tscn")
 var rotation_point = null # setget , get_rotation_point
 	
 export (bool) var swing_towards_indicator = true
@@ -22,7 +23,7 @@ var is_thrown = false
 #	 return get_tree().root.get_child(0).get_node("RotationPoint-" + get_parent().name)
 
 func _ready():
-	rotation_point = preload("res://RotationPoint.tscn").instance()
+	rotation_point = RotationPoint.instance()
 	rotation_point.name = "RotationPoint-" + get_parent().name
 	get_tree().root.get_child(0).call_deferred("add_child", rotation_point)
 

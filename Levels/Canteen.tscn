@@ -26,6 +26,11 @@ move_direction = 0
 position = Vector2( 75, 41 )
 scale = Vector2( 0.896844, 1.17741 )
 
+[node name="PowerUpSpawner" parent="." index="6"]
+position = Vector2( 657, 386 )
+scale = Vector2( 1.76, 1 )
+spawn_area_path = NodePath("../SpawnCollision")
+
 [node name="Anchors" type="Node2D" parent="." index="7"]
 
 [node name="Anchor" parent="Anchors" index="0" instance=ExtResource( 3 )]
@@ -113,12 +118,7 @@ position = Vector2( 535, 395 )
 current = true
 zoom = Vector2( 0.9, 1.2 )
 
-[node name="PowerUpSpawner" parent="." index="10"]
-position = Vector2( 657, 386 )
-scale = Vector2( 1.76, 1 )
-spawn_area_path = NodePath("../SpawnCollision")
-
-[node name="SpawnCollision" type="Area2D" parent="." index="11"]
+[node name="SpawnCollision" type="Area2D" parent="." index="10"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnCollision" index="0"]
 position = Vector2( 655.5, 384 )
