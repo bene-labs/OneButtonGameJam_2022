@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Trail.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Game.gd" type="Script" id=3]
+[ext_resource path="res://InvisibleWall.tscn" type="PackedScene" id=4]
+
+[node name="TutorialScene1" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="PlayerTrail" parent="." instance=ExtResource( 2 )]
+to_follow = NodePath("../Player")
+WIP_prevent_invalid_shapes = true
+debug = true
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 858, 476 )
+
+[node name="OuterWalls" type="Node2D" parent="."]
+
+[node name="TopWall" parent="OuterWalls" instance=ExtResource( 4 )]
+position = Vector2( 510, -35 )
+
+[node name="BottomWall" parent="OuterWalls" instance=ExtResource( 4 )]
+position = Vector2( 510, 640 )
+
+[node name="LeftWall" parent="OuterWalls" instance=ExtResource( 4 )]
+position = Vector2( -40, 200 )
+rotation = 1.5708
+
+[node name="RightWall" parent="OuterWalls" instance=ExtResource( 4 )]
+position = Vector2( 1060, 200 )
+rotation = 1.5708
