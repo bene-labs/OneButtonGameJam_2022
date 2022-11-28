@@ -72,3 +72,11 @@ randomize_effect = false
 [node name="Anchor6" parent="Anchors" instance=ExtResource( 1 )]
 position = Vector2( 750, 425 )
 randomize_effect = false
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Bomben schaden dir, meide sie!
+Zone das güne Kreuz ein
+(Der Text ändert sich zum nächsten im Tutorial.pdf beschrieben Punkt, wenn die Aufgabe erfüllt wurde)
+(Außerdem sollte der Text oben in der mitte des Screens erscheinen und ein wenig gößer sein aber daran arbeite ich noch)"
