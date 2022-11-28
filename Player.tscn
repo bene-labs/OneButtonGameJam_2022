@@ -227,7 +227,6 @@ collision_mask = 2
 shape = SubResource( 3 )
 
 [node name="Hookshot" parent="." instance=ExtResource( 2 )]
-rotate_with_indicator = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 4 )

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BackroundCantinee.jpg-51c1f01062ce0e7cfff3d622062cfa25.stex"
+path="res://.import/BackgroundCrashedShip.jpg-088ef285de802b976be24f3c0857d875.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/BackroundCantinee.jpg"
-dest_files=[ "res://.import/BackroundCantinee.jpg-51c1f01062ce0e7cfff3d622062cfa25.stex" ]
+source_file="res://sprites/BackgroundCrashedShip.jpg"
+dest_files=[ "res://.import/BackgroundCrashedShip.jpg-088ef285de802b976be24f3c0857d875.stex" ]
 
 [params]
 
