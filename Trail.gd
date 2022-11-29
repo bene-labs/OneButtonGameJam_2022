@@ -31,7 +31,7 @@ func _on_Trail_Timer_timeout():
 			create_captured_area_from_intersection(intersection, $Line.points)
 
 func create_captured_area_from_intersection(intersection, points):
-	var new_line = [points[-1], points[-2]]
+	var new_line = [points[len(points)-1], points[len(points)-2]]
 	var polygon : PoolVector2Array = []
 	polygon.push_back(intersection)
 	for i in range(points.size() -3, 0, -1):
@@ -46,26 +46,12 @@ func create_captured_area_from_intersection(intersection, points):
 		polygon.push_back(points[i])
 			
 func find_intersection(points):
-	# Iterate all segments to see if they intersect another.
-	# (Start at 1 because it's easier to iterate pairs of points)
-	for i in range(1, len(points)):
+	var new_line = [points[len(points)-1], points[len(points)-2]]
+	for i in range(1, len(points) - 2):
+			var begin1 = points[i - 1]
+			var end1 = points[i]
 
-		# Note: the +1 makes sure we don't get two results per segment pairs
-		# (intersection of A into B and intersection of B into A, which are the same anyways)
-		for j in range(1 + i, len(points)):
-			if abs(j - i) < 2:
-				# Ignore self and neighbors
-				continue
-
-			var begin0 = points[i - 1]
-			var end0 = points[i]
-
-			var begin1 = points[j - 1]
-			var end1 = points[j]
-
-#			var test = get_segment_intersection(begin0, end0, begin1, end1)
-
-			var intersection = Geometry.segment_intersects_segment_2d(begin0, end0, begin1, end1)
+			var intersection = Geometry.segment_intersects_segment_2d(new_line[0], new_line[1], begin1, end1)
 			if intersection != null:
 				return intersection
 
