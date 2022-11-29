@@ -1,5 +1,7 @@
 extends Node2D
 
+var AnchorEffects = preload("res://Anchor.gd").Effects
+
 var hookshot_range_multiplier = 3
 export (bool) var attach_after_miss = true
 export (bool) var debug = false
@@ -69,7 +71,13 @@ func _process(delta):
 #	if is_thrown and rotate_with_indicator:
 #		$Rope.points = [$AutoAimer.position, ($AutoAimer.global_position - global_position) * hookshot_range_multiplier]
 	if connected_obstacle != null:
-		$Rope.look_at(connected_obstacle.position)
+		if connected_obstacle.effect != AnchorEffects.FAST or connected_obstacle.effect != AnchorEffects.SLOW:
+			$Rope.look_at(connected_obstacle.position)
+			var rope_poly = $Rope.polygon
+			var distance = abs(global_position.distance_to(connected_obstacle.global_position))
+			rope_poly[2].x = distance
+			rope_poly[3].x = distance
+			$Rope.polygon = rope_poly
 	elif rotate_with_indicator:
 		$Rope.rotation = $AutoAimer.rotation + TAU * 0.5
 	
