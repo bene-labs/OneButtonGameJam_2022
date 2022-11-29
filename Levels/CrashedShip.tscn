@@ -19,11 +19,13 @@ texture = ExtResource( 4 )
 [node name="Player1" parent="." index="3"]
 position = Vector2( 1145, 163 )
 move_direction = 1
-move_speed = 300
+hookshot_range_multiplier = 6
+move_speed = 350
 
 [node name="Player2" parent="." index="4"]
 position = Vector2( 1705, 970 )
-move_speed = 300
+hookshot_range_multiplier = 6
+move_speed = 350
 
 [node name="OuterWalls" parent="." index="5"]
 scale = Vector2( 2, 2 )
