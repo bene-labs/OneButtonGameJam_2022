@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://MultiControlButton.gd" type="Script" id=1]
+[ext_resource path="res://sprites/fill_green.png" type="Texture" id=2]
+
+[node name="MultiControlButton" type="Button"]
+margin_left = -39.0
+margin_right = 39.0
+margin_bottom = 20.0
+script = ExtResource( 1 )
+button_activation_time = 1.5
+
+[node name="Fill" type="TextureProgress" parent="."]
+margin_top = -4.0
+margin_right = 396.0
+margin_bottom = 49.0
+rect_scale = Vector2( 0.199867, 0.527949 )
+texture_progress = ExtResource( 2 )
+tint_progress = Color( 0.215686, 0.580392, 0.152941, 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -1.0
+margin_right = 77.0
+margin_bottom = 20.0
+text = "Button"
+align = 1
+valign = 1
+
+[node name="Border" type="ColorRect" parent="."]
+visible = false
+show_behind_parent = true
+margin_left = -1.0
+margin_top = -1.0
+margin_right = 79.0
+margin_bottom = 21.0
+color = Color( 0.945098, 0.933333, 0.0941176, 1 )
+
+[connection signal="activated" from="." to="." method="_on_MultiControlButton_activated"]
+[connection signal="mouse_entered" from="." to="." method="_on_MultiControlButton_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_MultiControlButton_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_MultiControlButton_pressed"]
+[connection signal="selected" from="." to="." method="_on_MultiControlButton_selected"]

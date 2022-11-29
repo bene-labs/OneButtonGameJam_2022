@@ -22,12 +22,10 @@ func clear_line():
 
 func _on_Trail_Timer_timeout():
 	var new_point = get_node(to_follow).global_position
-
 	var points_copy = $Line.points
-	points_copy.append(new_point)
+	$Line.points.append(new_point)
 	if fade_time > 0 and $Line.points.size() > fade_time / $Timer.wait_time:
-		points_copy.remove(0)
-	$Line.points = points_copy
+		$Line.points.remove(0)
 	if create_shapes:
 		var intersections = find_intersections($Line.points)
 		if intersections != []:
