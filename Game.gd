@@ -17,6 +17,8 @@ func _ready():
 func _input(event):
 	if Input.is_action_just_pressed("toogle_fps"):
 		$FpsCounter.hide() if $FpsCounter.is_visible() else $FpsCounter.show()
+	if event.is_action_pressed("debug_reduce_move_speed"):
+		get_tree().change_scene(levels[randi() % levels.size()])
 
 func restart_after_delay():
 	$RestartTimer.start()

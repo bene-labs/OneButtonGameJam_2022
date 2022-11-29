@@ -1,10 +1,9 @@
 extends Node2D
 
 export (NodePath) var to_follow
-export (float) var minmum_point_distance = 1.0
+#export (float) var minmum_point_distance = 1.0
 export (bool) var create_shapes = true
-export (bool) var WIP_prevent_invalid_shapes = false
-export var fade_time = 5.0 # time in seconds afer a point of the line is removed (set negative for a permanent line)
+export var fade_time = -1.0 # time in seconds afer a point of the line is removed (set negative for a permanent line)
 export var debug : bool = false
 
 var intersection_blacklist = []
@@ -18,40 +17,35 @@ func set_color(color):
 	$Line.default_color = color
 
 func clear_line():
-	$Line.points = []
+	$Line.clear_points()
 
 func _on_Trail_Timer_timeout():
 	var new_point = get_node(to_follow).global_position
-	var points_copy = $Line.points
-	$Line.points.append(new_point)
+#	var points_copy = $Line.points
+	$Line.add_point(new_point)
 	if fade_time > 0 and $Line.points.size() > fade_time / $Timer.wait_time:
-		$Line.points.remove(0)
+		$Line.remove_point(0)
 	if create_shapes:
-		var intersections = find_intersections($Line.points)
-		if intersections != []:
-			create_captured_area_from_intersections(intersections, $Line.points)
+		var intersection = find_intersection($Line.points)
+		if intersection != null:
+			create_captured_area_from_intersection(intersection, $Line.points)
 
-func create_captured_area_from_intersections(intersections, points):
-	for interscetion in intersections:
-		var new_line = [points[-1], points[-2]]
-		var polygon : PoolVector2Array = []
-		polygon.push_back(interscetion)
-		for i in range(points.size() -3, 0, -1):
-			if get_segment_intersection(new_line[0], new_line[1], points[i], points[i-1]) != null:
-				var new_area = CapturedArea.instance()
-				get_tree().root.get_child(0).add_child(new_area)
-				new_area.create_shape(polygon, $Line.default_color, get_node(to_follow))
-				if get_tree().root.get_child(0).get_node("PowerUpSpawner") != null:
-					get_tree().root.get_child(0).get_node("PowerUpSpawner").spawn_on_zoned()
-				var newLine = $Line.points
-				newLine = []
-				$Line.points = newLine
-				break
-			polygon.push_back(points[i])
+func create_captured_area_from_intersection(intersection, points):
+	var new_line = [points[-1], points[-2]]
+	var polygon : PoolVector2Array = []
+	polygon.push_back(intersection)
+	for i in range(points.size() -3, 0, -1):
+		if get_segment_intersection(new_line[0], new_line[1], points[i], points[i-1]) != null:
+			var new_area = CapturedArea.instance()
+			get_tree().root.get_child(0).add_child(new_area)
+			new_area.create_shape(polygon, $Line.default_color, get_node(to_follow))
+			if get_tree().root.get_child(0).get_node("PowerUpSpawner") != null:
+				get_tree().root.get_child(0).get_node("PowerUpSpawner").spawn_on_zoned()
+			$Line.clear_points()
+			break
+		polygon.push_back(points[i])
 			
-func find_intersections(points):
-	var intersections = []
-
+func find_intersection(points):
 	# Iterate all segments to see if they intersect another.
 	# (Start at 1 because it's easier to iterate pairs of points)
 	for i in range(1, len(points)):
@@ -69,12 +63,11 @@ func find_intersections(points):
 			var begin1 = points[j - 1]
 			var end1 = points[j]
 
-			# Calculate intersection of the two segments
-			var intersection = get_segment_intersection(begin0, end0, begin1, end1)
-			if intersection != null:
-				intersections.append(intersection)
+#			var test = get_segment_intersection(begin0, end0, begin1, end1)
 
-	return intersections
+			var intersection = Geometry.segment_intersects_segment_2d(begin0, end0, begin1, end1)
+			if intersection != null:
+				return intersection
 
 static func get_segment_intersection(a, b, c, d):
 	var cd = d - c

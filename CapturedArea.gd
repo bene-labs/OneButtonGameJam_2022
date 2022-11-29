@@ -9,7 +9,6 @@ var owned_by = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Polygon2D.color = color
-	collision_layer
 	
 func create_shape(polygons, new_color, player):
 	owned_by = player
