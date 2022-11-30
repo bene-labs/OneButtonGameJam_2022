@@ -18,7 +18,7 @@ func _ready():
 			return
 	get_child(selected_button_index).select()
 	
-func on_tap():
+func select_next():
 	get_child(selected_button_index).deselect()
 	selected_button_index += 1
 	if selected_button_index >= child_count:
@@ -29,9 +29,31 @@ func on_tap():
 			selected_button_index = 0
 	get_child(selected_button_index).select()
 	
+func select_previous():
+	print("DOUBLE TAP!")
+	get_child(selected_button_index).deselect()
+	selected_button_index -= 1
+	if selected_button_index < 0:
+		selected_button_index = child_count - 1
+	while !(get_child(selected_button_index) is MultiControllButton):
+		selected_button_index -= 1
+		if selected_button_index < 0:
+			selected_button_index = child_count - 1
+	get_child(selected_button_index).select()
+	
+func on_tap():
+	select_next()
+	
+func on_double_tap():
+	select_previous()
+
 func _process(delta):
 	if Input.is_action_just_pressed("universal_action"):
-		$TapTimer.start($TapTimer.wait_time)
+		if not $TapTimer.is_stopped():
+			$TapTimer.stop()
+			on_double_tap()
+		else:
+			$TapTimer.start($TapTimer.wait_time)
 	elif Input.is_action_just_released("universal_action"):
 		is_button_held = false
 		get_child(selected_button_index).set_time_passed_with_button_helt(0.0)

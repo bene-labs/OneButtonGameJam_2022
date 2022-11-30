@@ -49,7 +49,6 @@ func deselect():
 	$Border.hide()
 
 func _on_MultiControlButton_mouse_entered():
-	set("custom_styles/normal",StyleBoxEmpty.new())
 	emit_signal("selected")
 
 func _on_MultiControlButton_selected():
