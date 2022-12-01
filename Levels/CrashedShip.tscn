@@ -20,7 +20,7 @@ texture = ExtResource( 4 )
 position = Vector2( 1145, 163 )
 move_direction = 1
 hookshot_range_multiplier = 6
-move_speed = 350
+move_speed = 700
 
 [node name="Player2" parent="." index="4"]
 position = Vector2( 1705, 970 )
