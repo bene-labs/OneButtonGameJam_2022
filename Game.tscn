@@ -9,7 +9,6 @@
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
-switch_level_on_restart = true
 levels = [ "res://Levels/Canteen.tscn", "res://Levels/SpaceLevel.tscn", "res://Levels/Warehouse.tscn", "res://Levels/CrashedShip.tscn" ]
 
 [node name="Player1Trail" parent="." instance=ExtResource( 7 )]

@@ -1,10 +1,14 @@
 extends Button
 
-export (PackedScene) var on_clicked_function_location = self
-export var on_clicked_function_name = "on_clicked_default"
-export (PackedScene) var on_selected_function_location = self
-export var on_selected_function_name = "on_selected_default"
+export var label_text = "Button"
 
+export (NodePath) var on_clicked_function_location = "."
+export var on_clicked_function_name = "on_clicked_default"
+export var on_clicked_function_params = []
+
+export (NodePath) var on_selected_function_location = "."
+export var on_selected_function_name = "on_selected_default"
+export var on_selected_function_params = []
 export var button_activation_time = 3.0
 var time_passed_with_button_helt = 0.0 setget set_time_passed_with_button_helt
 
@@ -26,10 +30,11 @@ func set_time_passed_with_button_helt(value):
 		emit_signal("activated")
 
 func _ready():
+	$Label.text = label_text
 	$Border.hide()
-	_on_clicked.set_instance(on_clicked_function_location)
+	_on_clicked.set_instance(get_node(on_clicked_function_location))
 	_on_clicked.function = on_clicked_function_name
-	_on_selected.set_instance(on_selected_function_location)
+	_on_selected.set_instance(get_node(on_selected_function_location))
 	_on_selected.function = on_selected_function_name
 
 func on_clicked_default():
@@ -52,10 +57,13 @@ func _on_MultiControlButton_mouse_entered():
 	emit_signal("selected")
 
 func _on_MultiControlButton_selected():
-	_on_selected.call_func()
+	_on_selected.call_funcv(on_selected_function_params)
+
+func activate():
+	$AnimationPlayer.play("Click")
 
 func _on_MultiControlButton_activated():
-	_on_clicked.call_func()
+	_on_clicked.call_funcv(on_clicked_function_params)
 
 
 func _on_MultiControlButton_mouse_exited():

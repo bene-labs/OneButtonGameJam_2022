@@ -4,6 +4,9 @@ var MultiControllButton = preload("res://MultiControlButton.gd")
 export var selected_button_index = 0
 var is_button_held = false
 var child_count = 0
+var is_one_button_mode : bool = false
+
+var is_mouse_motion : bool = false
 
 func _ready():
 	child_count = get_child_count()
@@ -16,7 +19,6 @@ func _ready():
 			print("No Buttons!")
 			queue_free()
 			return
-	get_child(selected_button_index).select()
 	
 func select_next():
 	get_child(selected_button_index).deselect()
@@ -30,7 +32,6 @@ func select_next():
 	get_child(selected_button_index).select()
 	
 func select_previous():
-	print("DOUBLE TAP!")
 	get_child(selected_button_index).deselect()
 	selected_button_index -= 1
 	if selected_button_index < 0:
@@ -46,8 +47,36 @@ func on_tap():
 	
 func on_double_tap():
 	select_previous()
+	
+func select_child_button():
+	get_child(selected_button_index).select()
+	
+func deselect_child_button():
+	get_child(selected_button_index).deselect()
+
+func _input(event):
+	is_mouse_motion = event is InputEventMouseMotion and event.relative
+	if is_mouse_motion:
+		is_one_button_mode = false
+		deselect_child_button()
 
 func _process(delta):
+	if not is_one_button_mode:
+		if Input.is_action_just_pressed("menu_prev") or \
+		Input.is_action_just_pressed("menu_next") or \
+		Input.is_action_just_pressed("select") or \
+		Input.is_action_just_pressed("universal_action"):
+			is_one_button_mode = true
+			select_child_button()
+		return
+	
+	if Input.is_action_just_released("menu_prev"):
+		select_previous()
+	if Input.is_action_just_released("menu_next"):
+		select_next()
+	if Input.is_action_just_pressed("select"):
+		get_child(selected_button_index).activate()
+	
 	if Input.is_action_just_pressed("universal_action"):
 		if not $TapTimer.is_stopped():
 			$TapTimer.stop()

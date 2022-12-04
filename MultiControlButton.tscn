@@ -1,12 +1,58 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://MultiControlButton.gd" type="Script" id=1]
 [ext_resource path="res://sprites/fill_green.png" type="Texture" id=2]
 
+[sub_resource type="Animation" id=1]
+resource_name = "Click"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Border:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1e-05, 1e+06 ),
+"update": 0,
+"values": [ Color( 0.945098, 0.933333, 0.0941176, 1 ), Color( 0.729412, 0.0392157, 0.0392157, 1 ), Color( 0.945098, 0.933333, 0.0941176, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_on_MultiControlButton_pressed"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Border:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.945098, 0.933333, 0.0941176, 1 ) ]
+}
+
 [node name="MultiControlButton" type="Button"]
-margin_left = -39.0
-margin_right = 39.0
-margin_bottom = 20.0
+anchor_right = 0.076
+anchor_bottom = 0.033
+margin_right = 2.17599
+margin_bottom = 0.200001
 script = ExtResource( 1 )
 button_activation_time = 1.5
 
@@ -27,13 +73,16 @@ align = 1
 valign = 1
 
 [node name="Border" type="ColorRect" parent="."]
-visible = false
 show_behind_parent = true
 margin_left = -1.0
 margin_top = -1.0
-margin_right = 79.0
+margin_right = 80.0
 margin_bottom = 21.0
 color = Color( 0.945098, 0.933333, 0.0941176, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Click = SubResource( 1 )
+anims/RESET = SubResource( 2 )
 
 [connection signal="activated" from="." to="." method="_on_MultiControlButton_activated"]
 [connection signal="mouse_entered" from="." to="." method="_on_MultiControlButton_mouse_entered"]
