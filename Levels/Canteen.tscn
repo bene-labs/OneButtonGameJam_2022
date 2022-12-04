@@ -16,23 +16,19 @@ scale = Vector2( 0.939, 0.956579 )
 z_index = -2
 texture = ExtResource( 4 )
 
-[node name="Player1" parent="." index="3"]
-position = Vector2( 394, 223 )
+[node name="PlayerSpawner" parent="." index="1"]
+spawn_positions = [ NodePath("../SpawnPositions/Position1"), NodePath("../SpawnPositions/Position2"), NodePath("../SpawnPositions/Position3"), NodePath("../SpawnPositions/Position4") ]
 
-[node name="Player2" parent="." index="4"]
-position = Vector2( 388, 545 )
-move_direction = 0
-
-[node name="OuterWalls" parent="." index="5"]
+[node name="OuterWalls" parent="." index="2"]
 position = Vector2( 75, 41 )
 scale = Vector2( 0.896844, 1.17741 )
 
-[node name="PowerUpSpawner" parent="." index="6"]
+[node name="PowerUpSpawner" parent="." index="3"]
 position = Vector2( 657, 386 )
 scale = Vector2( 1.76, 1 )
 spawn_area_path = NodePath("../SpawnCollision")
 
-[node name="Anchors" type="Node2D" parent="." index="7"]
+[node name="Anchors" type="Node2D" parent="." index="5"]
 
 [node name="Anchor" parent="Anchors" index="0" instance=ExtResource( 3 )]
 position = Vector2( 450, 150 )
@@ -101,7 +97,7 @@ position = Vector2( 725, 279 )
 scale = Vector2( 1, 1 )
 randomize_effect = false
 
-[node name="PowerUps" type="Node2D" parent="." index="8"]
+[node name="PowerUps" type="Node2D" parent="." index="6"]
 position = Vector2( -200, -100 )
 
 [node name="PowerUpHealth" parent="PowerUps" index="0" instance=ExtResource( 2 )]
@@ -114,13 +110,27 @@ position = Vector2( 1075, 299 )
 position = Vector2( 1025, 479 )
 type = 1
 
-[node name="Camera2D" type="Camera2D" parent="." index="9"]
+[node name="Camera2D" type="Camera2D" parent="." index="7"]
 position = Vector2( 535, 395 )
 current = true
 zoom = Vector2( 0.9, 1.2 )
 
-[node name="SpawnCollision" type="Area2D" parent="." index="10"]
+[node name="SpawnCollision" type="Area2D" parent="." index="8"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnCollision" index="0"]
 position = Vector2( 655.5, 384 )
 shape = SubResource( 1 )
+
+[node name="SpawnPositions" type="Node2D" parent="." index="9"]
+
+[node name="Position1" type="Position2D" parent="SpawnPositions" index="0"]
+position = Vector2( 394, 223 )
+
+[node name="Position2" type="Position2D" parent="SpawnPositions" index="1"]
+position = Vector2( 388, 545 )
+
+[node name="Position3" type="Position2D" parent="SpawnPositions" index="2"]
+position = Vector2( 395, 376 )
+
+[node name="Position4" type="Position2D" parent="SpawnPositions" index="3"]
+position = Vector2( 171, 374 )

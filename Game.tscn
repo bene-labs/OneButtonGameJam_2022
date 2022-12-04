@@ -1,33 +1,16 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://debug/FpsCounter.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://PlayerSpawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://PowerUpSpawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://InvisibleWall.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Trail.tscn" type="PackedScene" id=7]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
 levels = [ "res://Levels/Canteen.tscn", "res://Levels/SpaceLevel.tscn", "res://Levels/Warehouse.tscn", "res://Levels/CrashedShip.tscn" ]
 
-[node name="Player1Trail" parent="." instance=ExtResource( 7 )]
-to_follow = NodePath("../Player1")
-
-[node name="Player2Trail" parent="." instance=ExtResource( 7 )]
-to_follow = NodePath("../Player2")
-
-[node name="Player1" parent="." instance=ExtResource( 3 )]
-position = Vector2( 190, 245 )
-hookshot_range_multiplier = 4
-
-[node name="Player2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 722, 308 )
-collision_layer = 1024
-move_direction = 1
-id = 2
-hookshot_range_multiplier = 4
-color = Color( 0.270588, 0.121569, 0.941176, 1 )
+[node name="PlayerSpawner" parent="." instance=ExtResource( 3 )]
 
 [node name="OuterWalls" type="Node2D" parent="."]
 

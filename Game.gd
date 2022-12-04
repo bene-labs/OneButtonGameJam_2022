@@ -19,6 +19,8 @@ func _input(event):
 		$FpsCounter.hide() if $FpsCounter.is_visible() else $FpsCounter.show()
 	if event.is_action_pressed("debug_reduce_move_speed"):
 		get_tree().change_scene(levels[randi() % levels.size()])
+	if event.is_action_pressed("back"):
+		get_tree().change_scene("res://Menus/LevelSelect.tscn")
 
 func restart_after_delay():
 	$RestartTimer.start()

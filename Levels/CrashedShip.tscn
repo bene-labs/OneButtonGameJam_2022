@@ -16,26 +16,18 @@ scale = Vector2( 1.1, 1.1 )
 z_index = -2
 texture = ExtResource( 4 )
 
-[node name="Player1" parent="." index="3"]
-position = Vector2( 1145, 163 )
-move_direction = 1
-hookshot_range_multiplier = 6
-move_speed = 700
+[node name="PlayerSpawner" parent="." index="1"]
+spawn_positions = [ NodePath("../SpawnPositions/Position1"), NodePath("../SpawnPositions/Position2"), NodePath("../SpawnPositions/Position3"), NodePath("../SpawnPositions/Position4") ]
 
-[node name="Player2" parent="." index="4"]
-position = Vector2( 1705, 970 )
-hookshot_range_multiplier = 6
-move_speed = 350
-
-[node name="OuterWalls" parent="." index="5"]
+[node name="OuterWalls" parent="." index="2"]
 scale = Vector2( 2, 2 )
 
-[node name="PowerUpSpawner" parent="." index="6"]
+[node name="PowerUpSpawner" parent="." index="3"]
 position = Vector2( 838, 696 )
 scale = Vector2( 4.28, 1.4 )
 spawn_area_path = NodePath("../SpawnCollision")
 
-[node name="Anchors" type="Node2D" parent="." index="7"]
+[node name="Anchors" type="Node2D" parent="." index="5"]
 
 [node name="Anchor" parent="Anchors" index="0" instance=ExtResource( 2 )]
 position = Vector2( 1592, 247 )
@@ -118,12 +110,12 @@ position = Vector2( 911, 693 )
 [node name="Anchor24" parent="Anchors" index="23" instance=ExtResource( 2 )]
 position = Vector2( 1206, 894 )
 
-[node name="Camera2D" type="Camera2D" parent="." index="8"]
+[node name="Camera2D" type="Camera2D" parent="." index="6"]
 position = Vector2( 1024, 597 )
 current = true
 zoom = Vector2( 2, 2 )
 
-[node name="PowerUps" type="Node2D" parent="." index="9"]
+[node name="PowerUps" type="Node2D" parent="." index="7"]
 
 [node name="PowerUp" parent="PowerUps" index="0" instance=ExtResource( 3 )]
 position = Vector2( 823, 942 )
@@ -145,8 +137,22 @@ type = 3
 position = Vector2( 252, 871 )
 type = 3
 
-[node name="SpawnCollision" type="Area2D" parent="." index="10"]
+[node name="SpawnCollision" type="Area2D" parent="." index="8"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnCollision" index="0"]
 position = Vector2( 876, 659 )
 shape = SubResource( 1 )
+
+[node name="SpawnPositions" type="Node2D" parent="." index="9"]
+
+[node name="Position1" type="Position2D" parent="SpawnPositions" index="0"]
+position = Vector2( 1145, 163 )
+
+[node name="Position2" type="Position2D" parent="SpawnPositions" index="1"]
+position = Vector2( 1705, 970 )
+
+[node name="Position3" type="Position2D" parent="SpawnPositions" index="2"]
+position = Vector2( 436, 718 )
+
+[node name="Position4" type="Position2D" parent="SpawnPositions" index="3"]
+position = Vector2( 138, 257 )

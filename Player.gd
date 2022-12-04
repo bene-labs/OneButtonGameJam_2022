@@ -16,10 +16,8 @@ export (bool) var detach_hookshot_on_bounce = true
 export (bool) var use_reflection_angle = false
 export var minimum_bounce_angle = -30
 export var maximum_bounce_angle = 30
-export (Color) var color = Color.red
-
-export var player_textures = []
-
+export var colors = [Color.red, Color.blue]
+var color
 onready var health = max_health
 export var is_invincible = false
 
@@ -33,14 +31,16 @@ var attached_trail = null
 var Projectile = preload("res://Projectile.tscn")
 
 func _ready():
+	color = colors[id - 1]
 	$Hookshot.hookshot_range_multiplier = hookshot_range_multiplier
-	$Sprite.texture = player_textures[id - 1]
+	$Sprite/Color.color = color
 	$HealthBar.max_value = max_health
 	$HealthBar.value = health
 	$Sprite.flip_h = reverse_movement
 	$Hookshot/AutoAimer.self_modulate = color
 	$Hookshot/Rope.color = color.lightened(0.5)
-	#collision_layer = 10 + id - 1
+	
+	collision_layer = pow(2, 10 + id - 2)
 
 func _process(delta):
 	if Input.is_action_just_pressed("player%d_action" % id):
@@ -119,7 +119,7 @@ func _exit_tree():
 
 func assign_trail(trail):
 	attached_trail = trail
-	attached_trail.set_line_color(color)
+	attached_trail.set_line_color(colors[id -1])
 
 func delete_trail():
 	attached_trail.queue_free()
