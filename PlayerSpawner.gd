@@ -3,9 +3,10 @@ extends Node2D
 export (PackedScene) var player 
 export (PackedScene) var trail 
 export var spawn_positions = []
-export var player_count = 2
+var player_count = 2
 
 func _ready():
+	player_count = Configs.player_count
 	randomize()
 	spawn_positions.shuffle()
 	
@@ -19,3 +20,8 @@ func _ready():
 		new_trail.to_follow = new_player.get_path()
 		new_trail.name = "Player" + str(new_player.id) + "_Trail"
 		add_child(new_trail)
+
+func _on_player_death():
+	player_count -= 1
+	if player_count == 1 and get_tree().root.get_child(0).has_method("restart_after_delay"):
+		get_tree().root.get_child(0).restart_after_delay()

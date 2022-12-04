@@ -1,5 +1,5 @@
 extends Node2D
-var MultiControllButton = preload("res://MultiControlButton.gd")
+var MultiControllButton = preload("res://UI/MultiControlButton.gd")
 
 export var selected_button_index = 0
 var is_button_held = false

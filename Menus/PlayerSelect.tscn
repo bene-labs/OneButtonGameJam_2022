@@ -1,0 +1,126 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Menus/PlayerSelect.gd" type="Script" id=1]
+[ext_resource path="res://UI/MultiControlButtonManager.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/MultiControlButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://fonts/Roboto/Roboto-Medium.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://sprites/Temp_Player_No_Color.png" type="Texture" id=5]
+[ext_resource path="res://sprites/BackgroundCrashedShip.jpg" type="Texture" id=6]
+[ext_resource path="res://sprites/Rolli_Wars_Character_Red.png" type="Texture" id=7]
+[ext_resource path="res://sprites/Rolli_Wars_Character_Blue.png" type="Texture" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 4 )
+
+[node name="PlayerSelect" type="Node2D"]
+script = ExtResource( 1 )
+player_sprites_paths = [ NodePath("PlayerSprites/Player1"), NodePath("PlayerSprites/Player2"), NodePath("PlayerSprites/Player3"), NodePath("PlayerSprites/Player4") ]
+
+[node name="BackgroundCrashedShip" type="Sprite" parent="."]
+position = Vector2( 997, 157 )
+texture = ExtResource( 6 )
+
+[node name="Title" type="Label" parent="."]
+margin_top = 27.0
+margin_right = 1023.0
+margin_bottom = 103.0
+custom_fonts/font = SubResource( 1 )
+text = "How many Players?"
+align = 1
+valign = 1
+
+[node name="MultiControlButtonManager" parent="." instance=ExtResource( 2 )]
+
+[node name="MultiControlButton" parent="MultiControlButtonManager" instance=ExtResource( 3 )]
+margin_left = 244.0
+margin_top = 200.0
+margin_right = 323.0
+margin_bottom = 220.0
+rect_scale = Vector2( 2.7631, 3.20023 )
+label_text = "1"
+on_clicked_function_location = NodePath("../..")
+on_clicked_function_name = "confirm_selection"
+on_clicked_function_params = [ 1 ]
+on_selected_function_location = NodePath("../..")
+on_selected_function_name = "preview_selection"
+on_selected_function_params = [ 1 ]
+
+[node name="MultiControlButton2" parent="MultiControlButtonManager" instance=ExtResource( 3 )]
+margin_left = 569.0
+margin_top = 200.0
+margin_right = 648.0
+margin_bottom = 220.0
+rect_scale = Vector2( 2.7631, 3.20023 )
+label_text = "2"
+on_clicked_function_location = NodePath("../..")
+on_clicked_function_name = "confirm_selection"
+on_clicked_function_params = [ 2 ]
+on_selected_function_location = NodePath("../..")
+on_selected_function_name = "preview_selection"
+on_selected_function_params = [ 2 ]
+
+[node name="MultiControlButton3" parent="MultiControlButtonManager" instance=ExtResource( 3 )]
+margin_left = 244.0
+margin_top = 350.0
+margin_right = 323.0
+margin_bottom = 370.0
+rect_scale = Vector2( 2.7631, 3.20023 )
+label_text = "3"
+on_clicked_function_location = NodePath("../..")
+on_clicked_function_name = "confirm_selection"
+on_clicked_function_params = [ 3 ]
+on_selected_function_location = NodePath("../..")
+on_selected_function_name = "preview_selection"
+on_selected_function_params = [ 3 ]
+
+[node name="MultiControlButton4" parent="MultiControlButtonManager" instance=ExtResource( 3 )]
+margin_left = 571.0
+margin_top = 350.0
+margin_right = 650.0
+margin_bottom = 370.0
+rect_scale = Vector2( 2.7631, 3.20023 )
+label_text = "4"
+on_clicked_function_location = NodePath("../..")
+on_clicked_function_name = "confirm_selection"
+on_clicked_function_params = [ 4 ]
+on_selected_function_location = NodePath("../..")
+on_selected_function_name = "preview_selection"
+on_selected_function_params = [ 4 ]
+
+[node name="PlayerSprites" type="Node2D" parent="."]
+
+[node name="Player1" type="Sprite" parent="PlayerSprites"]
+visible = false
+position = Vector2( 112, 123 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="Player2" type="Sprite" parent="PlayerSprites"]
+visible = false
+position = Vector2( 916, 121 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 8 )
+flip_h = true
+
+[node name="Player3" type="Sprite" parent="PlayerSprites"]
+visible = false
+position = Vector2( 113, 477 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+
+[node name="Color" type="Polygon2D" parent="PlayerSprites/Player3"]
+show_behind_parent = true
+color = Color( 0.560784, 0.027451, 0.698039, 1 )
+polygon = PoolVector2Array( -84, -64, -166, 120, -140, 190, -78, 210, -8, 174, 12, 108, 42, 148, 36, 198, 76, 196, 70, 150, 24, 50, 74, 22, 24, -10, 22, -52 )
+
+[node name="Player4" type="Sprite" parent="PlayerSprites"]
+visible = false
+position = Vector2( 914, 478 )
+scale = Vector2( -0.5, 0.5 )
+texture = ExtResource( 5 )
+
+[node name="Color" type="Polygon2D" parent="PlayerSprites/Player4"]
+show_behind_parent = true
+color = Color( 0.152941, 0.713726, 0.298039, 1 )
+polygon = PoolVector2Array( -84, -64, -166, 120, -140, 190, -78, 210, -8, 174, 12, 108, 42, 148, 36, 198, 76, 196, 70, 150, 24, 50, 74, 22, 24, -10, 22, -52 )

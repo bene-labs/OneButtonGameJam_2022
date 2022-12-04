@@ -2,11 +2,11 @@ extends Button
 
 export var label_text = "Button"
 
-export (NodePath) var on_clicked_function_location = "."
+export (NodePath) var on_clicked_function_location = NodePath("./")
 export var on_clicked_function_name = "on_clicked_default"
 export var on_clicked_function_params = []
 
-export (NodePath) var on_selected_function_location = "."
+export (NodePath) var on_selected_function_location = NodePath("./")
 export var on_selected_function_name = "on_selected_default"
 export var on_selected_function_params = []
 export var button_activation_time = 3.0

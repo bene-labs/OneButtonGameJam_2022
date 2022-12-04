@@ -1,10 +1,11 @@
 extends Node2D
 
 export var preview_textures = []
+export var player_count = 2
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func _process(delta):
+	if Input.is_action_just_pressed("back"):
+		get_tree().change_scene("res://Menus/PlayerSelect.tscn")
 
 func load_level(name):
 	get_tree().change_scene("res://Levels/%s.tscn" % name)

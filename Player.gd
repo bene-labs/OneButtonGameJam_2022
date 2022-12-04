@@ -114,8 +114,9 @@ func hide_indicator():
 	$Hookshot/AutoAimer.hide()
 
 func _exit_tree():
-	if get_tree().root.get_child(0).has_method("restart_after_delay"):
-		get_tree().root.get_child(0).restart_after_delay()
+	var parent = get_parent()
+	if parent != null and parent.has_method("_on_player_death"):
+		parent._on_player_death()
 
 func assign_trail(trail):
 	attached_trail = trail

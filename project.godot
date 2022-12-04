@@ -11,8 +11,12 @@ config_version=4
 [application]
 
 config/name="OneButtonGameJam"
-run/main_scene="res://Menus/LevelSelect.tscn"
+run/main_scene="res://Menus/PlayerSelect.tscn"
 config/icon="res://sprites/icon.png"
+
+[autoload]
+
+Configs="*res://globals/Configs.gd"
 
 [display]
 
