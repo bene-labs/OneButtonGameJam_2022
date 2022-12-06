@@ -149,4 +149,3 @@ func shoot_projectiles(ammount, speed):
 		projectile.move_speed = speed
 		projectile.creator = self
 		get_tree().root.get_child(0).call_deferred("add_child", projectile)
-		

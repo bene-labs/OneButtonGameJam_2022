@@ -3,6 +3,8 @@ extends StaticBody2D
 onready var def_layer = collision_layer
 var connected_player = null
 
+signal wasHitLoadTutorialScene2
+
 enum Effects{NOTHING,PULL,PUSH,FAST,SLOW}
 
 export (Dictionary) var effect_colors = {Effects.NOTHING:Color.yellow, 
@@ -40,7 +42,7 @@ func deactivate():
 	$Sprite.modulate.a = 0.2
 	$Background.modulate.a = 0.2
 	$DeactivationTimer.start()
-	
+	emit_signal("wasHitLoadTutorialScene2")
 
 func _on_DeactivationTimer_timeout():
 	if randomize_effect:
