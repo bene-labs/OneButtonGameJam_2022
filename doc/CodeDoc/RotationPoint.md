@@ -14,7 +14,7 @@
 var Effects
 ```
 
-Direct Reference to [Anchor Effects](Anchor.gd.md#Effects)
+Direct Reference to [Anchor Effects](Anchor.md#Effects)
 
 # General Configurations (Configured ingame!)
 
