@@ -123,7 +123,8 @@ func assign_trail(trail):
 	attached_trail.set_line_color(colors[id -1])
 
 func delete_trail():
-	attached_trail.queue_free()
+	if attached_trail != null:
+		attached_trail.queue_free()
 
 # powerup api
 func heal(amount = 1):
