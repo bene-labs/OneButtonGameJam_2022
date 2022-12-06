@@ -24,6 +24,8 @@ func create_shape(polygons, new_color, player):
 	$AnimationPlayer.play("Implode")
 
 func _on_CapturedArea_body_entered(body):
+	if body == null:
+		return
 	if debug:
 		print("Object zoned: ", body.name)
 	if body.has_method("take_damage"):

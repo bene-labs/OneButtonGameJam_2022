@@ -1,5 +1,10 @@
 extends Node2D
 
+# Resposible for rotating the player around acnhors while using the hookshot.
+#
+# > For more information on the [Effects](#Effect modifiers) consult the [Anchor Documentation](../Anchor.gd.md)
+class_name RotationPoint
+
 onready var Effects = preload("res://Anchor.gd").Effects
 
 export var rotation_per_seconds = 1
@@ -7,6 +12,16 @@ export var is_rotating = false
 export var x_direction = 1 # 1 or -1
 export var move_speed_multiplier = 1.0
 export var outward_motion = 0.0
+
+# # Effect modifiers
+
+export var pull_strength = 10
+export var push_strength = 10
+# Move speed is multiplied by this while attached to a slowing Anchor.
+export var slow_multiplier = 0.75
+# This will be added to your while attached to a fast Anchor.
+export var fast_speed_bonus = 2
+
 
 var default_values = {}
 
@@ -22,8 +37,6 @@ func _process(delta):
 			$SimulatedPlayerPosition.look_at(position)
 			var velocity = Vector2(outward_motion * delta, 0).rotated($SimulatedPlayerPosition.rotation)
 			$SimulatedPlayerPosition.position += velocity
-#			if $SimulatedPlayerPosition.position.x < 0:
-#				$SimulatedPlayerPosition.position.x = 0
 	
 func calc_and_set_rotation_per_seconds(speed, radius):
 	speed = speed * move_speed_multiplier
@@ -59,12 +72,12 @@ func reset():
 func trigger_effect(effect):
 	match effect:
 		Effects.FAST:
-			move_speed_multiplier += 0.75
+			move_speed_multiplier += fast_speed_bonus
 		Effects.SLOW:
-			move_speed_multiplier /= 2
+			move_speed_multiplier /= slow_multiplier
 		Effects.PULL:
-			outward_motion = 10
+			outward_motion = pull_strength
 		Effects.PUSH:
-			outward_motion = -10
+			outward_motion -= push_strength
 		_:
 			pass

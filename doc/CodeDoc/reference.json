@@ -1,0 +1,3810 @@
+{
+  "name": "OneButtonGameJam",
+  "description": "",
+  "version": "n/a",
+  "classes": [
+    {
+      "name": "AimIndicator.gd",
+      "path": "res://AimIndicator.gd",
+      "extends_class": [
+        "Sprite"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class AimIndicator.gd",
+      "description": "",
+      "sub_classes": [
+
+      ],
+      "constants": [
+
+      ],
+      "members": [
+        {
+          "name": "rotation_speed",
+          "data_type": "var",
+          "default_value": 5,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var rotation_speed = 5",
+          "description": ""
+        }
+      ],
+      "signals": [
+
+      ],
+      "methods": [
+        {
+          "name": "_ready",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _ready()",
+          "description": " Called when the node enters the scene tree for the first time.\n",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "_process",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _process(delta)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "delta",
+              "type": "var"
+            }
+          ]
+        }
+      ],
+      "static_functions": [
+
+      ]
+    },
+    {
+      "name": "Anchor",
+      "path": "res://Anchor.gd",
+      "extends_class": [
+        "StaticBody2D"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class Anchor",
+      "description": " An Achor that acts as a target object for the player's hookshoot\n\n If the Hookshot Rope of a player is attached to this object,\n a rotation point will be created to handle the player Rotation.\n",
+      "sub_classes": [
+
+      ],
+      "constants": [
+        {
+          "name": "Effects",
+          "value": {
+            "NOTHING": 0,
+            "PULL": 1,
+            "PUSH": 2,
+            "FAST": 3,
+            "SLOW": 4
+          },
+          "data_type": "Dictionary",
+          "signature": "const Effects: Dictionary = {\"FAST\":3,\"NOTHING\":0,\"PULL\":1,\"PUSH\":2,\"SLOW\":4}",
+          "description": " Effects only affect the player while he is attached to and rotating around the Anchor.\n\n Effects are as follows:\n\n |Name   |Description                                            |Color           |Related Variable (provides 'x' value)                        |\n |-------|-------------------------------------------------------|----------------|-------------------------------------------------------------|\n |Nothing|No Effect                                              |Yellow (default)|None                                                         |\n |Push   |Player will move x units towards the anchor each frame.|Purple          |[pull_strength](RotationPoint.gd.md#pull/_strength)       |\n |Push   |Player will move x away from the anchor each frame.    |Blue            |[push_strength](RotationPoint.gd.md#push/_strength)       |\n |Fast   |Player will move x additional units each frame.        |Green           |[fast_speed_bonus](RotationPoint.gd.md#fast/_speed/_bonus)|\n |Slow   |Player will only move at x times the usual speed.      |Red             |[slow_multiplier](RotationPoint.gd.md#slow/_multiplier)   |\n"
+        }
+      ],
+      "members": [
+        {
+          "name": "def_layer",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var def_layer",
+          "description": " Used for Hookshoot collision check.\n Players need to mask this layer so they can connect to this anchor. \n"
+        },
+        {
+          "name": "connected_player",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var connected_player",
+          "description": " Used for Hookshoot collision check.\n Players need to mask this layer so they can connect to this anchor. \n"
+        },
+        {
+          "name": "effect_colors",
+          "data_type": "var",
+          "default_value": {
+            "0": "1,1,0,1",
+            "1": "0.627451,0.12549,0.941176,1",
+            "2": "0,0,1,1",
+            "3": "0,1,0,1",
+            "4": "1,0,0,1"
+          },
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var effect_colors = {\"0\":\"1,1,0,1\",\"1\":\"0.627451,0.12549,0.941176,1\",\"2\":\"0,0,1,1\",\"3\":\"0,1,0,1\",\"4\":\"1,0,0,1\"}",
+          "description": ""
+        },
+        {
+          "name": "effect",
+          "data_type": "var",
+          "default_value": 0,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var effect = 0",
+          "description": ""
+        },
+        {
+          "name": "randomize_effect",
+          "data_type": "var",
+          "default_value": true,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var randomize_effect = true",
+          "description": ""
+        }
+      ],
+      "signals": [
+        {
+          "name": "wasHitLoadTutorialScene2",
+          "arguments": [
+
+          ],
+          "signature": "signal wasHitLoadTutorialScene2()",
+          "description": ""
+        }
+      ],
+      "methods": [
+        {
+          "name": "set_effect",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func set_effect(value)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "value",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "_ready",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _ready()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "get_random_effect",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func get_random_effect()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "connect_player",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func connect_player(player)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "player",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "disconnect_player",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func disconnect_player()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "deactivate",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func deactivate()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "_on_DeactivationTimer_timeout",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _on_DeactivationTimer_timeout()",
+          "description": "",
+          "arguments": [
+
+          ]
+        }
+      ],
+      "static_functions": [
+
+      ]
+    },
+    {
+      "name": "AutoAimer.gd",
+      "path": "res://AutoAimer.gd",
+      "extends_class": [
+        "Sprite"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class AutoAimer.gd",
+      "description": "",
+      "sub_classes": [
+
+      ],
+      "constants": [
+        {
+          "name": "AimMethods",
+          "value": {
+            "CONSTANT_ROTATION": 0,
+            "TARGET_OBSTACLE": 1
+          },
+          "data_type": "Dictionary",
+          "signature": "const AimMethods: Dictionary = {\"CONSTANT_ROTATION\":0,\"TARGET_OBSTACLE\":1}",
+          "description": ""
+        }
+      ],
+      "members": [
+        {
+          "name": "aim_method",
+          "data_type": "var",
+          "default_value": 0,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var aim_method = 0",
+          "description": ""
+        },
+        {
+          "name": "rotation_speed",
+          "data_type": "var",
+          "default_value": 5,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var rotation_speed = 5",
+          "description": " Called when the node enters the scene tree for the first time.\n"
+        },
+        {
+          "name": "targeted_obstacle",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var targeted_obstacle",
+          "description": " Called when the node enters the scene tree for the first time.\n Called when the node enters the scene tree for the first time.\n"
+        },
+        {
+          "name": "enable_rotating",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var enable_rotating",
+          "description": " Called when the node enters the scene tree for the first time.\n Called when the node enters the scene tree for the first time.\n"
+        }
+      ],
+      "signals": [
+
+      ],
+      "methods": [
+        {
+          "name": "stop_spin",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func stop_spin()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "start_constant_spin",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func start_constant_spin()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "target_obstacle",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func target_obstacle(obstacle)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "obstacle",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "_ready",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _ready()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "_process",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _process(delta)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "delta",
+              "type": "var"
+            }
+          ]
+        }
+      ],
+      "static_functions": [
+
+      ]
+    },
+    {
+      "name": "CapturedArea.gd",
+      "path": "res://CapturedArea.gd",
+      "extends_class": [
+        "Area2D"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class CapturedArea.gd",
+      "description": "",
+      "sub_classes": [
+
+      ],
+      "constants": [
+
+      ],
+      "members": [
+        {
+          "name": "color",
+          "data_type": "var",
+          "default_value": "1,0,0,1",
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var color = \"1,0,0,1\"",
+          "description": ""
+        },
+        {
+          "name": "damage",
+          "data_type": "var",
+          "default_value": 1,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var damage = 1",
+          "description": ""
+        },
+        {
+          "name": "debug",
+          "data_type": "var",
+          "default_value": false,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var debug = false",
+          "description": ""
+        },
+        {
+          "name": "owned_by",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var owned_by",
+          "description": ""
+        }
+      ],
+      "signals": [
+
+      ],
+      "methods": [
+        {
+          "name": "_ready",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _ready()",
+          "description": " Called when the node enters the scene tree for the first time.\n",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "create_shape",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func create_shape(polygons, new_color, player)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "polygons",
+              "type": "var"
+            },
+            {
+              "name": "new_color",
+              "type": "var"
+            },
+            {
+              "name": "player",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "_on_CapturedArea_body_entered",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _on_CapturedArea_body_entered(body)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "body",
+              "type": "var"
+            }
+          ]
+        }
+      ],
+      "static_functions": [
+
+      ]
+    },
+    {
+      "name": "Collector.gd",
+      "path": "res://Collector.gd",
+      "extends_class": [
+        "SceneTree"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class Collector.gd",
+      "description": "",
+      "sub_classes": [
+
+      ],
+      "constants": [
+
+      ],
+      "members": [
+
+      ],
+      "signals": [
+
+      ],
+      "methods": [
+        {
+          "name": "find_files",
+          "return_type": "PoolStringArray",
+          "rpc_mode": 0,
+          "signature": "func find_files(dirpath: String = \"\", patterns: PoolStringArray = [], is_recursive: bool = false, do_skip_hidden: bool = true) -> PoolStringArray",
+          "description": " Returns a list of file paths found in the directory.\n\n **Arguments**\n\n - dirpath: path to the directory from which to search files.\n - patterns: an array of string match patterns, where \"*\" matches zero or more\n   arbitrary characters and \"?\" matches any single character except a period\n   (\".\"). You can use it to find files by extensions. To find only GDScript\n   files, [\"*.gd\"]\n - is_recursive: if `true`, walks over subdirectories recursively, returning all\n   files in the tree.\n",
+          "arguments": [
+            {
+              "name": "dirpath",
+              "type": "String",
+              "default_value": ""
+            },
+            {
+              "name": "patterns",
+              "type": "PoolStringArray",
+              "default_value": [
+
+              ]
+            },
+            {
+              "name": "is_recursive",
+              "type": "bool",
+              "default_value": false
+            },
+            {
+              "name": "do_skip_hidden",
+              "type": "bool",
+              "default_value": true
+            }
+          ]
+        },
+        {
+          "name": "save_text",
+          "return_type": "null",
+          "rpc_mode": 0,
+          "signature": "func save_text(path: String = \"\", content: String = \"\") -> null",
+          "description": " Saves text to a file.\n",
+          "arguments": [
+            {
+              "name": "path",
+              "type": "String",
+              "default_value": ""
+            },
+            {
+              "name": "content",
+              "type": "String",
+              "default_value": ""
+            }
+          ]
+        },
+        {
+          "name": "get_reference",
+          "return_type": "Dictionary",
+          "rpc_mode": 0,
+          "signature": "func get_reference(files: PoolStringArray = [], refresh_cache: bool = false) -> Dictionary",
+          "description": " Parses a list of GDScript files and returns a list of dictionaries with the\n code reference data.\n\n If `refresh_cache` is true, will refresh Godot's cache and get fresh symbols.\n",
+          "arguments": [
+            {
+              "name": "files",
+              "type": "PoolStringArray",
+              "default_value": [
+
+              ]
+            },
+            {
+              "name": "refresh_cache",
+              "type": "bool",
+              "default_value": false
+            }
+          ]
+        },
+        {
+          "name": "print_pretty_json",
+          "return_type": "String",
+          "rpc_mode": 0,
+          "signature": "func print_pretty_json(reference: Dictionary) -> String",
+          "description": "",
+          "arguments": [
+            {
+              "name": "reference",
+              "type": "Dictionary"
+            }
+          ]
+        }
+      ],
+      "static_functions": [
+
+      ]
+    },
+    {
+      "name": "CollisionLine.gd",
+      "path": "res://CollisionLine.gd",
+      "extends_class": [
+        "Line2D"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class CollisionLine.gd",
+      "description": "",
+      "sub_classes": [
+
+      ],
+      "constants": [
+
+      ],
+      "members": [
+        {
+          "name": "temp1",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var temp1",
+          "description": ""
+        },
+        {
+          "name": "temp2",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var temp2",
+          "description": ""
+        }
+      ],
+      "signals": [
+
+      ],
+      "methods": [
+        {
+          "name": "_ready",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _ready()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "generate_collision_tutorial",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func generate_collision_tutorial()",
+          "description": " from a tutorial... does not seem to work\n",
+          "arguments": [
+
+          ]
+        }
+      ],
+      "static_functions": [
+        {
+          "name": "get_collision_polygons",
+          "return_type": "PoolVector2Array",
+          "rpc_mode": 0,
+          "signature": "func get_collision_polygons(line: Line2D) -> PoolVector2Array",
+          "description": "",
+          "arguments": [
+            {
+              "name": "line",
+              "type": "Line2D"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CornerWall.gd",
+      "path": "res://CornerWall.gd",
+      "extends_class": [
+        "StaticBody2D"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class CornerWall.gd",
+      "description": "",
+      "sub_classes": [
+
+      ],
+      "constants": [
+        {
+          "name": "Side",
+          "value": {
+            "TOP_LEFT": 0,
+            "TOP_RIGHT": 1,
+            "BOTTOM_LEFT": 2,
+            "BOTTOM_RIGHT": 3
+          },
+          "data_type": "Dictionary",
+          "signature": "const Side: Dictionary = {\"BOTTOM_LEFT\":2,\"BOTTOM_RIGHT\":3,\"TOP_LEFT\":0,\"TOP_RIGHT\":1}",
+          "description": ""
+        }
+      ],
+      "members": [
+        {
+          "name": "side",
+          "data_type": "var",
+          "default_value": 0,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var side = 0",
+          "description": ""
+        }
+      ],
+      "signals": [
+
+      ],
+      "methods": [
+        {
+          "name": "get_bounce_angle",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func get_bounce_angle()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "get_reflection_velocity",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func get_reflection_velocity(velocity)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "velocity",
+              "type": "var"
+            }
+          ]
+        }
+      ],
+      "static_functions": [
+
+      ]
+    },
+    {
+      "name": "VisualTimer.gd",
+      "path": "res://debug/VisualTimer.gd",
+      "extends_class": [
+        "Label"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class VisualTimer.gd",
+      "description": "",
+      "sub_classes": [
+
+      ],
+      "constants": [
+
+      ],
+      "members": [
+        {
+          "name": "time_passed",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var time_passed",
+          "description": ""
+        }
+      ],
+      "signals": [
+
+      ],
+      "methods": [
+        {
+          "name": "_process",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _process(delta)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "delta",
+              "type": "var"
+            }
+          ]
+        }
+      ],
+      "static_functions": [
+
+      ]
+    },
+    {
+      "name": "FpsCounter.gd",
+      "path": "res://FpsCounter.gd",
+      "extends_class": [
+        "Label"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class FpsCounter.gd",
+      "description": "",
+      "sub_classes": [
+
+      ],
+      "constants": [
+
+      ],
+      "members": [
+
+      ],
+      "signals": [
+
+      ],
+      "methods": [
+        {
+          "name": "_process",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _process(delta)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "delta",
+              "type": "var"
+            }
+          ]
+        }
+      ],
+      "static_functions": [
+
+      ]
+    },
+    {
+      "name": "Game.gd",
+      "path": "res://Game.gd",
+      "extends_class": [
+        "Node2D"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class Game.gd",
+      "description": "",
+      "sub_classes": [
+
+      ],
+      "constants": [
+
+      ],
+      "members": [
+        {
+          "name": "restart_delay",
+          "data_type": "var",
+          "default_value": 2,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var restart_delay = 2",
+          "description": ""
+        },
+        {
+          "name": "load_random_level_on_restart",
+          "data_type": "var",
+          "default_value": false,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var load_random_level_on_restart = false",
+          "description": ""
+        },
+        {
+          "name": "levels",
+          "data_type": "var",
+          "default_value": [
+
+          ],
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var levels = []",
+          "description": ""
+        }
+      ],
+      "signals": [
+
+      ],
+      "methods": [
+        {
+          "name": "_ready",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _ready()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "_input",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _input(event)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "event",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "restart_after_delay",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func restart_after_delay()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "_on_RestartDelay_timeout",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _on_RestartDelay_timeout()",
+          "description": "",
+          "arguments": [
+
+          ]
+        }
+      ],
+      "static_functions": [
+
+      ]
+    },
+    {
+      "name": "Configs.gd",
+      "path": "res://globals/Configs.gd",
+      "extends_class": [
+        "Node"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class Configs.gd",
+      "description": "",
+      "sub_classes": [
+
+      ],
+      "constants": [
+
+      ],
+      "members": [
+        {
+          "name": "player_count",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var player_count",
+          "description": " holds global game settings\n how many players there should be\n"
+        },
+        {
+          "name": "last_selected_level",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var last_selected_level",
+          "description": " stores the most recently played level\n"
+        }
+      ],
+      "signals": [
+
+      ],
+      "methods": [
+
+      ],
+      "static_functions": [
+
+      ]
+    },
+    {
+      "name": "HealthBar.gd",
+      "path": "res://HealthBar.gd",
+      "extends_class": [
+        "TextureProgress"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class HealthBar.gd",
+      "description": "",
+      "sub_classes": [
+
+      ],
+      "constants": [
+        {
+          "name": "HealthStates",
+          "value": {
+            "FULL": 0,
+            "MEDIUM": 1,
+            "LOW": 2,
+            "VERY_LOW": 3
+          },
+          "data_type": "Dictionary",
+          "signature": "const HealthStates: Dictionary = {\"FULL\":0,\"LOW\":2,\"MEDIUM\":1,\"VERY_LOW\":3}",
+          "description": ""
+        }
+      ],
+      "members": [
+        {
+          "name": "medium_health",
+          "data_type": "var",
+          "default_value": 75,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var medium_health = 75",
+          "description": ""
+        },
+        {
+          "name": "low_health",
+          "data_type": "var",
+          "default_value": 50,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var low_health = 50",
+          "description": ""
+        },
+        {
+          "name": "very_low_health",
+          "data_type": "var",
+          "default_value": 20,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var very_low_health = 20",
+          "description": ""
+        },
+        {
+          "name": "textures",
+          "data_type": "var",
+          "default_value": [
+
+          ],
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var textures = []",
+          "description": ""
+        }
+      ],
+      "signals": [
+
+      ],
+      "methods": [
+        {
+          "name": "_on_HealthBar_value_changed",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _on_HealthBar_value_changed(value)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "value",
+              "type": "var"
+            }
+          ]
+        }
+      ],
+      "static_functions": [
+
+      ]
+    },
+    {
+      "name": "Hookshot.gd",
+      "path": "res://Hookshot.gd",
+      "extends_class": [
+        "Node2D"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class Hookshot.gd",
+      "description": "",
+      "sub_classes": [
+
+      ],
+      "constants": [
+
+      ],
+      "members": [
+        {
+          "name": "AnchorEffects",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var AnchorEffects",
+          "description": ""
+        },
+        {
+          "name": "hookshot_range_multiplier",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var hookshot_range_multiplier",
+          "description": ""
+        },
+        {
+          "name": "attach_after_miss",
+          "data_type": "var",
+          "default_value": true,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var attach_after_miss = true",
+          "description": ""
+        },
+        {
+          "name": "debug",
+          "data_type": "var",
+          "default_value": false,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var debug = false",
+          "description": ""
+        },
+        {
+          "name": "hookshot_goal",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var hookshot_goal",
+          "description": ""
+        },
+        {
+          "name": "connected_obstacle",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var connected_obstacle",
+          "description": ""
+        },
+        {
+          "name": "connection_point",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var connection_point",
+          "description": ""
+        },
+        {
+          "name": "rope_direction",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var rope_direction",
+          "description": ""
+        },
+        {
+          "name": "player",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var player",
+          "description": ""
+        },
+        {
+          "name": "CollisionLine",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var CollisionLine",
+          "description": ""
+        },
+        {
+          "name": "RotationPoint",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var RotationPoint",
+          "description": ""
+        },
+        {
+          "name": "rotation_point",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var rotation_point",
+          "description": " setget , get_rotation_point\n"
+        },
+        {
+          "name": "swing_towards_indicator",
+          "data_type": "var",
+          "default_value": true,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var swing_towards_indicator = true",
+          "description": ""
+        },
+        {
+          "name": "rotate_with_indicator",
+          "data_type": "var",
+          "default_value": true,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var rotate_with_indicator = true",
+          "description": ""
+        },
+        {
+          "name": "disable_indicator_while_rope_attached",
+          "data_type": "var",
+          "default_value": false,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var disable_indicator_while_rope_attached = false",
+          "description": ""
+        },
+        {
+          "name": "is_thrown",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var is_thrown",
+          "description": ""
+        }
+      ],
+      "signals": [
+
+      ],
+      "methods": [
+        {
+          "name": "_ready",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _ready()",
+          "description": "func get_rotation_point():\n\t return get_tree().root.get_child(0).get_node(\"RotationPoint-\" + get_parent().name)\n",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "throw",
+          "return_type": "bool",
+          "rpc_mode": 0,
+          "signature": "func throw() -> bool",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "_process",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _process(delta)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "delta",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "attach",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func attach(point)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "point",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "detach",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func detach()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "set_collision_enabled",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func set_collision_enabled(state)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "state",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "_on_AttachArea_body_entered",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _on_AttachArea_body_entered(body)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "body",
+              "type": "var"
+            }
+          ]
+        }
+      ],
+      "static_functions": [
+
+      ]
+    },
+    {
+      "name": "MainScreen.gd",
+      "path": "res://MainScreen.gd",
+      "extends_class": [
+        "Node2D"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class MainScreen.gd",
+      "description": "",
+      "sub_classes": [
+
+      ],
+      "constants": [
+
+      ],
+      "members": [
+
+      ],
+      "signals": [
+
+      ],
+      "methods": [
+        {
+          "name": "_input",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _input(event)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "event",
+              "type": "var"
+            }
+          ]
+        }
+      ],
+      "static_functions": [
+
+      ]
+    },
+    {
+      "name": "LevelSelect.gd",
+      "path": "res://Menus/LevelSelect.gd",
+      "extends_class": [
+        "Node2D"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class LevelSelect.gd",
+      "description": "",
+      "sub_classes": [
+
+      ],
+      "constants": [
+
+      ],
+      "members": [
+        {
+          "name": "preview_textures",
+          "data_type": "var",
+          "default_value": [
+
+          ],
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var preview_textures = []",
+          "description": ""
+        },
+        {
+          "name": "player_count",
+          "data_type": "var",
+          "default_value": 2,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var player_count = 2",
+          "description": ""
+        }
+      ],
+      "signals": [
+
+      ],
+      "methods": [
+        {
+          "name": "_process",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _process(delta)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "delta",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "load_level",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func load_level(name)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "name",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "set_preview_texture",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func set_preview_texture(index)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "index",
+              "type": "var"
+            }
+          ]
+        }
+      ],
+      "static_functions": [
+
+      ]
+    },
+    {
+      "name": "PlayerSelect.gd",
+      "path": "res://Menus/PlayerSelect.gd",
+      "extends_class": [
+        "Node2D"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class PlayerSelect.gd",
+      "description": "",
+      "sub_classes": [
+
+      ],
+      "constants": [
+
+      ],
+      "members": [
+        {
+          "name": "player_sprites_paths",
+          "data_type": "var",
+          "default_value": [
+
+          ],
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var player_sprites_paths = []",
+          "description": ""
+        }
+      ],
+      "signals": [
+
+      ],
+      "methods": [
+        {
+          "name": "_process",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _process(delta)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "delta",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "preview_selection",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func preview_selection(selection)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "selection",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "confirm_selection",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func confirm_selection(selection)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "selection",
+              "type": "var"
+            }
+          ]
+        }
+      ],
+      "static_functions": [
+
+      ]
+    },
+    {
+      "name": "Player.gd",
+      "path": "res://Player.gd",
+      "extends_class": [
+        "KinematicBody2D"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class Player.gd",
+      "description": "",
+      "sub_classes": [
+
+      ],
+      "constants": [
+        {
+          "name": "MovementDirections",
+          "value": {
+            "RIGHT": 0,
+            "LEFT": 1
+          },
+          "data_type": "Dictionary",
+          "signature": "const MovementDirections: Dictionary = {\"LEFT\":1,\"RIGHT\":0}",
+          "description": ""
+        }
+      ],
+      "members": [
+        {
+          "name": "move_direction",
+          "data_type": "var",
+          "default_value": 0,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var move_direction = 0",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "data_type": "var",
+          "default_value": 1,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var id = 1",
+          "description": " 1 for player one, two for player 2... etc\n"
+        },
+        {
+          "name": "hookshot_range_multiplier",
+          "data_type": "var",
+          "default_value": 3,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var hookshot_range_multiplier = 3",
+          "description": ""
+        },
+        {
+          "name": "move_speed",
+          "data_type": "var",
+          "default_value": 200,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var move_speed = 200",
+          "description": ""
+        },
+        {
+          "name": "max_health",
+          "data_type": "var",
+          "default_value": 3,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var max_health = 3",
+          "description": ""
+        },
+        {
+          "name": "bounce_of_obstacles",
+          "data_type": "var",
+          "default_value": true,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var bounce_of_obstacles = true",
+          "description": ""
+        },
+        {
+          "name": "clear_line_on_bounce",
+          "data_type": "var",
+          "default_value": false,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var clear_line_on_bounce = false",
+          "description": ""
+        },
+        {
+          "name": "detach_hookshot_on_bounce",
+          "data_type": "var",
+          "default_value": true,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var detach_hookshot_on_bounce = true",
+          "description": ""
+        },
+        {
+          "name": "use_reflection_angle",
+          "data_type": "var",
+          "default_value": false,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var use_reflection_angle = false",
+          "description": ""
+        },
+        {
+          "name": "minimum_bounce_angle",
+          "data_type": "var",
+          "default_value": -30,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var minimum_bounce_angle = -30",
+          "description": ""
+        },
+        {
+          "name": "maximum_bounce_angle",
+          "data_type": "var",
+          "default_value": 30,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var maximum_bounce_angle = 30",
+          "description": ""
+        },
+        {
+          "name": "colors",
+          "data_type": "var",
+          "default_value": [
+            "1,0,0,1",
+            "0,0,1,1"
+          ],
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var colors = [\"1,0,0,1\",\"0,0,1,1\"]",
+          "description": ""
+        },
+        {
+          "name": "color",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var color",
+          "description": ""
+        },
+        {
+          "name": "health",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var health",
+          "description": ""
+        },
+        {
+          "name": "is_invincible",
+          "data_type": "var",
+          "default_value": false,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var is_invincible = false",
+          "description": ""
+        },
+        {
+          "name": "reverse_movement",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var reverse_movement",
+          "description": ""
+        },
+        {
+          "name": "swing_start_point",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var swing_start_point",
+          "description": ""
+        },
+        {
+          "name": "velocity",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var velocity",
+          "description": ""
+        },
+        {
+          "name": "attached_trail",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var attached_trail",
+          "description": ""
+        },
+        {
+          "name": "Projectile",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var Projectile",
+          "description": ""
+        }
+      ],
+      "signals": [
+
+      ],
+      "methods": [
+        {
+          "name": "_ready",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _ready()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "_process",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _process(delta)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "delta",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "_physics_process",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _physics_process(delta)",
+          "description": "\t# DEBUG\n\tif Input.is_action_just_pressed(\"debug_increase_move_speed\"):\n\t\tmove_speed += 1\n\tif Input.is_action_just_pressed(\"debug_reduce_move_speed\"):\n\t\tif move_speed > 0:\n\t\t\tmove_speed -= 1\n",
+          "arguments": [
+            {
+              "name": "delta",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "set_reverse_movement",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func set_reverse_movement(new_reverse_movement)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "new_reverse_movement",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "revert_movement",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func revert_movement()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "_on_BounceArea_body_entered",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _on_BounceArea_body_entered(body)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "body",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "take_damage",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func take_damage(damage = 1)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "damage",
+              "type": "var",
+              "default_value": 1
+            }
+          ]
+        },
+        {
+          "name": "die",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func die()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "_on_AnimationPlayer_animation_finished",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _on_AnimationPlayer_animation_finished(anim_name)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "anim_name",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "hide_indicator",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func hide_indicator()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "_exit_tree",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _exit_tree()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "assign_trail",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func assign_trail(trail)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "trail",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "delete_trail",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func delete_trail()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "heal",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func heal(amount = 1)",
+          "description": " powerup api\n",
+          "arguments": [
+            {
+              "name": "amount",
+              "type": "var",
+              "default_value": 1
+            }
+          ]
+        },
+        {
+          "name": "increase_speed",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func increase_speed(amount)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "amount",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "increase_hookshot_range",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func increase_hookshot_range(amount)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "amount",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "shoot_projectiles",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func shoot_projectiles(ammount, speed)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "ammount",
+              "type": "var"
+            },
+            {
+              "name": "speed",
+              "type": "var"
+            }
+          ]
+        }
+      ],
+      "static_functions": [
+
+      ]
+    },
+    {
+      "name": "PlayerSpawner.gd",
+      "path": "res://PlayerSpawner.gd",
+      "extends_class": [
+        "Node2D"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class PlayerSpawner.gd",
+      "description": "",
+      "sub_classes": [
+
+      ],
+      "constants": [
+
+      ],
+      "members": [
+        {
+          "name": "player",
+          "data_type": "var",
+          "default_value": "[Object:null]",
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var player = \"[Object:null]\"",
+          "description": ""
+        },
+        {
+          "name": "trail",
+          "data_type": "var",
+          "default_value": "[Object:null]",
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var trail = \"[Object:null]\"",
+          "description": ""
+        },
+        {
+          "name": "spawn_positions",
+          "data_type": "var",
+          "default_value": [
+
+          ],
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var spawn_positions = []",
+          "description": ""
+        },
+        {
+          "name": "player_count",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var player_count",
+          "description": ""
+        }
+      ],
+      "signals": [
+
+      ],
+      "methods": [
+        {
+          "name": "_ready",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _ready()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "_on_player_death",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _on_player_death()",
+          "description": "",
+          "arguments": [
+
+          ]
+        }
+      ],
+      "static_functions": [
+
+      ]
+    },
+    {
+      "name": "PowerUp.gd",
+      "path": "res://PowerUp.gd",
+      "extends_class": [
+        "StaticBody2D"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class PowerUp.gd",
+      "description": "",
+      "sub_classes": [
+
+      ],
+      "constants": [
+        {
+          "name": "Types",
+          "value": {
+            "POWERBOOST": 0,
+            "HARPUNENUPDATE": 1,
+            "HEILUNG": 2,
+            "BOMBE": 3,
+            "KABOOM": 4
+          },
+          "data_type": "Dictionary",
+          "signature": "const Types: Dictionary = {\"BOMBE\":3,\"HARPUNENUPDATE\":1,\"HEILUNG\":2,\"KABOOM\":4,\"POWERBOOST\":0}",
+          "description": ""
+        }
+      ],
+      "members": [
+        {
+          "name": "textures",
+          "data_type": "var",
+          "default_value": [
+
+          ],
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var textures = []",
+          "description": ""
+        },
+        {
+          "name": "rarities",
+          "data_type": "var",
+          "default_value": {
+            "POWERBOOST": 40,
+            "HARPUNENUPDATE": 30,
+            "HEILUNG": 5,
+            "BOMBE": 10,
+            "Kaboom!": 15
+          },
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var rarities = {\"BOMBE\":10,\"HARPUNENUPDATE\":30,\"HEILUNG\":5,\"Kaboom!\":15,\"POWERBOOST\":40}",
+          "description": ""
+        },
+        {
+          "name": "move_speed_upgrade",
+          "data_type": "var",
+          "default_value": 50,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var move_speed_upgrade = 50",
+          "description": ""
+        },
+        {
+          "name": "hookshot_length_multipler_upgrade",
+          "data_type": "var",
+          "default_value": 1,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var hookshot_length_multipler_upgrade = 1",
+          "description": ""
+        },
+        {
+          "name": "projectile_speed",
+          "data_type": "var",
+          "default_value": 300,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var projectile_speed = 300",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "data_type": "var",
+          "default_value": 0,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var type = 0",
+          "description": " setget set_type\n"
+        },
+        {
+          "name": "spawned_by",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var spawned_by",
+          "description": ""
+        },
+        {
+          "name": "type_name",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var type_name",
+          "description": ""
+        }
+      ],
+      "signals": [
+        {
+          "name": "wasHitLoadTutorialScene3",
+          "arguments": [
+
+          ],
+          "signature": "signal wasHitLoadTutorialScene3()",
+          "description": ""
+        }
+      ],
+      "methods": [
+        {
+          "name": "get_name",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func get_name()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "_ready",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _ready()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "use",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func use(user)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "user",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "_exit_tree",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _exit_tree()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "randomize_type",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func randomize_type()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "get_random_type",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func get_random_type()",
+          "description": "",
+          "arguments": [
+
+          ]
+        }
+      ],
+      "static_functions": [
+
+      ]
+    },
+    {
+      "name": "PowerUpSpawner.gd",
+      "path": "res://PowerUpSpawner.gd",
+      "extends_class": [
+        "Node2D"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class PowerUpSpawner.gd",
+      "description": "",
+      "sub_classes": [
+
+      ],
+      "constants": [
+        {
+          "name": "RespawnTypes",
+          "value": {
+            "AFTER_COLLECTED": 0,
+            "AFTER_ZONE_CREATED": 1,
+            "NEVER": 2
+          },
+          "data_type": "Dictionary",
+          "signature": "const RespawnTypes: Dictionary = {\"AFTER_COLLECTED\":0,\"AFTER_ZONE_CREATED\":1,\"NEVER\":2}",
+          "description": ""
+        }
+      ],
+      "members": [
+        {
+          "name": "PowerUp",
+          "data_type": "var",
+          "default_value": "[Object:null]",
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var PowerUp = \"[Object:null]\"",
+          "description": ""
+        },
+        {
+          "name": "spawn_area_path",
+          "data_type": "var",
+          "default_value": "",
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var spawn_area_path = \"\"",
+          "description": ""
+        },
+        {
+          "name": "SpawnArea",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var SpawnArea",
+          "description": ""
+        },
+        {
+          "name": "respawn_type",
+          "data_type": "var",
+          "default_value": 0,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var respawn_type = 0",
+          "description": "export var concurrent_powerups = 1\n"
+        },
+        {
+          "name": "spawn_chance_AFTER_ZONE_CREATED",
+          "data_type": "var",
+          "default_value": 25,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var spawn_chance_AFTER_ZONE_CREATED = 25",
+          "description": "export var concurrent_powerups = 1\n"
+        },
+        {
+          "name": "min_respawn_delay",
+          "data_type": "var",
+          "default_value": 5,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var min_respawn_delay = 5",
+          "description": ""
+        },
+        {
+          "name": "max_respawn_delay",
+          "data_type": "var",
+          "default_value": 25,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var max_respawn_delay = 25",
+          "description": ""
+        },
+        {
+          "name": "spawns_queued",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var spawns_queued",
+          "description": ""
+        }
+      ],
+      "signals": [
+
+      ],
+      "methods": [
+        {
+          "name": "get_spawn_position",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func get_spawn_position()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "_ready",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _ready()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "spawn_on_zoned",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func spawn_on_zoned()",
+          "description": "\tfor i in range(concurrent_powerups):\n\t\tspawn_powerup()\n",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "spawn_powerup",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func spawn_powerup()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "queue_spawn",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func queue_spawn()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "_on_PowerUpRespawnDelay_timeout",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _on_PowerUpRespawnDelay_timeout()",
+          "description": "",
+          "arguments": [
+
+          ]
+        }
+      ],
+      "static_functions": [
+
+      ]
+    },
+    {
+      "name": "Projectile.gd",
+      "path": "res://Projectile.gd",
+      "extends_class": [
+        "Area2D"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class Projectile.gd",
+      "description": "",
+      "sub_classes": [
+
+      ],
+      "constants": [
+
+      ],
+      "members": [
+        {
+          "name": "move_speed",
+          "data_type": "var",
+          "default_value": 300,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var move_speed = 300",
+          "description": ""
+        },
+        {
+          "name": "damage",
+          "data_type": "var",
+          "default_value": 1,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var damage = 1",
+          "description": ""
+        },
+        {
+          "name": "creator",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var creator",
+          "description": ""
+        }
+      ],
+      "signals": [
+
+      ],
+      "methods": [
+        {
+          "name": "_process",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _process(delta)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "delta",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "_on_Projectile_body_entered",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _on_Projectile_body_entered(body)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "body",
+              "type": "var"
+            }
+          ]
+        }
+      ],
+      "static_functions": [
+
+      ]
+    },
+    {
+      "name": "ReferenceCollector",
+      "path": "res://ReferenceCollector.gd",
+      "extends_class": [
+        "EditorScript"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class ReferenceCollector",
+      "description": "",
+      "sub_classes": [
+
+      ],
+      "constants": [
+
+      ],
+      "members": [
+        {
+          "name": "Collector",
+          "data_type": "SceneTree",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var Collector: SceneTree",
+          "description": ""
+        },
+        {
+          "name": "directories",
+          "data_type": "Array",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var directories: Array",
+          "description": " A list of directories to collect files from.\n"
+        },
+        {
+          "name": "is_recursive",
+          "data_type": "bool",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var is_recursive: bool",
+          "description": " A list of directories to collect files from.\n If true, explore each directory recursively\n"
+        },
+        {
+          "name": "patterns",
+          "data_type": "Array",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var patterns: Array",
+          "description": " A list of directories to collect files from.\n If true, explore each directory recursively\n A list of patterns to filter files.\n"
+        },
+        {
+          "name": "save_path",
+          "data_type": "String",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var save_path: String",
+          "description": " A list of directories to collect files from.\n If true, explore each directory recursively\n A list of patterns to filter files.\n Output path to save the class reference.\n"
+        }
+      ],
+      "signals": [
+
+      ],
+      "methods": [
+        {
+          "name": "_run",
+          "return_type": "null",
+          "rpc_mode": 0,
+          "signature": "func _run() -> null",
+          "description": "",
+          "arguments": [
+
+          ]
+        }
+      ],
+      "static_functions": [
+
+      ]
+    },
+    {
+      "name": "RotationPoint",
+      "path": "res://RotationPoint.gd",
+      "extends_class": [
+        "Node2D"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class RotationPoint",
+      "description": "",
+      "sub_classes": [
+
+      ],
+      "constants": [
+
+      ],
+      "members": [
+        {
+          "name": "Effects",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var Effects",
+          "description": ""
+        },
+        {
+          "name": "rotation_per_seconds",
+          "data_type": "var",
+          "default_value": 1,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var rotation_per_seconds = 1",
+          "description": ""
+        },
+        {
+          "name": "is_rotating",
+          "data_type": "var",
+          "default_value": false,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var is_rotating = false",
+          "description": ""
+        },
+        {
+          "name": "x_direction",
+          "data_type": "var",
+          "default_value": 1,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var x_direction = 1",
+          "description": " 1 or -1\n"
+        },
+        {
+          "name": "move_speed_multiplier",
+          "data_type": "var",
+          "default_value": 1,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var move_speed_multiplier = 1",
+          "description": ""
+        },
+        {
+          "name": "outward_motion",
+          "data_type": "var",
+          "default_value": 0,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var outward_motion = 0",
+          "description": ""
+        },
+        {
+          "name": "pull_strength",
+          "data_type": "var",
+          "default_value": 10,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var pull_strength = 10",
+          "description": " # Effect modifiers\n"
+        },
+        {
+          "name": "push_strength",
+          "data_type": "var",
+          "default_value": 10,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var push_strength = 10",
+          "description": ""
+        },
+        {
+          "name": "slow_multiplier",
+          "data_type": "var",
+          "default_value": 0.75,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var slow_multiplier = 0.75",
+          "description": " Move speed is multiplied by this while attached to a slowing Anchor.\n"
+        },
+        {
+          "name": "fast_speed_bonus",
+          "data_type": "var",
+          "default_value": 2,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var fast_speed_bonus = 2",
+          "description": " Move speed is multiplied by this while attached to a slowing Anchor.\n This will be added to your while attached to a fast Anchor.\n"
+        },
+        {
+          "name": "default_values",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var default_values",
+          "description": ""
+        }
+      ],
+      "signals": [
+
+      ],
+      "methods": [
+        {
+          "name": "_ready",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _ready()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "_process",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _process(delta)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "delta",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "calc_and_set_rotation_per_seconds",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func calc_and_set_rotation_per_seconds(speed, radius)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "speed",
+              "type": "var"
+            },
+            {
+              "name": "radius",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "start_rotation",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func start_rotation()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "stop_rotation",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func stop_rotation()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "set_x_direction",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func set_x_direction(is_right: bool)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "is_right",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "name": "set_simulate_player_position",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func set_simulate_player_position(position)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "position",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "reset",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func reset()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "trigger_effect",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func trigger_effect(effect)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "effect",
+              "type": "var"
+            }
+          ]
+        }
+      ],
+      "static_functions": [
+
+      ]
+    },
+    {
+      "name": "Trail.gd",
+      "path": "res://Trail.gd",
+      "extends_class": [
+        "Node2D"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class Trail.gd",
+      "description": "",
+      "sub_classes": [
+
+      ],
+      "constants": [
+
+      ],
+      "members": [
+        {
+          "name": "to_follow",
+          "data_type": "var",
+          "default_value": "",
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var to_follow = \"\"",
+          "description": ""
+        },
+        {
+          "name": "create_shapes",
+          "data_type": "var",
+          "default_value": true,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var create_shapes = true",
+          "description": "export (float) var minmum_point_distance = 1.0\n"
+        },
+        {
+          "name": "fade_time",
+          "data_type": "var",
+          "default_value": -1,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var fade_time = -1",
+          "description": "export (float) var minmum_point_distance = 1.0\n time in seconds afer a point of the line is removed (set negative for a permanent line)\n"
+        },
+        {
+          "name": "debug",
+          "data_type": "bool",
+          "default_value": false,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var debug: bool = false",
+          "description": ""
+        },
+        {
+          "name": "intersection_blacklist",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var intersection_blacklist",
+          "description": ""
+        },
+        {
+          "name": "CapturedArea",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var CapturedArea",
+          "description": ""
+        }
+      ],
+      "signals": [
+
+      ],
+      "methods": [
+        {
+          "name": "_ready",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _ready()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "set_color",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func set_color(color)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "color",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "clear_line",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func clear_line()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "_on_Trail_Timer_timeout",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _on_Trail_Timer_timeout()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "create_captured_area_from_intersection",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func create_captured_area_from_intersection(intersection, points)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "intersection",
+              "type": "var"
+            },
+            {
+              "name": "points",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "find_intersection",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func find_intersection(points)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "points",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "set_line_color",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func set_line_color(color)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "color",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "is_polygon_valid",
+          "return_type": "bool",
+          "rpc_mode": 0,
+          "signature": "func is_polygon_valid(polygon) -> bool",
+          "description": " returns false if the area has a height or width of 0\n",
+          "arguments": [
+            {
+              "name": "polygon",
+              "type": "var"
+            }
+          ]
+        }
+      ],
+      "static_functions": [
+        {
+          "name": "get_segment_intersection",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func get_segment_intersection(a, b, c, d)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "a",
+              "type": "var"
+            },
+            {
+              "name": "b",
+              "type": "var"
+            },
+            {
+              "name": "c",
+              "type": "var"
+            },
+            {
+              "name": "d",
+              "type": "var"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LoadMainScene.gd",
+      "path": "res://Tutorial/LoadMainScene.gd",
+      "extends_class": [
+        "Node2D"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class LoadMainScene.gd",
+      "description": "",
+      "sub_classes": [
+
+      ],
+      "constants": [
+
+      ],
+      "members": [
+
+      ],
+      "signals": [
+
+      ],
+      "methods": [
+        {
+          "name": "_ready",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _ready()",
+          "description": " Called when the node enters the scene tree for the first time.\r\n",
+          "arguments": [
+
+          ]
+        }
+      ],
+      "static_functions": [
+
+      ]
+    },
+    {
+      "name": "LoadTutorialScene2.gd",
+      "path": "res://Tutorial/LoadTutorialScene2.gd",
+      "extends_class": [
+        "Node2D"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class LoadTutorialScene2.gd",
+      "description": "",
+      "sub_classes": [
+
+      ],
+      "constants": [
+
+      ],
+      "members": [
+
+      ],
+      "signals": [
+
+      ],
+      "methods": [
+        {
+          "name": "_on_Anchor_wasHitLoadTutorialScene2",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _on_Anchor_wasHitLoadTutorialScene2()",
+          "description": "",
+          "arguments": [
+
+          ]
+        }
+      ],
+      "static_functions": [
+
+      ]
+    },
+    {
+      "name": "LoadTutorialScene3.gd",
+      "path": "res://Tutorial/LoadTutorialScene3.gd",
+      "extends_class": [
+        "Node2D"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class LoadTutorialScene3.gd",
+      "description": "",
+      "sub_classes": [
+
+      ],
+      "constants": [
+
+      ],
+      "members": [
+
+      ],
+      "signals": [
+
+      ],
+      "methods": [
+        {
+          "name": "_on_PowerUp2_wasHitLoadTutorialScene3",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _on_PowerUp2_wasHitLoadTutorialScene3()",
+          "description": "",
+          "arguments": [
+
+          ]
+        }
+      ],
+      "static_functions": [
+
+      ]
+    },
+    {
+      "name": "LoadTutorialScene4.gd",
+      "path": "res://Tutorial/LoadTutorialScene4.gd",
+      "extends_class": [
+        "Node2D"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class LoadTutorialScene4.gd",
+      "description": "",
+      "sub_classes": [
+
+      ],
+      "constants": [
+
+      ],
+      "members": [
+
+      ],
+      "signals": [
+
+      ],
+      "methods": [
+        {
+          "name": "_ready",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _ready()",
+          "description": " Called when the node enters the scene tree for the first time.\r\n",
+          "arguments": [
+
+          ]
+        }
+      ],
+      "static_functions": [
+
+      ]
+    },
+    {
+      "name": "MultiControlButton.gd",
+      "path": "res://UI/MultiControlButton.gd",
+      "extends_class": [
+        "Button"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class MultiControlButton.gd",
+      "description": "",
+      "sub_classes": [
+
+      ],
+      "constants": [
+
+      ],
+      "members": [
+        {
+          "name": "label_text",
+          "data_type": "var",
+          "default_value": "Button",
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var label_text = \"Button\"",
+          "description": ""
+        },
+        {
+          "name": "on_clicked_function_location",
+          "data_type": "var",
+          "default_value": ".",
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var on_clicked_function_location = \".\"",
+          "description": ""
+        },
+        {
+          "name": "on_clicked_function_name",
+          "data_type": "var",
+          "default_value": "on_clicked_default",
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var on_clicked_function_name = \"on_clicked_default\"",
+          "description": ""
+        },
+        {
+          "name": "on_clicked_function_params",
+          "data_type": "var",
+          "default_value": [
+
+          ],
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var on_clicked_function_params = []",
+          "description": ""
+        },
+        {
+          "name": "on_selected_function_location",
+          "data_type": "var",
+          "default_value": ".",
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var on_selected_function_location = \".\"",
+          "description": ""
+        },
+        {
+          "name": "on_selected_function_name",
+          "data_type": "var",
+          "default_value": "on_selected_default",
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var on_selected_function_name = \"on_selected_default\"",
+          "description": ""
+        },
+        {
+          "name": "on_selected_function_params",
+          "data_type": "var",
+          "default_value": [
+
+          ],
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var on_selected_function_params = []",
+          "description": ""
+        },
+        {
+          "name": "button_activation_time",
+          "data_type": "var",
+          "default_value": 3,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var button_activation_time = 3",
+          "description": ""
+        },
+        {
+          "name": "time_passed_with_button_helt",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "set_time_passed_with_button_helt",
+          "getter": "",
+          "export": false,
+          "signature": "var time_passed_with_button_helt",
+          "description": ""
+        },
+        {
+          "name": "_on_clicked",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var _on_clicked",
+          "description": ""
+        },
+        {
+          "name": "_on_selected",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var _on_selected",
+          "description": ""
+        },
+        {
+          "name": "button_selected",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var button_selected",
+          "description": ""
+        }
+      ],
+      "signals": [
+        {
+          "name": "selected",
+          "arguments": [
+
+          ],
+          "signature": "signal selected()",
+          "description": ""
+        },
+        {
+          "name": "deselected",
+          "arguments": [
+
+          ],
+          "signature": "signal deselected()",
+          "description": ""
+        },
+        {
+          "name": "activated",
+          "arguments": [
+
+          ],
+          "signature": "signal activated()",
+          "description": ""
+        }
+      ],
+      "methods": [
+        {
+          "name": "set_time_passed_with_button_helt",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func set_time_passed_with_button_helt(value)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "value",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "_ready",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _ready()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "on_clicked_default",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func on_clicked_default()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "on_selected_default",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func on_selected_default()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "_on_MultiControlButton_pressed",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _on_MultiControlButton_pressed()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "select",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func select()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "deselect",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func deselect()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "_on_MultiControlButton_mouse_entered",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _on_MultiControlButton_mouse_entered()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "_on_MultiControlButton_selected",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _on_MultiControlButton_selected()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "activate",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func activate()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "_on_MultiControlButton_activated",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _on_MultiControlButton_activated()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "_on_MultiControlButton_mouse_exited",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _on_MultiControlButton_mouse_exited()",
+          "description": "",
+          "arguments": [
+
+          ]
+        }
+      ],
+      "static_functions": [
+
+      ]
+    },
+    {
+      "name": "MultiControlButtonManager.gd",
+      "path": "res://UI/MultiControlButtonManager.gd",
+      "extends_class": [
+        "Node2D"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class MultiControlButtonManager.gd",
+      "description": "",
+      "sub_classes": [
+
+      ],
+      "constants": [
+
+      ],
+      "members": [
+        {
+          "name": "MultiControllButton",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var MultiControllButton",
+          "description": ""
+        },
+        {
+          "name": "selected_button_index",
+          "data_type": "var",
+          "default_value": 0,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var selected_button_index = 0",
+          "description": ""
+        },
+        {
+          "name": "is_button_held",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var is_button_held",
+          "description": ""
+        },
+        {
+          "name": "child_count",
+          "data_type": "var",
+          "default_value": null,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var child_count",
+          "description": ""
+        },
+        {
+          "name": "is_one_button_mode",
+          "data_type": "bool",
+          "default_value": false,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var is_one_button_mode: bool = false",
+          "description": ""
+        },
+        {
+          "name": "is_mouse_motion",
+          "data_type": "bool",
+          "default_value": false,
+          "setter": "",
+          "getter": "",
+          "export": false,
+          "signature": "var is_mouse_motion: bool = false",
+          "description": ""
+        }
+      ],
+      "signals": [
+
+      ],
+      "methods": [
+        {
+          "name": "_ready",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _ready()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "select_next",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func select_next()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "select_previous",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func select_previous()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "on_tap",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func on_tap()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "on_double_tap",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func on_double_tap()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "select_child_button",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func select_child_button()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "deselect_child_button",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func deselect_child_button()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "_input",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _input(event)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "event",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "_process",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _process(delta)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "delta",
+              "type": "var"
+            }
+          ]
+        },
+        {
+          "name": "_on_TapTimer_timeout",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func _on_TapTimer_timeout()",
+          "description": "",
+          "arguments": [
+
+          ]
+        }
+      ],
+      "static_functions": [
+
+      ]
+    },
+    {
+      "name": "Wall.gd",
+      "path": "res://Wall.gd",
+      "extends_class": [
+        "StaticBody2D"
+      ],
+      "extends_file": "",
+      "icon": "",
+      "signature": "class Wall.gd",
+      "description": "",
+      "sub_classes": [
+
+      ],
+      "constants": [
+        {
+          "name": "Side",
+          "value": {
+            "TOP": 0,
+            "LEFT": 1,
+            "BOTTOM": 2,
+            "RIGHT": 3
+          },
+          "data_type": "Dictionary",
+          "signature": "const Side: Dictionary = {\"BOTTOM\":2,\"LEFT\":1,\"RIGHT\":3,\"TOP\":0}",
+          "description": ""
+        }
+      ],
+      "members": [
+        {
+          "name": "side",
+          "data_type": "var",
+          "default_value": 0,
+          "setter": "",
+          "getter": "",
+          "export": true,
+          "signature": "export var side = 0",
+          "description": ""
+        }
+      ],
+      "signals": [
+
+      ],
+      "methods": [
+        {
+          "name": "get_bounce_angle",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func get_bounce_angle()",
+          "description": "",
+          "arguments": [
+
+          ]
+        },
+        {
+          "name": "get_reflection_velocity",
+          "return_type": "var",
+          "rpc_mode": 0,
+          "signature": "func get_reflection_velocity(velocity)",
+          "description": "",
+          "arguments": [
+            {
+              "name": "velocity",
+              "type": "var"
+            }
+          ]
+        }
+      ],
+      "static_functions": [
+
+      ]
+    }
+  ]
+}

@@ -8,6 +8,28 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "StaticBody2D",
+"class": "Anchor",
+"language": "GDScript",
+"path": "res://Anchor.gd"
+}, {
+"base": "EditorScript",
+"class": "ReferenceCollector",
+"language": "GDScript",
+"path": "res://ReferenceCollector.gd"
+}, {
+"base": "Node2D",
+"class": "RotationPoint",
+"language": "GDScript",
+"path": "res://RotationPoint.gd"
+} ]
+_global_script_class_icons={
+"Anchor": "",
+"ReferenceCollector": "",
+"RotationPoint": ""
+}
+
 [application]
 
 config/name="OneButtonGameJam"
