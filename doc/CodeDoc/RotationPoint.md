@@ -14,11 +14,17 @@
 var Effects
 ```
 
+Direct Reference to [Anchor Effects]("Anchor.gd.md#Effects)
+
+# General Configurations (Configured ingame!)
+
 ### rotation\_per\_seconds
 
 ```gdscript
 export var rotation_per_seconds = 1
 ```
+
+determines speed (independent of distance)
 
 ### is\_rotating
 
@@ -26,13 +32,15 @@ export var rotation_per_seconds = 1
 export var is_rotating = false
 ```
 
+set true to pause rotation
+
 ### x\_direction
 
 ```gdscript
 export var x_direction = 1
 ```
 
-1 or -1
+Clockwise/Counterclockwise = 1/-1
 
 ### move\_speed\_multiplier
 
@@ -40,11 +48,18 @@ export var x_direction = 1
 export var move_speed_multiplier = 1
 ```
 
+used for fast/slow effect
+
 ### outward\_motion
 
 ```gdscript
 export var outward_motion = 0
 ```
+
+used for fast/slow effect
+used for pull/push effect
+
+# Effect modifiers
 
 ### pull\_strength
 
@@ -52,13 +67,15 @@ export var outward_motion = 0
 export var pull_strength = 10
 ```
 
-# Effect modifiers
+How fast the player should move towards the anchor.
 
 ### push\_strength
 
 ```gdscript
 export var push_strength = 10
 ```
+
+How fast the player should move away from the anchor.
 
 ### slow\_multiplier
 
@@ -74,14 +91,17 @@ Move speed is multiplied by this while attached to a slowing Anchor.
 export var fast_speed_bonus = 2
 ```
 
-Move speed is multiplied by this while attached to a slowing Anchor.
-This will be added to your while attached to a fast Anchor.
+This is added to your move speed while attached to fast Anchor.
+
+# Internal Usage
 
 ### default\_values
 
 ```gdscript
 var default_values
 ```
+
+used to restore default
 
 ## Method Descriptions
 

@@ -5,25 +5,27 @@ extends Node2D
 # > For more information on the [Effects](#Effect modifiers) consult the [Anchor Documentation](../Anchor.gd.md)
 class_name RotationPoint
 
-onready var Effects = preload("res://Anchor.gd").Effects
+# Direct Reference to [Anchor Effects]("Anchor.gd.md#Effects)
+#
+onready var Effects = preload("res://Anchor.gd").Effects ## General Configurations (Configured ingame!)
 
-export var rotation_per_seconds = 1
-export var is_rotating = false
-export var x_direction = 1 # 1 or -1
+export var rotation_per_seconds = 1 # determines speed (independent of distance)
+export var is_rotating = false # set true to pause rotation
+export var x_direction = 1  # Clockwise/Counterclockwise = 1/-1
+# used for fast/slow effect
 export var move_speed_multiplier = 1.0
-export var outward_motion = 0.0
+# used for pull/push effect
+#
+export var outward_motion = 0.0 ## Effect modifiers
 
-# # Effect modifiers
+export var pull_strength = 10 # How fast the player should move towards the anchor.
+export var push_strength = 10 # How fast the player should move away from the anchor.
+export var slow_multiplier = 0.75 # Move speed is multiplied by this while attached to a slowing Anchor.
+# This is added to your move speed while attached to fast Anchor.
+#
+export var fast_speed_bonus = 2 ## Internal Usage
 
-export var pull_strength = 10
-export var push_strength = 10
-# Move speed is multiplied by this while attached to a slowing Anchor.
-export var slow_multiplier = 0.75
-# This will be added to your while attached to a fast Anchor.
-export var fast_speed_bonus = 2
-
-
-var default_values = {}
+var default_values = {} # used to restore default
 
 func _ready():
 	default_values = {"rotation_per_seconds": rotation_per_seconds, \
