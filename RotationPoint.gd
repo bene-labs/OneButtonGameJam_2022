@@ -5,7 +5,7 @@ extends Node2D
 # > For more information on the [Effects](#Effect modifiers) consult the [Anchor Documentation](../Anchor.gd.md)
 class_name RotationPoint
 
-# Direct Reference to [Anchor Effects]("Anchor.gd.md#Effects)
+# Direct Reference to [Anchor Effects](Anchor.gd.md#Effects)
 #
 onready var Effects = preload("res://Anchor.gd").Effects ## General Configurations (Configured ingame!)
 
