@@ -23,13 +23,13 @@ Effects only affect the player while he is attached to and rotating around the A
 
 Effects are as follows:
 
-|Name   |Description                                            |Color           |Related Variable (provides 'x' value)                        |
-|-------|-------------------------------------------------------|----------------|-------------------------------------------------------------|
-|Nothing|No Effect                                              |Yellow (default)|None                                                         |
-|Push   |Player will move x units towards the anchor each frame.|Purple          |[pull_strength](RotationPoint.md#pull/_strength)       |
-|Push   |Player will move x away from the anchor each frame.    |Blue            |[push_strength](RotationPoint.md#push/_strength)       |
-|Fast   |Player will move x additional units each frame.        |Green           |[fast_speed_bonus](RotationPoint.md#fast/_speed/_bonus)|
-|Slow   |Player will only move at x times the usual speed.      |Red             |[slow_multiplier](RotationPoint.md#slow/_multiplier)   |
+|Name   |Description                                              |Color           |Related Variable (provides 'x' value)                  |
+|-------|---------------------------------------------------------|----------------|-------------------------------------------------------|
+|Nothing|No Effect                                                |Yellow (default)|None                                                   |
+|Pull   |Player will move x units towards the anchor each frame.  |Purple          |[pull_strength](RotationPoint.md#pull/_strength)       |
+|Push   |Player will move x units away from the anchor each frame.|Blue            |[push_strength](RotationPoint.md#push/_strength)       |
+|Fast   |Player will move x additional units each frame.          |Green           |[fast_speed_bonus](RotationPoint.md#fast/_speed/_bonus)|
+|Slow   |Player will only move at x times the usual speed.        |Red             |[slow_multiplier](RotationPoint.md#slow/_multiplier)   |
 
 ## Property Descriptions
 
