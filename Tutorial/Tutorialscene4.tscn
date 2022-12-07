@@ -6,15 +6,13 @@
 [ext_resource path="res://Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://InvisibleWall.tscn" type="PackedScene" id=5]
 [ext_resource path="res://debug/FpsCounter.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Tutorial/LoadMainScene.gd" type="Script" id=8]
+[ext_resource path="res://Tutorial/TutorialScene4.gd" type="Script" id=8]
 [ext_resource path="res://UI/MultiControlButton.tscn" type="PackedScene" id=9]
 
 [node name="Tutorialscene4" type="Node2D"]
-
-[node name="LoadMainScreen" type="Node2D" parent="."]
 script = ExtResource( 8 )
-continueButtonPath = NodePath("../MultiControlButton")
-playerPath = NodePath("../Player")
+continueButtonPath = NodePath("MultiControlButton")
+playerPath = NodePath("Player")
 
 [node name="Label" type="Label" parent="."]
 margin_right = 785.0
@@ -97,7 +95,7 @@ margin_top = 288.0
 margin_right = 541.0
 margin_bottom = 308.0
 label_text = "Finish"
-on_clicked_function_location = NodePath("../LoadMainScreen")
+on_clicked_function_location = NodePath("..")
 on_clicked_function_name = "loadNextScene"
 
-[connection signal="wasCollected" from="PowerUps/PowerUp2" to="LoadMainScreen" method="_on_PowerUp2_wasCollected"]
+[connection signal="wasCollected" from="PowerUps/PowerUp2" to="." method="_on_PowerUp2_wasCollected"]

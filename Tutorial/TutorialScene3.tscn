@@ -4,16 +4,14 @@
 [ext_resource path="res://InvisibleWall.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Trail.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Anchor.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Tutorial/LoadTutorialScene4.gd" type="Script" id=6]
+[ext_resource path="res://Tutorial/TutorialScene3.gd" type="Script" id=6]
 [ext_resource path="res://debug/FpsCounter.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/MultiControlButton.tscn" type="PackedScene" id=8]
 
 [node name="TutorialScene3" type="Node2D"]
-
-[node name="LoadTutorialScene4" type="Node2D" parent="."]
 script = ExtResource( 6 )
-continueButtonPath = NodePath("../MultiControlButton")
-playerPath = NodePath("../Player")
+continueButtonPath = NodePath("MultiControlButton")
+playerPath = NodePath("Player")
 
 [node name="Tutorial3Text" type="Label" parent="."]
 margin_right = 40.0
@@ -68,7 +66,7 @@ margin_top = 288.0
 margin_right = 543.0
 margin_bottom = 308.0
 label_text = "Continue"
-on_clicked_function_location = NodePath("../LoadTutorialScene4")
+on_clicked_function_location = NodePath("..")
 on_clicked_function_name = "loadNextScene"
 
-[connection signal="died" from="Enemy" to="LoadTutorialScene4" method="_on_Enemy_died"]
+[connection signal="died" from="Enemy" to="." method="_on_Enemy_died"]

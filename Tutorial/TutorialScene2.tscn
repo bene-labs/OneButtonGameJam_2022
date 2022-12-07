@@ -5,16 +5,14 @@
 [ext_resource path="res://InvisibleWall.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Trail.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Anchor.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Tutorial/LoadTutorialScene3.gd" type="Script" id=7]
+[ext_resource path="res://Tutorial/TutorialScene2.gd" type="Script" id=7]
 [ext_resource path="res://debug/FpsCounter.tscn" type="PackedScene" id=8]
 [ext_resource path="res://UI/MultiControlButton.tscn" type="PackedScene" id=9]
 
 [node name="TutorialScene2" type="Node2D"]
-
-[node name="LoadTutorialScene3" type="Node2D" parent="."]
 script = ExtResource( 7 )
-continueButtonPath = NodePath("../MultiControlButton")
-playerPath = NodePath("../Player")
+continueButtonPath = NodePath("MultiControlButton")
+playerPath = NodePath("Player")
 
 [node name="Tutorial2Text" type="Label" parent="."]
 margin_right = 40.0
@@ -82,9 +80,9 @@ margin_top = 287.0
 margin_right = 542.0
 margin_bottom = 307.0
 label_text = "Continue"
-on_clicked_function_location = NodePath("../LoadTutorialScene3")
+on_clicked_function_location = NodePath("..")
 on_clicked_function_name = "loadNextScene"
 
-[connection signal="wasCollected" from="PowerUps/PowerUp" to="LoadTutorialScene3" method="_on_PowerUp_wasCollected"]
-[connection signal="wasCollected" from="PowerUps/PowerUp2" to="LoadTutorialScene3" method="_on_PowerUp_wasCollected"]
-[connection signal="wasCollected" from="PowerUps/PowerUp3" to="LoadTutorialScene3" method="_on_PowerUp_wasCollected"]
+[connection signal="wasCollected" from="PowerUps/PowerUp" to="." method="_on_PowerUp_wasCollected"]
+[connection signal="wasCollected" from="PowerUps/PowerUp2" to="." method="_on_PowerUp_wasCollected"]
+[connection signal="wasCollected" from="PowerUps/PowerUp3" to="." method="_on_PowerUp_wasCollected"]

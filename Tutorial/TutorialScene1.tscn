@@ -4,16 +4,14 @@
 [ext_resource path="res://Trail.tscn" type="PackedScene" id=2]
 [ext_resource path="res://InvisibleWall.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Anchor.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Tutorial/LoadTutorialScene2.gd" type="Script" id=6]
+[ext_resource path="res://Tutorial/TutorialScene1.gd" type="Script" id=6]
 [ext_resource path="res://debug/FpsCounter.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/MultiControlButton.tscn" type="PackedScene" id=8]
 
 [node name="TutorialScene1" type="Node2D"]
-
-[node name="LoadTutorialScene2" type="Node2D" parent="."]
 script = ExtResource( 6 )
-continueButtonPath = NodePath("../MultiControlButton")
-playerPath = NodePath("../Player")
+continueButtonPath = NodePath("MultiControlButton")
+playerPath = NodePath("Player")
 
 [node name="TutorialText" type="Label" parent="."]
 margin_right = 657.0
@@ -65,7 +63,7 @@ margin_top = 364.0
 margin_right = 538.0
 margin_bottom = 384.0
 label_text = "Continue"
-on_clicked_function_location = NodePath("../LoadTutorialScene2")
+on_clicked_function_location = NodePath("..")
 on_clicked_function_name = "loadNextScene"
 
-[connection signal="wasDeactivated" from="Anchor" to="LoadTutorialScene2" method="_on_Anchor_wasDeactivated"]
+[connection signal="wasDeactivated" from="Anchor" to="." method="_on_Anchor_wasDeactivated"]
