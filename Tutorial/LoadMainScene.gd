@@ -6,10 +6,10 @@ export (NodePath) var playerPath
 func _ready():
 	get_node(continueButtonPath).hide()
 
-func _on_PowerUp2_wasHitLoadTutorialScene3():
+func loadNextScene():
+	get_tree().change_scene("res://Menus/PlayerSelect.tscn")
+
+func _on_PowerUp2_wasCollected():
 	get_node(continueButtonPath).show()
 	get_node(playerPath).set_process(false)
 	get_node(playerPath).set_physics_process(false)
-
-func loadNextScene():
-	get_tree().change_scene("res://Menus/MainScreen.tscn")

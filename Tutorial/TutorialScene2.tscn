@@ -84,3 +84,7 @@ margin_bottom = 307.0
 label_text = "Continue"
 on_clicked_function_location = NodePath("../LoadTutorialScene3")
 on_clicked_function_name = "loadNextScene"
+
+[connection signal="wasCollected" from="PowerUps/PowerUp" to="LoadTutorialScene3" method="_on_PowerUp_wasCollected"]
+[connection signal="wasCollected" from="PowerUps/PowerUp2" to="LoadTutorialScene3" method="_on_PowerUp_wasCollected"]
+[connection signal="wasCollected" from="PowerUps/PowerUp3" to="LoadTutorialScene3" method="_on_PowerUp_wasCollected"]

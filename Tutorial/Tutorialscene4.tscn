@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Anchor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://PowerUp.tscn" type="PackedScene" id=2]
@@ -99,3 +99,5 @@ margin_bottom = 308.0
 label_text = "Finish"
 on_clicked_function_location = NodePath("../LoadMainScreen")
 on_clicked_function_name = "loadNextScene"
+
+[connection signal="wasCollected" from="PowerUps/PowerUp2" to="LoadMainScreen" method="_on_PowerUp2_wasCollected"]

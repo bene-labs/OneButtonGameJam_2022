@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal died
+
 enum MovementDirections{
 	RIGHT,
 	LEFT
@@ -29,8 +31,6 @@ var velocity = Vector2.ZERO
 var attached_trail = null
 
 var Projectile = preload("res://Projectile.tscn")
-
-signal wasKilled
 
 func _ready():
 	color = colors[id - 1]
@@ -103,8 +103,8 @@ func take_damage(damage = 1):
 	$AnimationPlayer.play("take_damage")
 		
 func die():
-	emit_signal("wasKilled")
 	$AnimationPlayer.play("die")
+	emit_signal("died")
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):

@@ -6,7 +6,7 @@ export (NodePath) var playerPath
 func _ready():
 	get_node(continueButtonPath).hide()
 
-func _on_Anchor_wasHitLoadTutorialScene2():
+func _on_Anchor_wasDeactivated():
 	get_node(continueButtonPath).show()
 	get_node(playerPath).set_process(false)
 	get_node(playerPath).set_physics_process(false)

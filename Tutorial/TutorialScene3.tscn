@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://InvisibleWall.tscn" type="PackedScene" id=2]
@@ -71,4 +71,4 @@ label_text = "Continue"
 on_clicked_function_location = NodePath("../LoadTutorialScene4")
 on_clicked_function_name = "loadNextScene"
 
-[connection signal="wasHitLoadTutorailScene4" from="Enemy" to="LoadTutorialScene4" method="_on_Enemy_wasHitLoadTutorailScene4"]
+[connection signal="died" from="Enemy" to="LoadTutorialScene4" method="_on_Enemy_died"]

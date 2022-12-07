@@ -8,21 +8,7 @@ export (NodePath) var playerPath
 func _ready():
 	get_node(continueButtonPath).hide()
 
-func _on_PowerUp_wasHitLoadTutorialScene3():
-	collectedPowerUps += 1
-	if collectedPowerUps > 2:
-		get_node(continueButtonPath).show()
-		get_node(playerPath).set_process(false)
-		get_node(playerPath).set_physics_process(false)
-
-func _on_PowerUp2_wasHitLoadTutorialScene3():
-	collectedPowerUps += 1
-	if collectedPowerUps > 2:
-		get_node(continueButtonPath).show()
-		get_node(playerPath).set_process(false)
-		get_node(playerPath).set_physics_process(false)
-
-func _on_PowerUp3_wasHitLoadTutorialScene3():
+func _on_PowerUp_wasCollected():
 	collectedPowerUps += 1
 	if collectedPowerUps > 2:
 		get_node(continueButtonPath).show()

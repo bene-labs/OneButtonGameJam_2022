@@ -67,3 +67,5 @@ margin_bottom = 384.0
 label_text = "Continue"
 on_clicked_function_location = NodePath("../LoadTutorialScene2")
 on_clicked_function_name = "loadNextScene"
+
+[connection signal="wasDeactivated" from="Anchor" to="LoadTutorialScene2" method="_on_Anchor_wasDeactivated"]
