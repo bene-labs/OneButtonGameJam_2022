@@ -1,13 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Trail.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Game.gd" type="Script" id=3]
 [ext_resource path="res://InvisibleWall.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Anchor.tscn" type="PackedScene" id=5]
 
 [node name="TutorialScene1" type="Node2D"]
-script = ExtResource( 3 )
 
 [node name="TutorialText" type="Label" parent="."]
 margin_right = 657.0
@@ -18,7 +16,6 @@ text = "Drücke die Leertaste
 
 [node name="Trail" parent="." instance=ExtResource( 2 )]
 to_follow = NodePath("../Player")
-WIP_prevent_invalid_shapes = true
 debug = true
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
