@@ -17,7 +17,7 @@ export var projectile_speed = 300
 
 export (Types) var type = Types.POWERBOOST # setget set_type
 
-signal wasHitLoadTutorialScene3
+signal wasCollected
 
 var spawned_by = null
 var type_name = "undefined"
@@ -67,7 +67,7 @@ func use(user):
 		Types.KABOOM:
 			user.shoot_projectiles(3, projectile_speed)
 	queue_free()
-	emit_signal("wasHitLoadTutorialScene3")
+	emit_signal("wasCollected")
 
 func _exit_tree():
 	if spawned_by != null and spawned_by.has_method("queue_spawn"):

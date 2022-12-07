@@ -30,6 +30,8 @@ var attached_trail = null
 
 var Projectile = preload("res://Projectile.tscn")
 
+signal wasKilled
+
 func _ready():
 	color = colors[id - 1]
 	$Hookshot.hookshot_range_multiplier = hookshot_range_multiplier
@@ -101,6 +103,7 @@ func take_damage(damage = 1):
 	$AnimationPlayer.play("take_damage")
 		
 func die():
+	emit_signal("wasKilled")
 	$AnimationPlayer.play("die")
 
 

@@ -1,16 +1,16 @@
 extends Node2D
 
+export (NodePath) var continueButtonPath
+export (NodePath) var playerPath
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	get_node(continueButtonPath).hide()
 
+func _on_Enemy_wasHitLoadTutorailScene4():
+	get_node(continueButtonPath).show()
+	get_node(playerPath).set_process(false)
+	get_node(playerPath).set_physics_process(false)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func loadNextScene():
+	get_tree().change_scene("res://Tutorial/TutorialScene4.tscn")
+
