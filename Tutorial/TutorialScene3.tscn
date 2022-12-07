@@ -36,6 +36,7 @@ move_direction = 1
 position = Vector2( 500, 396 )
 id = 2
 move_speed = 0
+max_health = 1
 
 [node name="OuterWalls" type="Node2D" parent="."]
 

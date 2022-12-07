@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://PowerUp.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -8,12 +8,15 @@
 [ext_resource path="res://Game.gd" type="Script" id=6]
 [ext_resource path="res://Tutorial/LoadTutorialScene3.gd" type="Script" id=7]
 [ext_resource path="res://debug/FpsCounter.tscn" type="PackedScene" id=8]
+[ext_resource path="res://UI/MultiControlButton.tscn" type="PackedScene" id=9]
 
 [node name="TutorialScene2" type="Node2D"]
 script = ExtResource( 6 )
 
 [node name="LoadTutorialScene3" type="Node2D" parent="."]
 script = ExtResource( 7 )
+continueButtonPath = NodePath("../MultiControlButton")
+playerPath = NodePath("../Player")
 
 [node name="Tutorial2Text" type="Label" parent="."]
 margin_right = 40.0
@@ -74,6 +77,15 @@ randomize_effect = false
 [node name="Anchor3" parent="Anchors" instance=ExtResource( 5 )]
 position = Vector2( 750, 300 )
 randomize_effect = false
+
+[node name="MultiControlButton" parent="." instance=ExtResource( 9 )]
+margin_left = 463.0
+margin_top = 287.0
+margin_right = 542.0
+margin_bottom = 307.0
+label_text = "Continue"
+on_clicked_function_location = NodePath("../LoadTutorialScene3")
+on_clicked_function_name = "loadNextScene"
 
 [connection signal="wasHitLoadTutorialScene3" from="PowerUps/PowerUp" to="LoadTutorialScene3" method="_on_PowerUp_wasHitLoadTutorialScene3"]
 [connection signal="wasHitLoadTutorialScene3" from="PowerUps/PowerUp2" to="LoadTutorialScene3" method="_on_PowerUp2_wasHitLoadTutorialScene3"]
