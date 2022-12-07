@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Trail.tscn" type="PackedScene" id=2]
@@ -67,5 +67,3 @@ margin_bottom = 384.0
 label_text = "Continue"
 on_clicked_function_location = NodePath("../LoadTutorialScene2")
 on_clicked_function_name = "loadNextScene"
-
-[connection signal="wasHitLoadTutorialScene2" from="Anchor" to="LoadTutorialScene2" method="_on_Anchor_wasHitLoadTutorialScene2"]
