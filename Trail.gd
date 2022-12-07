@@ -37,10 +37,10 @@ func create_captured_area_from_intersection(intersection, points):
 	for i in range(points.size() -3, 0, -1):
 		if get_segment_intersection(new_line[0], new_line[1], points[i], points[i-1]) != null:
 			var new_area = CapturedArea.instance()
-			get_tree().root.get_child(0).add_child(new_area)
+			get_tree().root.get_child(1).add_child(new_area)
 			new_area.create_shape(polygon, $Line.default_color, get_node(to_follow))
-			if get_tree().root.get_child(0).get_node("PowerUpSpawner") != null:
-				get_tree().root.get_child(0).get_node("PowerUpSpawner").spawn_on_zoned()
+			if get_tree().root.get_child(1).get_node("PowerUpSpawner") != null:
+				get_tree().root.get_child(1).get_node("PowerUpSpawner").spawn_on_zoned()
 			$Line.clear_points()
 			break
 		polygon.push_back(points[i])
