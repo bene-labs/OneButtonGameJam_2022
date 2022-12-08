@@ -1,28 +1,33 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Anchor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://PowerUp.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Trail.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://InvisibleWall.tscn" type="PackedScene" id=5]
-[ext_resource path="res://debug/FpsCounter.tscn" type="PackedScene" id=7]
+[ext_resource path="res://fonts/Roboto/Roboto-Bold.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://Tutorial/TutorialScene4.gd" type="Script" id=8]
 [ext_resource path="res://UI/MultiControlButton.tscn" type="PackedScene" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 6 )
 
 [node name="Tutorialscene4" type="Node2D"]
 script = ExtResource( 8 )
 continueButtonPath = NodePath("MultiControlButton")
 playerPath = NodePath("Player")
 
-[node name="Label" type="Label" parent="."]
-margin_right = 785.0
-margin_bottom = 65.0
+[node name="TutorialText4" type="Label" parent="."]
+margin_left = 1.0
+margin_top = -2.0
+margin_right = 1024.0
+margin_bottom = 107.0
+custom_fonts/font = SubResource( 1 )
 text = "Bomben schaden dir, meide sie!
-Zone das güne Kreuz ein
-(Der Text ändert sich zum nächsten im Tutorial.pdf beschrieben Punkt, wenn die Aufgabe erfüllt wurde)
-(Außerdem sollte der Text oben in der mitte des Screens erscheinen und ein wenig gößer sein aber daran arbeite ich noch)"
-
-[node name="FpsCounter" parent="." instance=ExtResource( 7 )]
+Zone das güne Kreuz ein"
+align = 1
+valign = 1
 
 [node name="Trail" parent="." instance=ExtResource( 3 )]
 to_follow = NodePath("../Player")
@@ -90,10 +95,11 @@ position = Vector2( 750, 425 )
 randomize_effect = false
 
 [node name="MultiControlButton" parent="." instance=ExtResource( 9 )]
-margin_left = 462.0
-margin_top = 288.0
-margin_right = 541.0
-margin_bottom = 308.0
+margin_left = 393.0
+margin_top = 144.0
+margin_right = 472.0
+margin_bottom = 164.0
+rect_scale = Vector2( 3, 3 )
 label_text = "Finish"
 on_clicked_function_location = NodePath("..")
 on_clicked_function_name = "loadNextScene"
