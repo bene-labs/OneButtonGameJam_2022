@@ -1,4 +1,4 @@
-extends Sprite
+class_name AimIndicator extends Sprite
 
 export var rotation_speed = 5
 

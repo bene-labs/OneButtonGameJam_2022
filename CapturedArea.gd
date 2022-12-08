@@ -1,4 +1,4 @@
-extends Area2D
+class_name CapturedArea extends Area2D
 
 export (Color) var color = Color.red
 export (int) var damage = 1

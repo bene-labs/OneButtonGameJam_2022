@@ -1,4 +1,4 @@
-extends StaticBody2D
+class_name CornerWall extends StaticBody2D
 
 enum Side{
 	TOP_LEFT,

@@ -1,4 +1,4 @@
-extends Node2D
+class_name PlayerSelect extends Node2D
 
 export var player_sprites_paths = []
 

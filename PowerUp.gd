@@ -1,4 +1,4 @@
-extends StaticBody2D
+class_name PowerUp extends StaticBody2D
 
 enum Types{
 	POWERBOOST, # Der Spieler wird schneller

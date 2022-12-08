@@ -1,4 +1,4 @@
-extends Area2D
+class_name Projectile extends Area2D
 
 export var move_speed = 300
 export var damage = 1

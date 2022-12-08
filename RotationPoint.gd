@@ -1,9 +1,7 @@
-extends Node2D
-
 # Resposible for rotating the player around acnhors while using the hookshot.
 #
 # > For more information on the [Effects](#Effect modifiers) consult the [Anchor Documentation](../Anchor.gd.md)
-class_name RotationPoint
+class_name RotationPoint extends Node2D
 
 # Direct Reference to [Anchor Effects](Anchor.md#Effects)
 #

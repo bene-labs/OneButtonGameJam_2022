@@ -1,5 +1,4 @@
-extends Button
-
+class_name MultiControlButton extends Button
 export var label_text = "Button"
 
 export (NodePath) var on_clicked_function_location = NodePath("./")

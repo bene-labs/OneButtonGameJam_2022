@@ -1,4 +1,4 @@
-extends TextureProgress
+class_name HealthBar extends TextureProgress
 
 enum HealthStates {
 	FULL,

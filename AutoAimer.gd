@@ -1,4 +1,4 @@
-extends Sprite
+class_name AutoAimer extends Sprite
 
 enum AimMethods{
 	CONSTANT_ROTATION,

@@ -1,4 +1,4 @@
-extends Line2D
+class_name CollisionLine extends Line2D
 
 var temp1
 var temp2

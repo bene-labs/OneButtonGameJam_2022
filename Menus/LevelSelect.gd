@@ -1,4 +1,4 @@
-extends Node2D
+class_name LevelSelect extends Node2D
 
 export var preview_textures = []
 export var player_count = 2

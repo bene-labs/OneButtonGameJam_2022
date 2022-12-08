@@ -1,5 +1,4 @@
-extends Node2D
-var MultiControllButton = preload("res://UI/MultiControlButton.gd")
+class_name MultiControlButtonManager extends Node2D
 
 export var selected_button_index = 0
 var is_button_held = false
@@ -13,7 +12,7 @@ func _ready():
 	if child_count == 0:
 		print("No Buttons!")
 		queue_free()
-	while !(get_child(selected_button_index) is MultiControllButton):
+	while !(get_child(selected_button_index) is MultiControlButton):
 		selected_button_index += 1
 		if selected_button_index >= child_count:
 			print("No Buttons!")
@@ -25,7 +24,7 @@ func select_next():
 	selected_button_index += 1
 	if selected_button_index >= child_count:
 		selected_button_index = 0
-	while !(get_child(selected_button_index) is MultiControllButton):
+	while !(get_child(selected_button_index) is MultiControlButton):
 		selected_button_index += 1
 		if selected_button_index >= child_count:
 			selected_button_index = 0
@@ -36,7 +35,7 @@ func select_previous():
 	selected_button_index -= 1
 	if selected_button_index < 0:
 		selected_button_index = child_count - 1
-	while !(get_child(selected_button_index) is MultiControllButton):
+	while !(get_child(selected_button_index) is MultiControlButton):
 		selected_button_index -= 1
 		if selected_button_index < 0:
 			selected_button_index = child_count - 1

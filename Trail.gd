@@ -1,4 +1,4 @@
-extends Node2D
+class_name Trail extends Node2D
 
 export (NodePath) var to_follow
 #export (float) var minmum_point_distance = 1.0

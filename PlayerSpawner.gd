@@ -1,4 +1,4 @@
-extends Node2D
+class_name PlayerSpawner extends Node2D
 
 export (PackedScene) var player 
 export (PackedScene) var trail 
@@ -24,5 +24,5 @@ func _ready():
 
 func _on_player_death():
 	player_count -= 1
-	if player_count == 1 and get_tree().root.get_child(1).has_method("restart_after_delay"):
-		get_tree().root.get_child(1).restart_after_delay()
+	if player_count == 1 and get_tree().root.get_child(1).has_method("trigger_game_over_after_delay"):
+		get_tree().root.get_child(1).trigger_game_over_after_delay()

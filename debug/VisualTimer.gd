@@ -1,4 +1,4 @@
-extends Label
+class_name VisualTimer extends Label
 
 var time_passed = 0.0
 

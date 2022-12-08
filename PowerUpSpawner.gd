@@ -1,4 +1,4 @@
-extends Node2D
+class_name PowerUpSpawner extends Node2D
 
 enum RespawnTypes{AFTER_COLLECTED, AFTER_ZONE_CREATED, NEVER}
 

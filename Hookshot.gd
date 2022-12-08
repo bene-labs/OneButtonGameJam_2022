@@ -1,4 +1,4 @@
-extends Node2D
+class_name Hookshot extends Node2D
 
 var AnchorEffects = preload("res://Anchor.gd").Effects
 
