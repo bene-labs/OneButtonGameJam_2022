@@ -41,7 +41,7 @@ func spawn_powerup():
 	new_power_up.spawned_by = self
 	new_power_up.randomize_type()
 	new_power_up.global_position = get_spawn_position()
-	get_tree().root.get_child(0).call_deferred("add_child", new_power_up)
+	get_tree().root.get_child(1).call_deferred("add_child", new_power_up)
 
 func queue_spawn():
 	if respawn_type != RespawnTypes.AFTER_COLLECTED:

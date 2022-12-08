@@ -22,15 +22,12 @@ export (bool) var disable_indicator_while_rope_attached = false
 
 var is_thrown = false
 
-#func get_rotation_point():
-#	 return get_tree().root.get_child(0).get_node("RotationPoint-" + get_parent().name)
-
 func _ready():
 	$Rope.hide()
 	$Rope/AttachArea/CollisionPolygon2D.disabled = true
 	rotation_point = RotationPoint.instance()
 	rotation_point.name = "RotationPoint-" + get_parent().name
-	get_tree().root.get_child(0).call_deferred("add_child", rotation_point)
+	get_tree().root.get_child(1).call_deferred("add_child", rotation_point)
 	set_process(false)
 
 func throw() -> bool:

@@ -18,10 +18,11 @@ func _ready():
 		new_player.name = "Player" + str(new_player.id)
 		add_child(new_player)
 		new_trail.to_follow = new_player.get_path()
+		new_trail.spawn_powerups = true
 		new_trail.name = "Player" + str(new_player.id) + "_Trail"
 		add_child(new_trail)
 
 func _on_player_death():
 	player_count -= 1
-	if player_count == 1 and get_tree().root.get_child(0).has_method("restart_after_delay"):
-		get_tree().root.get_child(0).restart_after_delay()
+	if player_count == 1 and get_tree().root.get_child(1).has_method("restart_after_delay"):
+		get_tree().root.get_child(1).restart_after_delay()

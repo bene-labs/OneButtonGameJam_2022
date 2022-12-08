@@ -8,6 +8,7 @@
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
+restart_delay = 3.0
 levels = [ "res://Levels/Canteen.tscn", "res://Levels/SpaceLevel.tscn", "res://Levels/Warehouse.tscn", "res://Levels/CrashedShip.tscn" ]
 
 [node name="PlayerSpawner" parent="." instance=ExtResource( 3 )]

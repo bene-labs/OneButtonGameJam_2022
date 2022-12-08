@@ -23,7 +23,7 @@ var color
 onready var health = max_health
 export var is_invincible = false
 
-onready var reverse_movement = false if move_direction == MovementDirections.RIGHT else true
+onready var movement = 1 if move_direction == MovementDirections.RIGHT else -1
 var swing_start_point = null
 
 var velocity = Vector2.ZERO
@@ -38,7 +38,7 @@ func _ready():
 	$Sprite/Color.color = color
 	$HealthBar.max_value = max_health
 	$HealthBar.value = health
-	$Sprite.flip_h = reverse_movement
+	$Sprite.scale *= movement
 	$Hookshot/AutoAimer.self_modulate = color
 	$Hookshot/Rope.color = color.lightened(0.5)
 	
@@ -65,18 +65,19 @@ func _physics_process(delta):
 #		global_position =  $Hookshot.rotation_point.get_node("SimulatedPlayerPosition").global_position
 		velocity = $Hookshot.rotation_point.get_node("SimulatedPlayerPosition").global_position - global_position
 	else:
-		velocity = Vector2((-1 if reverse_movement else 1) * move_speed * delta, 0).rotated($Sprite.rotation)
+		velocity = Vector2(movement * move_speed * delta, 0).rotated($Sprite.rotation)
 	move_and_collide(velocity)
 
-func set_reverse_movement(new_reverse_movement):
-	reverse_movement = new_reverse_movement
-	$Sprite.flip_h = reverse_movement
+func set_reverse_movement(reverse_movement):
+	if movement == 1 and reverse_movement or movement == -1 and not reverse_movement:
+		$Sprite.scale *= -1
+	movement = -1 if reverse_movement else 1
 	$Hookshot.rotation_point.set_x_direction(reverse_movement)
 
 func revert_movement():
-	reverse_movement = !reverse_movement
-	$Sprite.flip_h = reverse_movement
-	$Hookshot.rotation_point.set_x_direction(reverse_movement)
+	movement *= -1
+	$Sprite.scale *= -1
+	$Hookshot.rotation_point.set_x_direction(movement == 1)
 
 func _on_BounceArea_body_entered(body):
 	if bounce_of_obstacles and body.has_method("get_bounce_angle"):
@@ -152,4 +153,4 @@ func shoot_projectiles(ammount, speed):
 		projectile.get_node("Sprite").rotation_degrees = angle
 		projectile.move_speed = speed
 		projectile.creator = self
-		get_tree().root.get_child(0).call_deferred("add_child", projectile)
+		get_tree().root.get_child(1).call_deferred("add_child", projectile)

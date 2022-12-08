@@ -3,6 +3,7 @@ extends Node2D
 export (NodePath) var to_follow
 #export (float) var minmum_point_distance = 1.0
 export (bool) var create_shapes = true
+export (bool) var spawn_powerups = false
 export var fade_time = -1.0 # time in seconds afer a point of the line is removed (set negative for a permanent line)
 export var debug : bool = false
 
@@ -39,7 +40,7 @@ func create_captured_area_from_intersection(intersection, points):
 			var new_area = CapturedArea.instance()
 			get_tree().root.get_child(1).add_child(new_area)
 			new_area.create_shape(polygon, $Line.default_color, get_node(to_follow))
-			if get_tree().root.get_child(1).get_node("PowerUpSpawner") != null:
+			if spawn_powerups and get_tree().root.get_child(1).get_node("PowerUpSpawner") != null:
 				get_tree().root.get_child(1).get_node("PowerUpSpawner").spawn_on_zoned()
 			$Line.clear_points()
 			break
