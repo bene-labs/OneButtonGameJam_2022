@@ -1,14 +1,31 @@
 extends Node2D
 
-onready var Effects = preload("res://Anchor.gd").Effects
+# Resposible for rotating the player around acnhors while using the hookshot.
+#
+# > For more information on the [Effects](#Effect modifiers) consult the [Anchor Documentation](../Anchor.gd.md)
+class_name RotationPoint
 
-export var rotation_per_seconds = 1
-export var is_rotating = false
-export var x_direction = 1 # 1 or -1
+# Direct Reference to [Anchor Effects](Anchor.md#Effects)
+#
+onready var Effects = preload("res://Anchor.gd").Effects ## General Configurations (Configured ingame!)
+
+export var rotation_per_seconds = 1 # determines speed (independent of distance)
+export var is_rotating = false # set true to pause rotation
+export var x_direction = 1  # Clockwise/Counterclockwise = 1/-1
+# used for fast/slow effect
 export var move_speed_multiplier = 1.0
-export var outward_motion = 0.0
+# used for pull/push effect
+#
+export var outward_motion = 0.0 ## Effect modifiers
 
-var default_values = {}
+export var pull_strength = 10 # How fast the player should move towards the anchor.
+export var push_strength = 10 # How fast the player should move away from the anchor.
+export var slow_multiplier = 0.75 # Move speed is multiplied by this while attached to a slowing Anchor.
+# This is added to your move speed while attached to fast Anchor.
+#
+export var fast_speed_bonus = 2 ## Internal Usage
+
+var default_values = {} # used to restore default
 
 func _ready():
 	default_values = {"rotation_per_seconds": rotation_per_seconds, \
@@ -22,8 +39,6 @@ func _process(delta):
 			$SimulatedPlayerPosition.look_at(position)
 			var velocity = Vector2(outward_motion * delta, 0).rotated($SimulatedPlayerPosition.rotation)
 			$SimulatedPlayerPosition.position += velocity
-#			if $SimulatedPlayerPosition.position.x < 0:
-#				$SimulatedPlayerPosition.position.x = 0
 	
 func calc_and_set_rotation_per_seconds(speed, radius):
 	speed = speed * move_speed_multiplier
@@ -59,12 +74,12 @@ func reset():
 func trigger_effect(effect):
 	match effect:
 		Effects.FAST:
-			move_speed_multiplier += 0.75
+			move_speed_multiplier += fast_speed_bonus
 		Effects.SLOW:
-			move_speed_multiplier /= 2
+			move_speed_multiplier /= slow_multiplier
 		Effects.PULL:
-			outward_motion = 10
+			outward_motion = pull_strength
 		Effects.PUSH:
-			outward_motion = -10
+			outward_motion -= push_strength
 		_:
 			pass
