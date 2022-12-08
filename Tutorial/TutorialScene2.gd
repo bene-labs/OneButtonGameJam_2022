@@ -7,12 +7,15 @@ export (NodePath) var playerPath
 
 func _ready():
 	get_node(continueButtonPath).hide()
+	get_node(continueButtonPath).disabled = true
+	get_node(continueButtonPath).get_parent().set_process(false)
 
 func _on_PowerUp_wasCollected():
 	collectedPowerUps += 1
 	if collectedPowerUps > 2:
 		get_node(continueButtonPath).show()
-		get_node(playerPath).set_process(false)
+		get_node(continueButtonPath).disabled = false
+		get_node(continueButtonPath).get_parent().set_process(true)
 		get_node(playerPath).set_physics_process(false)
 
 func loadNextScene():

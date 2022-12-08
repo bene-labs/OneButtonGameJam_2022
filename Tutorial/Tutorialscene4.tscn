@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Anchor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://PowerUp.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://InvisibleWall.tscn" type="PackedScene" id=5]
 [ext_resource path="res://fonts/Roboto/Roboto-Bold.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://UI/MultiControlButtonManager.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Tutorial/TutorialScene4.gd" type="Script" id=8]
 [ext_resource path="res://UI/MultiControlButton.tscn" type="PackedScene" id=9]
 
@@ -15,7 +16,7 @@ font_data = ExtResource( 6 )
 
 [node name="Tutorialscene4" type="Node2D"]
 script = ExtResource( 8 )
-continueButtonPath = NodePath("MultiControlButton")
+continueButtonPath = NodePath("MultiControlButtonManager/MultiControlButton")
 playerPath = NodePath("Player")
 
 [node name="TutorialText4" type="Label" parent="."]
@@ -94,14 +95,16 @@ randomize_effect = false
 position = Vector2( 750, 425 )
 randomize_effect = false
 
-[node name="MultiControlButton" parent="." instance=ExtResource( 9 )]
+[node name="MultiControlButtonManager" parent="." instance=ExtResource( 7 )]
+
+[node name="MultiControlButton" parent="MultiControlButtonManager" instance=ExtResource( 9 )]
 margin_left = 393.0
 margin_top = 144.0
 margin_right = 472.0
 margin_bottom = 164.0
 rect_scale = Vector2( 3, 3 )
 label_text = "Finish"
-on_clicked_function_location = NodePath("..")
+on_clicked_function_location = NodePath("../..")
 on_clicked_function_name = "loadNextScene"
 
 [connection signal="wasCollected" from="PowerUps/PowerUp2" to="." method="_on_PowerUp2_wasCollected"]
