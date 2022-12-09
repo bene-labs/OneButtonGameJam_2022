@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Trail.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Tutorial/TutorialScene1.gd" type="Script" id=6]
 [ext_resource path="res://UI/MultiControlButtonManager.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/MultiControlButton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sprites/BackgroundTutorial.jpg" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -17,6 +18,12 @@ font_data = ExtResource( 3 )
 script = ExtResource( 6 )
 continueButtonPath = NodePath("MultiControlButtonManager/MultiControlButton")
 playerPath = NodePath("Player")
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 514.5, 298.5 )
+scale = Vector2( 1.00585, 1.015 )
+z_index = -2
+texture = ExtResource( 9 )
 
 [node name="TutorialText" type="Label" parent="."]
 margin_left = 3.0
