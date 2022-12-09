@@ -1,7 +1,46 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://UI/MultiControlButton.gd" type="Script" id=1]
 [ext_resource path="res://sprites/fill_green.png" type="Texture" id=2]
+[ext_resource path="res://UI/new_theme.tres" type="Theme" id=3]
+[ext_resource path="res://fonts/EdgeOfTheGalaxy/EdgeOfTheGalaxyPoster-3zRAp.otf" type="DynamicFontData" id=5]
+
+[sub_resource type="DynamicFont" id=9]
+size = 42
+font_data = ExtResource( 5 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+
+[sub_resource type="StyleBoxFlat" id=6]
+content_margin_left = 2.0
+content_margin_right = 2.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+corner_detail = 10
+anti_aliasing = false
+anti_aliasing_size = 1.0
+
+[sub_resource type="StyleBoxFlat" id=11]
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0, 0.266667, 1, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 1, 0.960938, 0, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 10
+shadow_size = 4
+anti_aliasing = false
+anti_aliasing_size = 1.0
+
+[sub_resource type="DynamicFont" id=8]
+size = 42
+font_data = ExtResource( 5 )
 
 [sub_resource type="Animation" id=1]
 resource_name = "Click"
@@ -49,35 +88,53 @@ tracks/0/keys = {
 }
 
 [node name="MultiControlButton" type="Button"]
-anchor_right = 0.076
-anchor_bottom = 0.033
-margin_right = 2.17599
-margin_bottom = 0.200001
+margin_right = 100.0
+margin_bottom = 61.8
+hint_tooltip = "<carni 221009> ButtonTest
+- ohne andere Nodes
+- im goldenen Schnitt"
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 9 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 11 )
+custom_styles/normal = SubResource( 5 )
+shortcut_in_tooltip = false
+text = "Button"
+align = 0
 script = ExtResource( 1 )
 button_activation_time = 1.5
 
 [node name="Fill" type="TextureProgress" parent="."]
-margin_top = -4.0
-margin_right = 396.0
-margin_bottom = 49.0
+visible = false
+margin_right = 650.0
+margin_bottom = 83.0
 rect_scale = Vector2( 0.199867, 0.527949 )
 texture_progress = ExtResource( 2 )
 tint_progress = Color( 0.215686, 0.580392, 0.152941, 1 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = -1.0
-margin_right = 77.0
-margin_bottom = 20.0
+visible = false
+margin_right = 130.0
+margin_bottom = 52.0
+input_pass_on_modal_close_click = false
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 0.960938, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 8 )
 text = "Button"
 align = 1
 valign = 1
+percent_visible = -0.166667
 
 [node name="Border" type="ColorRect" parent="."]
+visible = false
 show_behind_parent = true
-margin_left = -1.0
-margin_top = -1.0
-margin_right = 80.0
-margin_bottom = 21.0
+margin_right = 130.0
+margin_bottom = 44.0
+theme = ExtResource( 3 )
 color = Color( 0.945098, 0.933333, 0.0941176, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -1,0 +1,16 @@
+[gd_resource type="Theme" load_steps=3 format=2]
+
+[ext_resource path="res://fonts/Roboto/Roboto-Medium.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+outline_size = 10
+extra_spacing_top = 2
+extra_spacing_bottom = 2
+extra_spacing_char = 2
+extra_spacing_space = 2
+font_data = ExtResource( 1 )
+
+[resource]
+ColorPicker/icons/screen_picker = null
+Fonts/fonts/large = SubResource( 1 )
