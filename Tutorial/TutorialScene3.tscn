@@ -69,7 +69,7 @@ rotation = 1.5708
 side = 3
 
 [node name="Anchor" parent="." instance=ExtResource( 5 )]
-position = Vector2( 500, 300 )
+position = Vector2( 499, 285 )
 randomize_effect = false
 
 [node name="MultiControlButtonManager" parent="." instance=ExtResource( 7 )]

@@ -64,26 +64,26 @@ side = 3
 [node name="PowerUps" type="Node2D" parent="."]
 
 [node name="PowerUp" parent="PowerUps" instance=ExtResource( 1 )]
-position = Vector2( 250, 400 )
+position = Vector2( 251, 384 )
 
 [node name="PowerUp2" parent="PowerUps" instance=ExtResource( 1 )]
-position = Vector2( 500, 450 )
+position = Vector2( 501, 434 )
 
 [node name="PowerUp3" parent="PowerUps" instance=ExtResource( 1 )]
-position = Vector2( 750, 400 )
+position = Vector2( 751, 384 )
 
 [node name="Anchors" type="Node2D" parent="."]
 
 [node name="Anchor" parent="Anchors" instance=ExtResource( 5 )]
-position = Vector2( 250, 300 )
+position = Vector2( 251, 284 )
 randomize_effect = false
 
 [node name="Anchor2" parent="Anchors" instance=ExtResource( 5 )]
-position = Vector2( 500, 300 )
+position = Vector2( 501, 284 )
 randomize_effect = false
 
 [node name="Anchor3" parent="Anchors" instance=ExtResource( 5 )]
-position = Vector2( 750, 300 )
+position = Vector2( 751, 284 )
 randomize_effect = false
 
 [node name="MultiControlButtonManager" parent="." instance=ExtResource( 8 )]
