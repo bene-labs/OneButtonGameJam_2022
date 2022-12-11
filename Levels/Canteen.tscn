@@ -28,7 +28,18 @@ position = Vector2( 657, 386 )
 scale = Vector2( 1.76, 1 )
 spawn_area_path = NodePath("../SpawnCollision")
 
-[node name="Anchors" type="Node2D" parent="." index="5"]
+[node name="SpawnCollision" type="Area2D" parent="." index="4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnCollision" index="0"]
+position = Vector2( 655.5, 384 )
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="." index="5"]
+position = Vector2( 535, 395 )
+current = true
+zoom = Vector2( 0.9, 1.2 )
+
+[node name="Anchors" type="Node2D" parent="." index="7"]
 
 [node name="Anchor" parent="Anchors" index="0" instance=ExtResource( 3 )]
 position = Vector2( 450, 150 )
@@ -81,7 +92,7 @@ position = Vector2( 725, 279 )
 scale = Vector2( 1, 1 )
 randomize_effect = false
 
-[node name="PowerUps" type="Node2D" parent="." index="6"]
+[node name="PowerUps" type="Node2D" parent="." index="8"]
 position = Vector2( -200, -100 )
 
 [node name="PowerUpHealth" parent="PowerUps" index="0" instance=ExtResource( 2 )]
@@ -93,17 +104,6 @@ position = Vector2( 1075, 299 )
 [node name="PowerUp3Bomb" parent="PowerUps" index="2" instance=ExtResource( 2 )]
 position = Vector2( 1025, 479 )
 type = 1
-
-[node name="Camera2D" type="Camera2D" parent="." index="7"]
-position = Vector2( 535, 395 )
-current = true
-zoom = Vector2( 0.9, 1.2 )
-
-[node name="SpawnCollision" type="Area2D" parent="." index="8"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnCollision" index="0"]
-position = Vector2( 655.5, 384 )
-shape = SubResource( 1 )
 
 [node name="SpawnPositions" type="Node2D" parent="." index="9"]
 
