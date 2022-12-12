@@ -11,6 +11,7 @@ extents = Vector2( 458, 234.5 )
 
 [node name="Background" type="Sprite" parent="." index="0"]
 position = Vector2( 616, 358 )
+z_index = -2
 texture = ExtResource( 3 )
 
 [node name="PlayerSpawner" parent="." index="1"]
