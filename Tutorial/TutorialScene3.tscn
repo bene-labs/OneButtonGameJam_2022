@@ -20,42 +20,49 @@ continueButtonPath = NodePath("MultiControlButtonManager/MultiControlButton")
 playerPath = NodePath("Player")
 enemyPath = NodePath("Enemy")
 
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 499.249, 335 )
+scale = Vector2( 0.697, 0.717 )
+z_index = -2
+texture = ExtResource( 9 )
+
 [node name="Tutorial3Text" type="Label" parent="."]
-margin_left = -1.0
-margin_top = -2.0
-margin_right = 1023.0
-margin_bottom = 125.0
+margin_left = 145.0
+margin_top = 124.0
+margin_right = 845.0
+margin_bottom = 197.0
 custom_fonts/font = SubResource( 1 )
 text = "Zone einen gegner, um ihn zu besiegen"
 align = 1
 valign = 1
 
-[node name="Background" type="Sprite" parent="Tutorial3Text"]
-position = Vector2( 515.5, 300.5 )
-scale = Vector2( 1.00585, 1.015 )
-z_index = -2
-texture = ExtResource( 9 )
-
 [node name="Trail" parent="." instance=ExtResource( 3 )]
 to_follow = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 779, 208 )
+position = Vector2( 819, 245 )
 move_direction = 1
 
 [node name="Enemy" parent="." instance=ExtResource( 1 )]
-position = Vector2( 500, 396 )
+position = Vector2( 493, 407 )
 id = 2
 move_speed = 0
 max_health = 1
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 499, 333 )
+current = true
+zoom = Vector2( 0.7, 0.7 )
+
 [node name="OuterWalls" type="Node2D" parent="."]
+position = Vector2( 145, 129 )
+scale = Vector2( 0.72, 0.68 )
 
 [node name="TopWall" parent="OuterWalls" instance=ExtResource( 2 )]
-position = Vector2( 510, -35 )
+position = Vector2( 497.222, -45.5882 )
 
 [node name="BottomWall" parent="OuterWalls" instance=ExtResource( 2 )]
-position = Vector2( 510, 640 )
+position = Vector2( 504.167, 648.529 )
 side = 2
 
 [node name="LeftWall" parent="OuterWalls" instance=ExtResource( 2 )]
@@ -64,22 +71,23 @@ rotation = 1.5708
 side = 1
 
 [node name="RightWall" parent="OuterWalls" instance=ExtResource( 2 )]
-position = Vector2( 1060, 200 )
+position = Vector2( 1020, 216.667 )
 rotation = 1.5708
 side = 3
 
 [node name="Anchor" parent="." instance=ExtResource( 5 )]
-position = Vector2( 499, 285 )
+position = Vector2( 493, 325 )
 randomize_effect = false
 
 [node name="MultiControlButtonManager" parent="." instance=ExtResource( 7 )]
+position = Vector2( -6, -75 )
 
 [node name="MultiControlButton" parent="MultiControlButtonManager" instance=ExtResource( 8 )]
-margin_left = 381.0
-margin_top = 165.0
-margin_right = 461.0
-margin_bottom = 185.0
-rect_scale = Vector2( 3, 3 )
+margin_left = 426.0
+margin_top = 307.0
+margin_right = 506.0
+margin_bottom = 327.0
+rect_scale = Vector2( 2.11182, 2.23547 )
 label_text = "Continue"
 on_clicked_function_location = NodePath("../..")
 on_clicked_function_name = "loadNextScene"

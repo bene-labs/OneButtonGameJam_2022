@@ -46,7 +46,7 @@ position = Vector2( 107, 224 )
 [node name="OuterWalls" type="Node2D" parent="."]
 
 [node name="TopWall" parent="OuterWalls" instance=ExtResource( 5 )]
-position = Vector2( 510, -35 )
+position = Vector2( 508, -33 )
 
 [node name="BottomWall" parent="OuterWalls" instance=ExtResource( 5 )]
 position = Vector2( 510, 640 )

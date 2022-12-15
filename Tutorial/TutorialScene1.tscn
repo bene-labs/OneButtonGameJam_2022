@@ -20,16 +20,17 @@ continueButtonPath = NodePath("MultiControlButtonManager/MultiControlButton")
 playerPath = NodePath("Player")
 
 [node name="Background" type="Sprite" parent="."]
-position = Vector2( 514.5, 298.5 )
-scale = Vector2( 1.00585, 1.015 )
+position = Vector2( 500.249, 337 )
+scale = Vector2( 0.697071, 0.716667 )
 z_index = -2
 texture = ExtResource( 9 )
 
 [node name="TutorialText" type="Label" parent="."]
-margin_left = 3.0
-margin_top = -3.0
-margin_right = 1024.0
-margin_bottom = 112.0
+margin_left = 153.0
+margin_top = 150.0
+margin_right = 1199.0
+margin_bottom = 225.0
+rect_scale = Vector2( 0.68, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Press and hold 'A' or 'Left Mouse' to shoot a Grappling hook.
 Circle around an Anchor to “Zone” it."
@@ -41,18 +42,25 @@ to_follow = NodePath("../Player")
 debug = true
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 864, 280 )
+position = Vector2( 795, 309 )
 move_direction = 1
 hookshot_range_multiplier = 4
 clear_line_on_bounce = true
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 503, 339 )
+current = true
+zoom = Vector2( 0.7, 0.7 )
+
 [node name="OuterWalls" type="Node2D" parent="."]
+position = Vector2( 145, 129 )
+scale = Vector2( 0.720001, 0.68 )
 
 [node name="TopWall" parent="OuterWalls" instance=ExtResource( 4 )]
 position = Vector2( 510, -35 )
 
 [node name="BottomWall" parent="OuterWalls" instance=ExtResource( 4 )]
-position = Vector2( 510, 640 )
+position = Vector2( 498.611, 658.823 )
 side = 2
 
 [node name="LeftWall" parent="OuterWalls" instance=ExtResource( 4 )]
@@ -61,7 +69,7 @@ rotation = 1.5708
 side = 1
 
 [node name="RightWall" parent="OuterWalls" instance=ExtResource( 4 )]
-position = Vector2( 1060, 200 )
+position = Vector2( 1031.8, 204.167 )
 rotation = 1.5708
 side = 3
 
@@ -72,11 +80,11 @@ randomize_effect = false
 [node name="MultiControlButtonManager" parent="." instance=ExtResource( 7 )]
 
 [node name="MultiControlButton" parent="MultiControlButtonManager" instance=ExtResource( 8 )]
-margin_left = 396.0
-margin_top = 190.0
-margin_right = 475.0
-margin_bottom = 210.0
-rect_scale = Vector2( 3, 3 )
+margin_left = 447.0
+margin_top = 270.0
+margin_right = 526.0
+margin_bottom = 290.0
+rect_scale = Vector2( 1.53157, 1.7448 )
 label_text = "Continue"
 on_clicked_function_location = NodePath("../..")
 on_clicked_function_name = "loadNextScene"
