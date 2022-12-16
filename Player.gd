@@ -40,7 +40,7 @@ func _ready():
 	$HealthBar.value = health
 	$Sprite.scale *= movement
 	$Hookshot/AutoAimer.self_modulate = color
-	$Hookshot/Rope.color = color.lightened(0.5)
+	$Hookshot/Rope.color = color.lightened(0.15)
 	
 	collision_layer = pow(2, 10 + id - 2)
 
