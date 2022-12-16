@@ -88,3 +88,7 @@ position = Vector2( 768, 477 )
 position = Vector2( 510, 295 )
 current = true
 zoom = Vector2( 1.14, 1.36 )
+
+[node name="VictoryScreen" parent="." index="10"]
+visible = false
+position = Vector2( 13, -25 )

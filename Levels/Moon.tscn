@@ -100,3 +100,7 @@ position = Vector2( 526, 436 )
 
 [node name="Position4" type="Position2D" parent="SpawnPositions" index="3"]
 position = Vector2( 710, 444 )
+
+[node name="VictoryScreen" parent="." index="10"]
+visible = false
+position = Vector2( 91, 10 )

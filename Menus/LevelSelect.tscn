@@ -12,7 +12,7 @@
 [ext_resource path="res://sprites/Moon.PNG" type="Texture" id=10]
 [ext_resource path="res://sprites/Rolli_Wars_cover.jpg" type="Texture" id=11]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 64
 font_data = ExtResource( 1 )
 
@@ -35,7 +35,7 @@ margin_left = 353.0
 margin_top = 15.0
 margin_right = 698.0
 margin_bottom = 91.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Level Select"
 
 [node name="MultiControlButtonManager" parent="." instance=ExtResource( 5 )]

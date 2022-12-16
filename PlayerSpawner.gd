@@ -27,5 +27,7 @@ func _ready():
 func _on_player_death(player_id):
 	player_count -= 1
 	player_ids.erase(player_id)
+	Configs.player_points[player_id - 1] += 4 - player_count
 	if player_count == 1 and get_tree().root.get_child(1).has_method("trigger_game_over_after_delay"):
+		Configs.player_points[player_ids[0] - 1] = 4
 		get_tree().root.get_child(1).trigger_game_over_after_delay(player_ids[0])

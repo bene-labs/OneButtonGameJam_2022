@@ -59,6 +59,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://ReferenceCollector.gd"
 }, {
+"base": "Node",
+"class": "SceneLoader",
+"language": "GDScript",
+"path": "res://Utility/SceneLoader.gd"
+}, {
 "base": "Label",
 "class": "VisualTimer",
 "language": "GDScript",
@@ -75,6 +80,7 @@ _global_script_class_icons={
 "Player": "",
 "PlayerSpawner": "",
 "ReferenceCollector": "",
+"SceneLoader": "",
 "VisualTimer": ""
 }
 

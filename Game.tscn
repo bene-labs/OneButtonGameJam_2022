@@ -61,5 +61,4 @@ margin_bottom = 22.0
 environment = SubResource( 1 )
 
 [node name="VictoryScreen" parent="." instance=ExtResource( 7 )]
-visible = false
 z_index = 2

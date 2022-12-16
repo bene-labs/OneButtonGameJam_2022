@@ -119,6 +119,9 @@ func die():
 	print(sound_player.get_stream_playback())
 	$AnimationPlayer.play("die")
 	emit_signal("died")
+	var parent = get_parent()
+	if parent != null and parent.has_method("_on_player_death"):
+		parent._on_player_death(id)
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
@@ -131,9 +134,7 @@ func hide_indicator():
 	$Hookshot/AutoAimer.hide()
 
 func _exit_tree():
-	var parent = get_parent()
-	if parent != null and parent.has_method("_on_player_death"):
-		parent._on_player_death(id)
+	pass
 
 func assign_trail(trail):
 	attached_trail = trail

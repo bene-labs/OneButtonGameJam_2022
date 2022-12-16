@@ -188,4 +188,5 @@ position = Vector2( 346, 151 )
 position = Vector2( 901, 592 )
 
 [node name="VictoryScreen" parent="." index="11"]
+visible = false
 position = Vector2( 163, -16 )

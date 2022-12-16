@@ -31,9 +31,9 @@ valign = 1
 
 [node name="MultiControlButton" parent="MultiControlButtonManager" instance=ExtResource( 3 )]
 margin_left = 257.0
-margin_top = 249.0
+margin_top = 177.0
 margin_right = 336.0
-margin_bottom = 269.0
+margin_bottom = 197.0
 rect_scale = Vector2( 2.35508, 2.59673 )
 label_text = "Yes"
 on_clicked_function_location = NodePath("../..")
@@ -42,9 +42,9 @@ on_clicked_function_params = [ "res://Tutorial/TutorialScene1.tscn" ]
 
 [node name="MultiControlButton2" parent="MultiControlButtonManager" instance=ExtResource( 3 )]
 margin_left = 576.0
-margin_top = 250.0
+margin_top = 178.0
 margin_right = 655.0
-margin_bottom = 270.0
+margin_bottom = 198.0
 rect_scale = Vector2( 2.35508, 2.59673 )
 label_text = "No"
 on_clicked_function_location = NodePath("../..")
