@@ -2,9 +2,9 @@
 
 [ext_resource path="res://MainScreen.gd" type="Script" id=1]
 [ext_resource path="res://UI/BlinkingText.tscn" type="PackedScene" id=2]
-[ext_resource path="res://sprites/Rolli_Wars_name.png" type="Texture" id=3]
-[ext_resource path="res://sprites/Rolli_Wars_Character_Red.png" type="Texture" id=4]
-[ext_resource path="res://sprites/Rolli_Wars_Character_Blue.png" type="Texture" id=5]
+[ext_resource path="res://sprites/christmas/Rolli_Wars_name_xmas.png" type="Texture" id=3]
+[ext_resource path="res://sprites/Rolli_Wars_Character_Blue_Christmas.png" type="Texture" id=4]
+[ext_resource path="res://sprites/Rolli_Wars_Character_Red_Christmas.png" type="Texture" id=5]
 [ext_resource path="res://sprites/BackgroundSpaceLevel.jpg" type="Texture" id=6]
 
 [node name="MainScreen" type="Node2D"]
@@ -15,18 +15,20 @@ position = Vector2( 476, 376 )
 texture = ExtResource( 6 )
 
 [node name="RolliWarsName" type="Sprite" parent="."]
-position = Vector2( 510, 138 )
-scale = Vector2( 3.16, 2 )
+position = Vector2( 515, 186 )
+scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 3 )
 
 [node name="RolliWarsCharacterBlue" type="Sprite" parent="."]
-position = Vector2( 816, 361 )
-texture = ExtResource( 5 )
+position = Vector2( 819, 320 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
 flip_h = true
 
 [node name="RolliWarsCharacterRed" type="Sprite" parent="."]
-position = Vector2( 219, 359 )
-texture = ExtResource( 4 )
+position = Vector2( 202, 322 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
 
 [node name="StartPrompt" parent="." instance=ExtResource( 2 )]
 margin_left = 389.0
