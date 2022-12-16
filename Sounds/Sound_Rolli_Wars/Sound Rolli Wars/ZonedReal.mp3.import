@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ZonedReal.mp3-a724723e631aac6436530c520e261e1a.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Sound_Rolli_Wars/Sound Rolli Wars/ZonedReal.mp3"
+dest_files=[ "res://.import/ZonedReal.mp3-a724723e631aac6436530c520e261e1a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

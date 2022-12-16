@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Victory.mp3-70d4d9d678d2247ebd5fbd583c9d32b0.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Sound_Rolli_Wars/Sound Rolli Wars/Victory.mp3"
+dest_files=[ "res://.import/Victory.mp3-70d4d9d678d2247ebd5fbd583c9d32b0.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

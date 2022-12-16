@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Player_dies.mp3-9bb623a2c17a505be99a877697849019.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Sound_Rolli_Wars/Sound Rolli Wars/Player_dies.mp3"
+dest_files=[ "res://.import/Player_dies.mp3-9bb623a2c17a505be99a877697849019.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -186,3 +186,6 @@ position = Vector2( 346, 151 )
 
 [node name="Position4" type="Position2D" parent="SpawnPositions" index="3"]
 position = Vector2( 901, 592 )
+
+[node name="VictoryScreen" parent="." index="11"]
+position = Vector2( 163, -16 )

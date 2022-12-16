@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Bombe.mp3-026b6551bb1e849a04bcf53173ebf0bb.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Sound_Rolli_Wars/Sound Rolli Wars/Bombe.mp3"
+dest_files=[ "res://.import/Bombe.mp3-026b6551bb1e849a04bcf53173ebf0bb.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://debug/FpsCounter.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://PowerUpSpawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://InvisibleWall.tscn" type="PackedScene" id=5]
 [ext_resource path="res://WreathBorder.tscn" type="PackedScene" id=6]
+[ext_resource path="res://VictoryScreen.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -17,6 +18,7 @@ glow_bicubic_upscale = true
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
+game_over_delay = 5.0
 levels = [ "res://Levels/Canteen.tscn", "res://Levels/SpaceLevel.tscn", "res://Levels/Warehouse.tscn", "res://Levels/CrashedShip.tscn", "res://Levels/Moon.tscn" ]
 
 [node name="PlayerSpawner" parent="." instance=ExtResource( 3 )]
@@ -57,3 +59,7 @@ margin_bottom = 22.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
+
+[node name="VictoryScreen" parent="." instance=ExtResource( 7 )]
+visible = false
+z_index = 2

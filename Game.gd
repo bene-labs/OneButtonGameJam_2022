@@ -22,7 +22,9 @@ func _input(event):
 	if event.is_action_pressed("back"):
 		get_tree().change_scene("res://Menus/LevelSelect.tscn")
 
-func trigger_game_over_after_delay():
+func trigger_game_over_after_delay(winner = 1):
+	$VictoryScreen.show()
+	$VictoryScreen/Label.text = "Player %d wins!" % winner
 	$GameOverTimer.start()
 
 func _on_GameOverDelay_timeout():
