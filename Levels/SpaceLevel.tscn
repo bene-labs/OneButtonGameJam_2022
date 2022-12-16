@@ -83,3 +83,8 @@ position = Vector2( 149, 485 )
 
 [node name="Position4" type="Position2D" parent="SpawnPositions" index="3"]
 position = Vector2( 768, 477 )
+
+[node name="Camera2D" type="Camera2D" parent="." index="9"]
+position = Vector2( 510, 295 )
+current = true
+zoom = Vector2( 1.14, 1.36 )

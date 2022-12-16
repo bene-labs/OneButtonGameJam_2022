@@ -30,9 +30,9 @@ position = Vector2( 614, 364 )
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="." index="5"]
-position = Vector2( 618, 360 )
+position = Vector2( 613, 355 )
 current = true
-zoom = Vector2( 1.2, 1.2 )
+zoom = Vector2( 1.365, 1.63 )
 
 [node name="Anchors" type="Node2D" parent="." index="7"]
 
