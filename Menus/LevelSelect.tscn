@@ -10,7 +10,7 @@
 [ext_resource path="res://sprites/CrashedShip.png" type="Texture" id=8]
 [ext_resource path="res://sprites/Warehouse.png" type="Texture" id=9]
 [ext_resource path="res://sprites/Moon.PNG" type="Texture" id=10]
-[ext_resource path="res://sprites/Rolli_Wars_cover.jpg" type="Texture" id=11]
+[ext_resource path="res://sprites/random_screen.png" type="Texture" id=11]
 
 [sub_resource type="DynamicFont" id=2]
 size = 64
