@@ -23,6 +23,11 @@ var color
 onready var health = max_health
 export var is_invincible = false
 
+
+export (AudioStream) var hurt_sound = preload("res://Sounds/Sound_Rolli_Wars/Sound Rolli Wars/ZonedReal.mp3")
+export (AudioStream) var death_sound = preload("res://Sounds/Sound_Rolli_Wars/Sound Rolli Wars/Player_dies.mp3")
+onready var sound_player = AudioStreamPlayer.new()
+
 onready var movement = 1 if move_direction == MovementDirections.RIGHT else -1
 var swing_start_point = null
 
@@ -40,7 +45,7 @@ func _ready():
 	$HealthBar.value = health
 	$Sprite.scale *= movement
 	$Hookshot/AutoAimer.self_modulate = color
-	$Hookshot/Rope.color = color.lightened(0.5)
+	$Hookshot/Rope.color = color.lightened(0.15)
 	
 	collision_layer = pow(2, 10 + id - 2)
 
@@ -98,14 +103,25 @@ func _on_BounceArea_body_entered(body):
 func take_damage(damage = 1):
 	if is_invincible or health <= 0:
 		return
+	sound_player.stream = hurt_sound
+	sound_player.volume_db = 0.7
+	print(sound_player.get_stream_playback())
+	sound_player.play()
 	is_invincible = true
 	health -= damage
 	$HealthBar.value = health
 	$AnimationPlayer.play("take_damage")
 		
 func die():
+	sound_player.stream = death_sound
+	sound_player.volume_db = 0.7
+	sound_player.play()
+	print(sound_player.get_stream_playback())
 	$AnimationPlayer.play("die")
 	emit_signal("died")
+	var parent = get_parent()
+	if parent != null and parent.has_method("_on_player_death"):
+		parent._on_player_death(id)
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
@@ -118,9 +134,7 @@ func hide_indicator():
 	$Hookshot/AutoAimer.hide()
 
 func _exit_tree():
-	var parent = get_parent()
-	if parent != null and parent.has_method("_on_player_death"):
-		parent._on_player_death()
+	pass
 
 func assign_trail(trail):
 	attached_trail = trail

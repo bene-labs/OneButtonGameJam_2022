@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Background.mp3-d21019cebb14ccae612f96e100c3f346.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Sound_Rolli_Wars/Sound Rolli Wars/Background.mp3"
+dest_files=[ "res://.import/Background.mp3-d21019cebb14ccae612f96e100c3f346.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

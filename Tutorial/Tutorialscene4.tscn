@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Anchor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://PowerUp.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://UI/MultiControlButtonManager.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Tutorial/TutorialScene4.gd" type="Script" id=8]
 [ext_resource path="res://UI/MultiControlButton.tscn" type="PackedScene" id=9]
+[ext_resource path="res://sprites/BackgroundTutorial.jpg" type="Texture" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -18,6 +19,12 @@ font_data = ExtResource( 6 )
 script = ExtResource( 8 )
 continueButtonPath = NodePath("MultiControlButtonManager/MultiControlButton")
 playerPath = NodePath("Player")
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 514.5, 298.5 )
+scale = Vector2( 1.00585, 1.015 )
+z_index = -2
+texture = ExtResource( 10 )
 
 [node name="TutorialText4" type="Label" parent="."]
 margin_left = 1.0
@@ -39,7 +46,7 @@ position = Vector2( 107, 224 )
 [node name="OuterWalls" type="Node2D" parent="."]
 
 [node name="TopWall" parent="OuterWalls" instance=ExtResource( 5 )]
-position = Vector2( 510, -35 )
+position = Vector2( 508, -33 )
 
 [node name="BottomWall" parent="OuterWalls" instance=ExtResource( 5 )]
 position = Vector2( 510, 640 )
@@ -58,25 +65,25 @@ side = 3
 [node name="PowerUps" type="Node2D" parent="."]
 
 [node name="PowerUp" parent="PowerUps" instance=ExtResource( 2 )]
-position = Vector2( 250, 300 )
+position = Vector2( 248, 282 )
 type = 3
 
 [node name="PowerUp2" parent="PowerUps" instance=ExtResource( 2 )]
-position = Vector2( 500, 300 )
+position = Vector2( 498, 282 )
 type = 2
 
 [node name="PowerUp3" parent="PowerUps" instance=ExtResource( 2 )]
-position = Vector2( 750, 300 )
+position = Vector2( 748, 282 )
 type = 3
 
 [node name="Anchors" type="Node2D" parent="."]
 
 [node name="Anchor" parent="Anchors" instance=ExtResource( 1 )]
-position = Vector2( 250, 175 )
+position = Vector2( 248, 157 )
 randomize_effect = false
 
 [node name="Anchor2" parent="Anchors" instance=ExtResource( 1 )]
-position = Vector2( 250, 425 )
+position = Vector2( 248, 407 )
 randomize_effect = false
 
 [node name="Anchor3" parent="Anchors" instance=ExtResource( 1 )]
@@ -84,15 +91,15 @@ position = Vector2( 500, 175 )
 randomize_effect = false
 
 [node name="Anchor4" parent="Anchors" instance=ExtResource( 1 )]
-position = Vector2( 500, 425 )
+position = Vector2( 498, 407 )
 randomize_effect = false
 
 [node name="Anchor5" parent="Anchors" instance=ExtResource( 1 )]
-position = Vector2( 750, 175 )
+position = Vector2( 748, 157 )
 randomize_effect = false
 
 [node name="Anchor6" parent="Anchors" instance=ExtResource( 1 )]
-position = Vector2( 750, 425 )
+position = Vector2( 748, 407 )
 randomize_effect = false
 
 [node name="MultiControlButtonManager" parent="." instance=ExtResource( 7 )]

@@ -1,0 +1,106 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Anchor.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Game.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprites/BackgroundMoon.jpg" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 458, 234.5 )
+
+[node name="Moon" instance=ExtResource( 2 )]
+
+[node name="Background" type="Sprite" parent="." index="0"]
+position = Vector2( 616, 358 )
+z_index = -2
+texture = ExtResource( 3 )
+
+[node name="PlayerSpawner" parent="." index="1"]
+spawn_positions = [ NodePath("../SpawnPositions/Position1"), NodePath("../SpawnPositions/Position2"), NodePath("../SpawnPositions/Position3"), NodePath("../SpawnPositions/Position4") ]
+
+[node name="OuterWalls" parent="." index="2"]
+scale = Vector2( 1.2, 1.2 )
+
+[node name="PowerUpSpawner" parent="." index="3"]
+spawn_area_path = NodePath("../SpawnCollision")
+
+[node name="SpawnCollision" type="Area2D" parent="." index="4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnCollision" index="0"]
+position = Vector2( 614, 364 )
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="." index="5"]
+position = Vector2( 613, 355 )
+current = true
+zoom = Vector2( 1.365, 1.63 )
+
+[node name="Anchors" type="Node2D" parent="." index="7"]
+
+[node name="Anchor" parent="Anchors" index="0" instance=ExtResource( 1 )]
+position = Vector2( 596, 221 )
+
+[node name="Anchor2" parent="Anchors" index="1" instance=ExtResource( 1 )]
+position = Vector2( 1061, 257 )
+
+[node name="Anchor3" parent="Anchors" index="2" instance=ExtResource( 1 )]
+position = Vector2( 141, 450 )
+
+[node name="Anchor4" parent="Anchors" index="3" instance=ExtResource( 1 )]
+position = Vector2( 354, 334 )
+
+[node name="Anchor6" parent="Anchors" index="4" instance=ExtResource( 1 )]
+position = Vector2( 935, 524 )
+
+[node name="Anchor7" parent="Anchors" index="5" instance=ExtResource( 1 )]
+position = Vector2( 243, 266 )
+
+[node name="Anchor5" parent="Anchors" index="6" instance=ExtResource( 1 )]
+position = Vector2( 793, 474 )
+
+[node name="Anchor8" parent="Anchors" index="7" instance=ExtResource( 1 )]
+position = Vector2( 466, 273 )
+
+[node name="Anchor9" parent="Anchors" index="8" instance=ExtResource( 1 )]
+position = Vector2( 338, 580 )
+
+[node name="Anchor10" parent="Anchors" index="9" instance=ExtResource( 1 )]
+position = Vector2( 577, 459 )
+
+[node name="Anchor11" parent="Anchors" index="10" instance=ExtResource( 1 )]
+position = Vector2( 343, 442 )
+
+[node name="Anchor12" parent="Anchors" index="11" instance=ExtResource( 1 )]
+position = Vector2( 860, 170 )
+
+[node name="Anchor13" parent="Anchors" index="12" instance=ExtResource( 1 )]
+position = Vector2( 826, 618 )
+
+[node name="Anchor14" parent="Anchors" index="13" instance=ExtResource( 1 )]
+position = Vector2( 142, 176 )
+
+[node name="Anchor15" parent="Anchors" index="14" instance=ExtResource( 1 )]
+position = Vector2( 377, 102 )
+
+[node name="Anchor16" parent="Anchors" index="15" instance=ExtResource( 1 )]
+position = Vector2( 1008, 128 )
+
+[node name="Anchor17" parent="Anchors" index="16" instance=ExtResource( 1 )]
+position = Vector2( 925, 315 )
+
+[node name="SpawnPositions" type="Node2D" parent="." index="8"]
+
+[node name="Position1" type="Position2D" parent="SpawnPositions" index="0"]
+position = Vector2( 533, 264 )
+
+[node name="Position2" type="Position2D" parent="SpawnPositions" index="1"]
+position = Vector2( 703, 262 )
+
+[node name="Position3" type="Position2D" parent="SpawnPositions" index="2"]
+position = Vector2( 526, 436 )
+
+[node name="Position4" type="Position2D" parent="SpawnPositions" index="3"]
+position = Vector2( 710, 444 )
+
+[node name="VictoryScreen" parent="." index="10"]
+visible = false
+position = Vector2( 91, 10 )

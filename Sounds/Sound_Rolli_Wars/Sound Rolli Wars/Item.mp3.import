@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Item.mp3-3706d0321381ae0ea6d013335471539f.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Sound_Rolli_Wars/Sound Rolli Wars/Item.mp3"
+dest_files=[ "res://.import/Item.mp3-3706d0321381ae0ea6d013335471539f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Epitech_Indie-Studio_resources_sounds_game_loop.mp3-fb0c13f1c62756052fc08f2ecf2ce67c.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Bomberman_Sounds/Epitech_Indie-Studio_resources_sounds_game_loop.mp3"
+dest_files=[ "res://.import/Epitech_Indie-Studio_resources_sounds_game_loop.mp3-fb0c13f1c62756052fc08f2ecf2ce67c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

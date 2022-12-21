@@ -20,10 +20,12 @@ effect_colors = {
 }
 
 [node name="Background" type="Polygon2D" parent="."]
+self_modulate = Color( 1.5, 1.5, 1.5, 1 )
 color = Color( 0.992157, 0.705882, 0.0156863, 1 )
 polygon = PoolVector2Array( -18.6667, -17.3333, -24, -10.6667, -26.6667, 4, -21.3333, 18.6667, 1.33333, 28, 20, 16, 24, -2.66667, 13.3333, -24, -2.66667, -28, -18.6667, -20 )
 
 [node name="Sprite" type="Sprite" parent="."]
+self_modulate = Color( 1.5, 1.5, 1.5, 1 )
 scale = Vector2( 0.410009, 0.419951 )
 texture = ExtResource( 1 )
 

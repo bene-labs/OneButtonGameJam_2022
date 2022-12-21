@@ -1,15 +1,25 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://debug/FpsCounter.tscn" type="PackedScene" id=2]
 [ext_resource path="res://PlayerSpawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://PowerUpSpawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://InvisibleWall.tscn" type="PackedScene" id=5]
+[ext_resource path="res://WreathBorder.tscn" type="PackedScene" id=6]
+[ext_resource path="res://VictoryScreen.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+glow_enabled = true
+glow_intensity = 1.0
+glow_blend_mode = 0
+glow_hdr_threshold = 1.5
+glow_bicubic_upscale = true
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
-restart_delay = 3.0
-levels = [ "res://Levels/Canteen.tscn", "res://Levels/SpaceLevel.tscn", "res://Levels/Warehouse.tscn", "res://Levels/CrashedShip.tscn" ]
+game_over_delay = 5.0
+levels = [ "res://Levels/Canteen.tscn", "res://Levels/SpaceLevel.tscn", "res://Levels/Warehouse.tscn", "res://Levels/CrashedShip.tscn", "res://Levels/Moon.tscn" ]
 
 [node name="PlayerSpawner" parent="." instance=ExtResource( 3 )]
 
@@ -34,6 +44,11 @@ rotation = 1.57236
 scale = Vector2( 0.640127, 1 )
 side = 3
 
+[node name="WreathBorder" parent="OuterWalls" instance=ExtResource( 6 )]
+position = Vector2( 371, 159 )
+scale = Vector2( 1, 0.92 )
+tile_data = PoolIntArray( -65541, 2, 0, -65540, 4, 0, -65539, 4, 0, -65538, 4, 0, -65537, 4, 0, -131072, 4, 0, -131071, 5, 0, -131070, 4, 0, -131069, 4, 0, -131068, 4, 0, -131067, 4, 0, -131066, 4, 0, -131065, 8, 0, -5, 6, 0, -65529, 6, 0, 65531, 6, 0, 7, 6, 0, 131067, 6, 0, 65543, 6, 0, 196603, 6, 0, 131079, 6, 0, 131085, 1, 0, 262139, 0, 0, 262140, 4, 0, 262141, 4, 0, 262142, 4, 0, 262143, 4, 0, 196608, 4, 0, 196609, 5, 0, 196610, 4, 0, 196611, 4, 0, 196612, 4, 0, 196613, 4, 0, 196614, 4, 0, 196615, 7, 0 )
+
 [node name="PowerUpSpawner" parent="." instance=ExtResource( 4 )]
 
 [node name="FpsCounter" parent="." instance=ExtResource( 2 )]
@@ -41,3 +56,9 @@ margin_left = 495.0
 margin_top = 8.0
 margin_right = 542.0
 margin_bottom = 22.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="VictoryScreen" parent="." instance=ExtResource( 7 )]
+z_index = 2

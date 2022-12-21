@@ -4,10 +4,10 @@
 [ext_resource path="res://UI/MultiControlButtonManager.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/MultiControlButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://fonts/Roboto/Roboto-Medium.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://sprites/Temp_Player_No_Color.png" type="Texture" id=5]
+[ext_resource path="res://sprites/Rolli_Wars_Character_Transperent_Christmas.png" type="Texture" id=5]
 [ext_resource path="res://sprites/BackgroundCrashedShip.jpg" type="Texture" id=6]
-[ext_resource path="res://sprites/Rolli_Wars_Character_Red.png" type="Texture" id=7]
-[ext_resource path="res://sprites/Rolli_Wars_Character_Blue.png" type="Texture" id=8]
+[ext_resource path="res://sprites/Rolli_Wars_Character_Blue_Christmas.png" type="Texture" id=7]
+[ext_resource path="res://sprites/Rolli_Wars_Character_Red_Christmas.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -91,36 +91,36 @@ on_selected_function_params = [ 4 ]
 [node name="PlayerSprites" type="Node2D" parent="."]
 
 [node name="Player1" type="Sprite" parent="PlayerSprites"]
-visible = false
-position = Vector2( 112, 123 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 7 )
+position = Vector2( 112, 134 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 8 )
 
 [node name="Player2" type="Sprite" parent="PlayerSprites"]
-visible = false
-position = Vector2( 916, 121 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 8 )
+position = Vector2( 916, 136 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 7 )
 flip_h = true
 
 [node name="Player3" type="Sprite" parent="PlayerSprites"]
-visible = false
-position = Vector2( 113, 477 )
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( 113, 462 )
+scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 5 )
 
 [node name="Color" type="Polygon2D" parent="PlayerSprites/Player3"]
 show_behind_parent = true
+position = Vector2( 36, 56 )
+scale = Vector2( 2, 2 )
 color = Color( 0.560784, 0.027451, 0.698039, 1 )
 polygon = PoolVector2Array( -84, -64, -166, 120, -140, 190, -78, 210, -8, 174, 12, 108, 42, 148, 36, 198, 76, 196, 70, 150, 24, 50, 74, 22, 24, -10, 22, -52 )
 
 [node name="Player4" type="Sprite" parent="PlayerSprites"]
-visible = false
-position = Vector2( 914, 478 )
-scale = Vector2( -0.5, 0.5 )
+position = Vector2( 914, 461 )
+scale = Vector2( -0.25, 0.25 )
 texture = ExtResource( 5 )
 
 [node name="Color" type="Polygon2D" parent="PlayerSprites/Player4"]
 show_behind_parent = true
+position = Vector2( 36, 52 )
+scale = Vector2( 2, 2 )
 color = Color( 0.152941, 0.713726, 0.298039, 1 )
 polygon = PoolVector2Array( -84, -64, -166, 120, -140, 190, -78, 210, -8, 174, 12, 108, 42, 148, 36, 198, 76, 196, 70, 150, 24, 50, 74, 22, 24, -10, 22, -52 )
