@@ -30,7 +30,7 @@ func _ready():
 #	for i in range(concurrent_powerups):
 #		spawn_powerup()
 
-func spawn_on_zoned():
+func on_zone_created():
 	if respawn_type != RespawnTypes.AFTER_ZONE_CREATED:
 		return
 	if (randi() % 100) + 1 <= spawn_chance_AFTER_ZONE_CREATED:

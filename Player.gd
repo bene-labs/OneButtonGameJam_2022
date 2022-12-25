@@ -105,7 +105,7 @@ func take_damage(damage = 1):
 		return
 	sound_player.stream = hurt_sound
 	sound_player.volume_db = 0.7
-	print(sound_player.get_stream_playback())
+#	print(sound_player.get_stream_playback())
 	sound_player.play()
 	is_invincible = true
 	health -= damage
@@ -116,7 +116,7 @@ func die():
 	sound_player.stream = death_sound
 	sound_player.volume_db = 0.7
 	sound_player.play()
-	print(sound_player.get_stream_playback())
+#	print(sound_player.get_stream_playback())
 	$AnimationPlayer.play("die")
 	emit_signal("died")
 	var parent = get_parent()
