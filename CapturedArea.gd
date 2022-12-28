@@ -6,8 +6,12 @@ export (bool) var debug = false
 
 var owned_by = null
 
+signal zone_created
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if get_tree().root.get_child(1).get_node("PowerUpSpawner") != null:
+		connect("zone_created", get_tree().root.get_child(1).get_node("PowerUpSpawner"), "on_zone_created")
 	$Polygon2D.color = color
 	
 func create_shape(polygons, new_color, player):
@@ -31,6 +35,8 @@ func _on_CapturedArea_body_entered(body):
 	if body.has_method("take_damage"):
 		if body.id != owned_by.id:
 			body.take_damage()
+		else:
+			emit_signal("zone_created")
 	if body.has_method("deactivate"):
 		body.deactivate()
 	if body.has_method("use"):

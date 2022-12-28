@@ -3,7 +3,7 @@ class_name Trail extends Node2D
 export (NodePath) var to_follow
 #export (float) var minmum_point_distance = 1.0
 export (bool) var create_shapes = true
-export (bool) var spawn_powerups = false
+export (bool) var limit_updates_with_timer = true
 export var fade_time = -1.0 # time in seconds afer a point of the line is removed (set negative for a permanent line)
 export var debug : bool = false
 
@@ -19,8 +19,23 @@ func set_color(color):
 
 func clear_line():
 	$Line.clear_points()
+	
+func _physics_process(delta):
+	if limit_updates_with_timer:
+		return
+	var new_point = get_node(to_follow).global_position
+#	var points_copy = $Line.points
+	$Line.add_point(new_point)
+	if fade_time > 0 and $Line.points.size() > fade_time / $Timer.wait_time:
+		$Line.remove_point(0)
+	if create_shapes:
+		var intersection = find_intersection($Line.points)
+		if intersection != null:
+			create_captured_area_from_intersection(intersection, $Line.points)
 
 func _on_Trail_Timer_timeout():
+	if not limit_updates_with_timer:
+		return
 	var new_point = get_node(to_follow).global_position
 #	var points_copy = $Line.points
 	$Line.add_point(new_point)
@@ -40,8 +55,6 @@ func create_captured_area_from_intersection(intersection, points):
 			var new_area = CapturedArea.instance()
 			get_tree().root.get_child(1).add_child(new_area)
 			new_area.create_shape(polygon, $Line.default_color, get_node(to_follow))
-			if spawn_powerups and get_tree().root.get_child(1).get_node("PowerUpSpawner") != null:
-				get_tree().root.get_child(1).get_node("PowerUpSpawner").spawn_on_zoned()
 			$Line.clear_points()
 			break
 		polygon.push_back(points[i])

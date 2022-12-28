@@ -10,7 +10,7 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("back"):
-		get_tree().change_scene("res://TournamentPoints.tscn")
+		get_tree().change_scene("res://Menus/PlayerSelect.tscn")
 
 func load_level(name):
 	if name == "random":

@@ -20,7 +20,6 @@ func _ready():
 		add_child(new_player)
 		player_ids.append(new_player.id)
 		new_trail.to_follow = new_player.get_path()
-		new_trail.spawn_powerups = true
 		new_trail.name = "Player" + str(new_player.id) + "_Trail"
 		add_child(new_trail)
 
