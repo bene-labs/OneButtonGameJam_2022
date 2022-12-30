@@ -112,10 +112,10 @@ texture_progress = ExtResource( 2 )
 tint_progress = Color( 0.215686, 0.580392, 0.152941, 1 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = -15.0
-margin_top = 8.0
-margin_right = 115.0
-margin_bottom = 60.0
+margin_left = 3.0
+margin_top = 9.0
+margin_right = 97.0
+margin_bottom = 61.0
 input_pass_on_modal_close_click = false
 size_flags_horizontal = 0
 size_flags_vertical = 0

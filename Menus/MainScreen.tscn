@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://MainScreen.gd" type="Script" id=1]
 [ext_resource path="res://UI/BlinkingText.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://sprites/Rolli_Wars_Character_Red_Christmas.png" type="Texture" id=5]
 [ext_resource path="res://sprites/BackgroundSpaceLevel.jpg" type="Texture" id=6]
 [ext_resource path="res://Sounds/Sound_Rolli_Wars/Sound Rolli Wars/Title.mp3" type="AudioStream" id=7]
+
+[sub_resource type="Theme" id=1]
 
 [node name="MainScreen" type="Node2D"]
 script = ExtResource( 1 )
@@ -32,10 +34,11 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
 
 [node name="StartPrompt" parent="." instance=ExtResource( 2 )]
-margin_left = 389.0
+margin_left = 375.0
 margin_top = 470.0
-margin_right = 642.0
-margin_bottom = 559.0
+margin_right = 667.0
+margin_bottom = 597.0
+theme = SubResource( 1 )
 text = "Press any key
 to Start!"
 
