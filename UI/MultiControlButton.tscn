@@ -100,13 +100,11 @@ custom_styles/pressed = SubResource( 6 )
 custom_styles/focus = SubResource( 11 )
 custom_styles/normal = SubResource( 5 )
 shortcut_in_tooltip = false
-text = "Button"
-align = 0
+icon_align = 1
 script = ExtResource( 1 )
 button_activation_time = 1.5
 
 [node name="Fill" type="TextureProgress" parent="."]
-visible = false
 margin_right = 650.0
 margin_bottom = 83.0
 rect_scale = Vector2( 0.199867, 0.527949 )
@@ -114,9 +112,10 @@ texture_progress = ExtResource( 2 )
 tint_progress = Color( 0.215686, 0.580392, 0.152941, 1 )
 
 [node name="Label" type="Label" parent="."]
-visible = false
-margin_right = 130.0
-margin_bottom = 52.0
+margin_left = -15.0
+margin_top = 8.0
+margin_right = 115.0
+margin_bottom = 60.0
 input_pass_on_modal_close_click = false
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -127,13 +126,14 @@ custom_fonts/font = SubResource( 8 )
 text = "Button"
 align = 1
 valign = 1
-percent_visible = -0.166667
 
 [node name="Border" type="ColorRect" parent="."]
 visible = false
 show_behind_parent = true
-margin_right = 130.0
-margin_bottom = 44.0
+margin_left = -14.0
+margin_top = 7.0
+margin_right = 116.0
+margin_bottom = 51.0
 theme = ExtResource( 3 )
 color = Color( 0.945098, 0.933333, 0.0941176, 1 )
 
